@@ -1,0 +1,9 @@
+{% autoescape off %}
+Hi administrator,
+Please click on the link to confirm the registration of the new user:
+        Username: {{ user.username }}
+        First name: {{ user.first_name }}
+        Last name: {{ user.last_name }}
+        Email: {{ user.email }}
+http://{{ domain }}{% url 'users_manager:activate' uidb64=uid token=token %}
+{% endautoescape %}

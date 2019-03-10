@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+  <h2>Sign up to Micro Learning Platform</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_ul  }}
+    <button type="submit">Sign up</button>
+      <a class="button" href="{% url 'login' %}">Back</a>
+
+  </form>
+
+{% endblock %}

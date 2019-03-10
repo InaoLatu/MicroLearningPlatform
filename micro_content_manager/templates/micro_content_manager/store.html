@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Store</title>
+</head>
+<body>
+
+<h1>Micro-learning contents generator</h1>
+
+<h2>Your micro-learning content has been stored successfully!</h2>
+
+<p>The micro-learning content has been stored in <a href="{{ url }}">{{ url }}</a></p>
+<p>Click <a href="download?content={{ id }}">here</a> to download the HTML file of your micro-learning content</p>
+<p><a class="button" href="{% url 'user_page' %}">Go home</a></p>
+
+</body>
+</html>
