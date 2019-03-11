@@ -1,3 +1,6 @@
+from _ctypes import sizeof
+from typing import List
+
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -7,7 +10,7 @@ from micro_content_manager.models import MicroLearningContent
 from django.http import Http404, JsonResponse, HttpResponseBadRequest, HttpResponse
 from django.utils.datastructures import MultiValueDictKeyError
 
-NUMBER_PARAGRAPHS = 0
+NUMBER_PARAGRAPHS = 1
 NUMBER_QUESTIONS = 2
 NUMBER_CHOICES = 3
 
@@ -18,14 +21,27 @@ class MicroContentCreationView(generic.CreateView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'micro_content_manager/create.html', {'paragraphs': ' ' * NUMBER_PARAGRAPHS,
-                                                             'questions': ' ' * NUMBER_QUESTIONS,
-                                                             'choices': ' ' * NUMBER_CHOICES})
+                                                                     'questions': ' ' * NUMBER_QUESTIONS,
+                                                                     'choices': ' ' * NUMBER_CHOICES})
 
 class MicroContentInfoView(generic.DetailView):
     template_name = 'micro_content_manager/micro_content_info.html'
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'micro_content_manager/micro_content_info.html',)
+        micro_content = MicroLearningContent.objects.get(pk=kwargs['id'])
+        mc_t = Tag.objects.get_for_object(micro_content).values_list('name', flat=True)
+        mc_tags: List[str] = []
+        for tag in mc_t:
+            mc_tags.append(str(tag))
+        mc_text = micro_content.getText(self.request)
+        questions = micro_content.getQuiz(request)
+
+        return render(request, 'micro_content_manager/micro_content_info.html', {'micro_content': micro_content,
+                                                                                 'mc_tags': mc_tags,
+                                                                                 'number_tags': len(mc_tags),
+                                                                                 'mc_text': mc_text,
+                                                                                 'questions': questions
+                                                                                 })
 
 
 def index(request):

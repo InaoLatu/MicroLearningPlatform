@@ -6,5 +6,43 @@
 </head>
 <body>
 <h2>Micro Content Information</h2>
+    <ul>
+        <li>Title: {{ micro_content.title}}</li>
+
+        <li>Tags:
+            {% for tag in mc_tags %}
+                {{ tag }}
+            {% endfor %}
+        </li>
+
+            <li></li>
+            <li>Video:</li>
+                Url: {{ micro_content.video.url }} <br>
+                Format: {{ micro_content.video.video_format }} <br>
+                Upload_form: {{ micro_content.video.video_upload_form }}
+            <li></li>
+
+            <li>MetaData:</li>
+            <li>Author: {{ micro_content.meta_data.author }}</li>
+            <li>Publication date: {{ micro_content.meta_data.pub_date }}</li>
+            <li>Last modification: {{ micro_content.meta_data.last_modification }}</li>
+            <li>Creation type: {{ micro_content.meta_data.creation_type }}</li>
+            <li></li>
+
+
+        <li>Text: {{ micro_content.text}}</li>
+        <li>Quiz: <br>
+
+        {% for question in micro_content.quiz %}
+               Question {{ forloop.counter }}:  {{ question.question }}  <br>
+               Choices:  {{ question.choices }}  <br>
+               Answer:  {{ question.answer }}  <br>
+               Explanation:  {{ question.explanation }}  <br><br>
+        {% endfor %}
+
+
+        </li>
+    </ul>
+<a href="{% url 'user_page' %}">Back to my user profile</a>
 </body>
 </html>
