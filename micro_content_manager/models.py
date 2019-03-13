@@ -4,6 +4,15 @@ from django.forms.models import model_to_dict
 from tagging.registry import register
 
 
+
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+    def __str__(self):
+        return self.name
+
+
 UPLOAD_FORM = (
     ('FROM_FILE', 'FROM EXISTING FILE'),
     ('LINK_FROM_YOUTUBE', 'LINK FROM YOUTUBE'),
@@ -106,6 +115,7 @@ class MetaData(models.Model):
 
 class MicroLearningContent(models.Model):
     title = models.CharField(max_length=100)
+    mc_tags = models.ManyToManyField(Tag)
     text = models.ListField()
     video = models.EmbeddedModelField(
         model_container=Video
@@ -125,6 +135,9 @@ class MicroLearningContent(models.Model):
         self.video = video
         self.quiz = quiz
         self.meta_data = meta_data
+
+    def __str__(self):
+        return self.title
 
     @staticmethod
     def create(request):
@@ -162,6 +175,9 @@ class MicroLearningContent(models.Model):
         for q in self.quiz:
             dict['quiz'].append(q.toDict())
         return dict
+
+    def get_mc_tags(self):
+        return self.mc_tags
 
 
 register(MicroLearningContent)

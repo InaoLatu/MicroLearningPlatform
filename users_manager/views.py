@@ -29,6 +29,8 @@ from django.contrib.auth import (
     authenticate)
 
 from pymongo import MongoClient
+from tagging.models import TaggedItem
+
 from MicroLearningPlatform import settings
 
 from django.contrib.auth import login
@@ -43,6 +45,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views import generic
 
+from micro_content_manager.models import MicroLearningContent
 from users_manager.forms import UserCreateForm
 from users_manager.tokens import account_activation_token
 
@@ -54,7 +57,17 @@ DB_NAME = 'tfg'
 COLLECTION_NAME = 'users_manager_registereduser'
 
 class HomeView(TemplateView):
-    template_name = 'users_manager/user_page.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'users_manager/user_page.html')
+
+    def post(self, request):
+        tags = self.request.POST['search']
+        micro_contents_searched = TaggedItem.objects.get_by_model(MicroLearningContent, tags)
+
+       # return render(self.request, 'micro_content_manager/mc_search.html', {"micro_contents_searched": micro_contents_searched})
+        return render(self.request, 'users_manager/user_page.html', {"micro_contents_searched": micro_contents_searched})
+
 
 class UserDataView(TemplateView):
     template_name = 'users_manager/user_data.html'
@@ -297,7 +310,7 @@ class SignUp(generic.CreateView):
             user.is_active = False
             user.save()
             current_site = get_current_site(self.request)
-            mail_subject = 'Activate your blog account.'
+            mail_subject = 'Activate the new user account.'
             message = render_to_string('users_manager/acc_active_email.html', {
                 'user': user,
                 'domain': current_site.domain,
@@ -306,7 +319,7 @@ class SignUp(generic.CreateView):
             })
             #to_email = form.cleaned_data.get('email')
             email = EmailMessage(
-               mail_subject, message, to=['inao.latourrette@gmail.com']
+               mail_subject, message, to=['inao.latourrette@gmail.com'] #admin email
              )
             email.send()
             return render(self.request, 'users_manager/confirm_registration.html')
@@ -322,18 +335,30 @@ def activate(request, uidb64, token):
         user = User.objects.get(pk=uid)
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
-    if user is not None and account_activation_token.check_token(user, token):
+    if user is not None and account_activation_token.check_token(user, token): #Check if the token is correct
         user.is_active = True
         user.save()
         login(request, user)
         # return redirect('home')
-        send_mail(
-            'Your account is already activated',
-            'Your account is already activated.',
-            'inaocosasvarias@gmail.com',
-            [user.email],
-            fail_silently=False,
+
+        current_site = get_current_site(request)
+        mail_subject = 'Account in MicroLearning Platform already activated'
+        message = render_to_string('users_manager/user_link_confirmation.html', {
+            'user': user,
+            'domain': current_site.domain,
+        })
+        email = EmailMessage(
+            mail_subject, message, to=[user.email]  # new user email
         )
+        email.send()
+
+       # send_mail(
+       #     'Your account is already activated',
+       #     'Your account is already activated.',
+       #     'inaocosasvarias@gmail.com',   #from
+       #     [user.email],                  #to
+       #     fail_silently=False,
+       # )
         return HttpResponse('The selected account has been activated.')
     else:
         return HttpResponse('Activation link is invalid!')

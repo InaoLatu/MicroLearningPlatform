@@ -7,7 +7,7 @@ app_name = 'users_manager'
 urlpatterns = [
     path('user_data/', views.UserDataView.as_view(), name='user_data'),
     path('password_change/', views.change_password, name='password_change'),
-    path('l', views.LogInView.as_view(), name='logIn'),
+    path('login', views.LogInView.as_view(), name='logIn'),
     path('signup/', views.SignUp.as_view(), name='signup'),
     path('reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(),
          name='password_reset_confirm'),

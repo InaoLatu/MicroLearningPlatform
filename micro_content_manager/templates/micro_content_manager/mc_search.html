@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mc search</title>
+</head>
+<body>
+    <a href="{% url 'user_page' %}">Back to my user profile</a> <br> <br>
+    <div class="topnav">
+      <div class="search-container">
+        <form action='{% url 'micro_content_manager:micro_content_search' %}' method="post">
+            {% csrf_token %}
+              <input type="text" placeholder="Search by tags.." name="search">
+              <button type="submit"><i class="fa fa-search">
+                  <img src='{% static 'images/search.png' %}' width="14px" height="12px">
+              </i></button>
+        </form>
+      </div>
+    </div>
+
+    Cadena: {{ micro_contents_search }}   <br> <br>
+
+    List: {{ list }}  <br>
+
+    <p>  List Result:
+          {% for mcs in list_result %}
+              {{ mcs }} <br>
+        {% endfor %}
+    </p>
+
+    {% if micro_contents_search  %}
+        <p>Results: </p>
+        {% for mc in list %}
+              mc.title
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

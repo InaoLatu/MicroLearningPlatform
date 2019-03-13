@@ -1,12 +1,16 @@
 from _ctypes import sizeof
 from typing import List
 
+import null as null
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-from tagging.models import Tag
+from tagging.models import Tag, TaggedItem
+
+
 
 from micro_content_manager.models import MicroLearningContent
+from micro_content_manager.models import Tag as MicroContentTag
 from django.http import Http404, JsonResponse, HttpResponseBadRequest, HttpResponse
 from django.utils.datastructures import MultiValueDictKeyError
 
@@ -23,6 +27,7 @@ class MicroContentCreationView(generic.CreateView):
         return render(request, 'micro_content_manager/create.html', {'paragraphs': ' ' * NUMBER_PARAGRAPHS,
                                                                      'questions': ' ' * NUMBER_QUESTIONS,
                                                                      'choices': ' ' * NUMBER_CHOICES})
+
 
 class MicroContentInfoView(generic.DetailView):
     template_name = 'micro_content_manager/micro_content_info.html'
@@ -42,6 +47,38 @@ class MicroContentInfoView(generic.DetailView):
                                                                                  'mc_text': mc_text,
                                                                                  'questions': questions
                                                                                  })
+
+
+class MicroContentSearchView(generic.DetailView):
+    template_name = 'micro_content_manager/mc_search.html'
+
+    def get(self, request, *args, **kwargs):
+        micro_contents_search = null
+        return render(request, 'micro_content_manager/mc_search.html', {"micro_contents_search": micro_contents_search})
+
+    def post(self, request):
+        micro_contents_search = self.request.POST['search']
+        micro_contents_search = micro_contents_search.split()
+        list = MicroLearningContent.objects.all()
+        list_result: List[str] = []
+
+
+        for mc in list:
+
+            mc_tags: List[str] = []
+            mc_queryset = mc.mc_tags.all()
+            for tag in mc_queryset:
+                mc_tags.append(str(tag))
+
+            if bool( set(micro_contents_search) & set(mc_tags)):
+                list_result.append(str(mc.title))
+
+
+
+        return render(self.request, 'micro_content_manager/mc_search.html', {"micro_contents_search": micro_contents_search,
+                                                                            "list": list, "list_result": list_result})
+
+
 
 
 def index(request):
@@ -77,9 +114,18 @@ def store(request):
         content = MicroLearningContent.create(request)
     except MultiValueDictKeyError:
         return HttpResponseBadRequest("Error 400. Bad request.")
+
     content.save()
     tags = request.POST['mc_tags']
+    tag_args = tags.split()
+    for tag in tag_args:
+        if MicroContentTag.objects.filter(name=tag).count() > 0:
+            content.mc_tags.add(MicroContentTag.objects.get(name=tag))
+        else:
+            content.mc_tags.add(MicroContentTag.objects.create(name=tag))
+
     Tag.objects.update_tags(content, tags)
+
     url = 'http://' + request.META['SERVER_NAME'] + '/micro_content_manager/json?content=' + str(content.id)
     return render(request, 'micro_content_manager/store.html', {'id': content.id, 'url': url})
 
