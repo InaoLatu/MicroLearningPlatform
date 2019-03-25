@@ -65,9 +65,15 @@ class Question(models.Model):
     answer = models.TextField()
     explanation = models.TextField()
 
-
     def __str__(self):
         return self.question
+
+#    def __init__(self, question, choices_text, answer, explanation):
+ #       super(Question, self).__init__()
+  #      self.question = question
+  #      self.choices_text = choices_text
+  #      self.answer = answer
+   #     self.explanation = explanation
 
     @staticmethod
     def create(request, number):
@@ -89,8 +95,6 @@ class Question(models.Model):
     def toDict(self):
         return model_to_dict(self, fields=['question', 'choices', 'answer', 'explanation'])
 
-  #  class Meta:
-   #     abstract = True
 
 
 
@@ -125,9 +129,9 @@ class Quiz(models.Model):
 
 
 class MicroLearningContent(models.Model):
-    title = models.CharField(max_length=100)
     mc_tags = models.ManyToManyField(Tag)
     questions = models.ManyToManyField(Question)
+    title = models.CharField(max_length=100)
     text = models.ListField()
     video = models.EmbeddedModelField(
         model_container=Video
@@ -137,12 +141,19 @@ class MicroLearningContent(models.Model):
         model_container=MetaData
     )
 
-    def __str__(self):
-        return self.title
+    def __init__(self, id, title, text, video, meta_data):
+        super(MicroLearningContent, self).__init__()
+        self.id = id
+        self.title = title
+        self.text = text
+        self.video = video
+        self.meta_data = meta_data
+
+
 
     @staticmethod
     def create(request):
-        return MicroLearningContent(request.POST['title'], MicroLearningContent.getText(request),
+        return MicroLearningContent(None, request.POST['title'], MicroLearningContent.getText(request),
                                     Video.create(request), MetaData.create(request))
 
     @staticmethod
@@ -172,9 +183,6 @@ class MicroLearningContent(models.Model):
     def toDict(self):
         dict = model_to_dict(self, fields=['title', 'text'])
         dict['video'] = self.video.toDict()
-        dict['quiz'] = []
-        for q in self.quiz:
-            dict['quiz'].append(q.toDict())
         return dict
 
     def get_mc_tags(self):

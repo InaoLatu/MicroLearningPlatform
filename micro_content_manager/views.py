@@ -2,6 +2,7 @@ from _ctypes import sizeof
 from typing import List
 
 import null as null
+import request as request
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.utils import timezone
@@ -17,7 +18,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 import pymongo
 
 NUMBER_PARAGRAPHS = 1
-NUMBER_QUESTIONS = 5
+NUMBER_QUESTIONS = 2
 NUMBER_CHOICES = 3
 
 MONGODB_HOST = 'localhost'
@@ -167,12 +168,16 @@ def store(request):
 
 
     for i in [1, 2]:
-        question = Question.create(request, i)
-        question.save()
-        for c in [1, 2, 3]:
-            question.choices.add(Choice.objects.create(choice_text=request.POST['choice'+str(i)+'_'+str(c)], votes=0))
+            question = request.POST['question' + str(i)]
+            choices_text = Question.getChoices(request, i)
+            answer = request.POST[request.POST['answer' + str(i)]]
+            explanation = request.POST['explanation' + str(i)]
+            question = Question.objects.create(question=question, choices_text=choices_text, answer=answer, explanation=explanation)
+            question.save()
+            for c in [1, 2, 3]:
+                question.choices.add(Choice.objects.create(choice_text=request.POST['choice'+str(i)+'_'+str(c)], votes=0))
 
-        content.questions.add(question)
+            content.questions.add(question)
 
 
     Tag.objects.update_tags(content, tags)

@@ -10,16 +10,10 @@
         <li>Title: {{ micro_content.title}}</li>
 
             <li>Tags:
-                {% for tag in mc_tags %}
-                   <span style="display:inline-block; width: 20px;"> {{ tag }} </span>
+                {% for t in micro_content.mc_tags.all %}
+                   <span > {{ t }} &nbsp; </span>
                 {% endfor %}
             </li>
-            <li></li>
-
-                {% for t in micro_content.mc_tags_set.all %}
-                    <li>{{ t }}</li>
-                {% endfor %}
-
             <li>Video:</li>
                 Url: {{ micro_content.video.url }} <br>
                 Format: {{ micro_content.video.video_format }} <br>
@@ -36,13 +30,16 @@
                     {{ text }} <br>
                 {% endfor %}
             </li>
-            <li>Quiz:
+            <li>Quiz: {{  micro_content.questions.count }}
                 <br>
             {% for q in micro_content.questions.all %}
-                   qqq: {{ q }} <br>
                    Question {{ forloop.counter }}:  {{ q.question}}  <br>
-                   Choices: {{ q.choices.all }}
-                   Answer:  {{ q.answer }}  <br>
+
+                   Choices:
+                   {% for c in q.choices.all %}
+                    <span>'{{ c.choice_text.strip }}' &nbsp;</span>
+                   {% endfor %} <br>
+                   Answer:  '{{ q.answer }}'  <br>
                    Explanation:  {{ q.explanation }}  <br><br>
             {% endfor %}
         </li>
