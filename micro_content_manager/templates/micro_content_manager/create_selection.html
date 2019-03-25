@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<style>
+
+    img { background-color: darkgoldenrod;
+        width: 180px;
+        height: 180px;}
+
+    .option {
+        width: border-box;
+        position: absolute;
+        bottom: 20px ;
+    }
+    .border {
+        border: 3px solid blue;
+    }
+</style>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Selection</title>
+</head>
+
+
+<body>
+    <h1>Create Selection</h1>
+
+    <script>
+    document.getElementById("option1").addEventListener("click", hey);
+
+     $(document).ready(function() {    //llamamos la a funcion ready() porque vamos a hacer referencia a etiquetas que estan declaradas posteriormente en el documento
+
+           document.getElementById("cerrar").addEventListener("click",cerrar_banner,false);
+           var imagenes=document.querySelectorAll("#carrete img") //Devolvera un array con cada una de las imagenes contenidas en carrete
+           for (var i=0;i<imagenes.length;i++) {
+               imagenes[i].addEventListener("click",intercambio,false);
+           }
+
+       });
+
+
+     function intercambio(num) {
+
+           if(num.target==option1) {
+               $("#image1").replaceWith("<div id='image1'>Agregado al carro</div>");
+           }
+           if(num.target==image2) {
+               $("#image2").replaceWith("<div id='image2'>Agregado al carro</div>");
+           }
+       }
+    </script>
+
+
+    <div class="option" id="carrette">
+        <div class="border"><img id="option1" src="{% static 'images/create_op1.png'%}"></div>
+        <div class="border"><img id="option2" src="{% static 'images/create_op2.png'%}"></div>
+        <div class="border"><img id="option3" src="{% static 'images/create_op3.png'%}"></div>
+        <div class="border"><img id="option4" src="{% static 'images/create_op4.png'%}"></div>
+    </div>
+
+
+
+
+
+</body>
+</html>

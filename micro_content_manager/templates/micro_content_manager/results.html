@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<body>
+<p>You got <strong>{{ correct_answers }}</strong> correct answers out of <strong>{{ micro_content.questions.count }}</strong> questions at <strong>{{ micro_content.title }}</strong></p>
+
+<a href="{% url 'user_page' %}">Back to my user page</a>
+</body>
+</html>

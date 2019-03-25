@@ -11,10 +11,15 @@
 
             <li>Tags:
                 {% for tag in mc_tags %}
-                    {{ tag }}
+                   <span style="display:inline-block; width: 20px;"> {{ tag }} </span>
                 {% endfor %}
             </li>
             <li></li>
+
+                {% for t in micro_content.mc_tags_set.all %}
+                    <li>{{ t }}</li>
+                {% endfor %}
+
             <li>Video:</li>
                 Url: {{ micro_content.video.url }} <br>
                 Format: {{ micro_content.video.video_format }} <br>
@@ -31,18 +36,17 @@
                     {{ text }} <br>
                 {% endfor %}
             </li>
-            <li>Quiz: <br>
-            {% for question in micro_content.quiz %}
-                   Question {{ forloop.counter }}:  {{ question.question }}  <br>
-                   Choices:
-                    {% for choice in question.choices %}
-                        '{{ choice }}'&nbsp;
-                    {% endfor %} <br>
-                   Answer:  {{ question.answer }}  <br>
-                   Explanation:  {{ question.explanation }}  <br><br>
+            <li>Quiz:
+                <br>
+            {% for q in micro_content.questions.all %}
+                   qqq: {{ q }} <br>
+                   Question {{ forloop.counter }}:  {{ q.question}}  <br>
+                   Choices: {{ q.choices.all }}
+                   Answer:  {{ q.answer }}  <br>
+                   Explanation:  {{ q.explanation }}  <br><br>
             {% endfor %}
         </li>
     </ul>
-<a href="{% url 'micro_content_manager:index' %}">Back</a>
+<a href="{% url 'user_page' %}">Back to my user profile</a>
 </body>
 </html>

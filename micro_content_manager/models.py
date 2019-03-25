@@ -1,11 +1,8 @@
 from django.utils import timezone
 from djongo import models
 from django.forms.models import model_to_dict
+from djongo.models import ListField
 from tagging.registry import register
-
-
-
-
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
@@ -53,18 +50,24 @@ class Video(models.Model):
         abstract = True
 
 
+class Choice(models.Model):
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.choice_text
+
+
 class Question(models.Model):
     question = models.TextField()
-    choices = models.ListField()
+    choices = models.ManyToManyField(Choice)
+    choices_text = models.TextField()
     answer = models.TextField()
     explanation = models.TextField()
 
-    def __init__(self, question, choices, answer, explanation):
-        super(Question, self).__init__()
-        self.question = question
-        self.choices = choices
-        self.answer = answer
-        self.explanation = explanation
+
+    def __str__(self):
+        return self.question
 
     @staticmethod
     def create(request, number):
@@ -73,11 +76,11 @@ class Question(models.Model):
 
     @staticmethod
     def getChoices(request, number):
-        choices = []
+        choices = ""
         j = 1
         while True:
             if 'choice' + str(number) + "_" + str(j) in request.POST:
-                choices.append(request.POST['choice' + str(number) + "_" + str(j)])
+                choices = choices + request.POST['choice' + str(number) + "_" + str(j)] + " "
                 j += 1
             else:
                 break
@@ -86,8 +89,9 @@ class Question(models.Model):
     def toDict(self):
         return model_to_dict(self, fields=['question', 'choices', 'answer', 'explanation'])
 
-    class Meta:
-        abstract = True
+  #  class Meta:
+   #     abstract = True
+
 
 
 class MetaData(models.Model):
@@ -113,36 +117,33 @@ class MetaData(models.Model):
         abstract = True
 
 
+class Quiz(models.Model):
+    title = models.CharField(max_length=100)
+
+    def create(request):
+        return Quiz(title="quiz")
+
+
 class MicroLearningContent(models.Model):
     title = models.CharField(max_length=100)
     mc_tags = models.ManyToManyField(Tag)
+    questions = models.ManyToManyField(Question)
     text = models.ListField()
     video = models.EmbeddedModelField(
         model_container=Video
     )
-    quiz = models.ArrayModelField(
-        model_container=Question
-    )
+
     meta_data = models.EmbeddedModelField(
         model_container=MetaData
     )
-
-    def __init__(self, id, title, text, video, quiz, meta_data):
-        super(MicroLearningContent, self).__init__()
-        self.id = id
-        self.title = title
-        self.text = text
-        self.video = video
-        self.quiz = quiz
-        self.meta_data = meta_data
 
     def __str__(self):
         return self.title
 
     @staticmethod
     def create(request):
-        return MicroLearningContent(None, request.POST['title'], MicroLearningContent.getText(request),
-                                    Video.create(request), MicroLearningContent.getQuiz(request), MetaData.create(request))
+        return MicroLearningContent(request.POST['title'], MicroLearningContent.getText(request),
+                                    Video.create(request), MetaData.create(request))
 
     @staticmethod
     def getText(request):

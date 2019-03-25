@@ -19,9 +19,6 @@
       </div>
     </div>
 
-    Cadena: {{ micro_contents_search }}   <br> <br>
-
-    List: {{ list }}  <br>
 
     <p>  List Result:
           {% for mcs in list_result %}
@@ -29,11 +26,6 @@
         {% endfor %}
     </p>
 
-    {% if micro_contents_search  %}
-        <p>Results: </p>
-        {% for mc in list %}
-              mc.title
-        {% endfor %}
-    {% endif %}
+
 </body>
 </html>

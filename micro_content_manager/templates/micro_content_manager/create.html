@@ -31,7 +31,7 @@
         <option value="ogg">ogg</option>
     </select></p>
 
-    <p>Upload Form:<select name="video_upload_form">
+    <p>Video upload form:<select name="video_upload_form">
         <option value="from_existing_file" selected>From existing file</option>
         <option value="link_from_youtube">Link from YouTube</option>
         <option value="download_from_youtube">Download from Youtube</option>
@@ -42,6 +42,7 @@
     {% for q in questions %}
         <p>Question {{ forloop.counter }}: <textarea name="question{{ forloop.counter }}" rows="1"
                                                      cols="100"></textarea></p>
+
         Choices {{ forloop.counter }} (write the possible answers and sel_ect the correct one):<br>
         {% for c in choices %}
             <input type="radio" name="answer{{ forloop.parentloop.counter }}"
@@ -49,6 +50,7 @@
                    {% if forloop.counter == 1 %}checked {% endif %}>
             <input type="text" name="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}"><br>
         {% endfor %}
+
         <p>Explanation {{ forloop.counter }}: <textarea name="explanation{{ forloop.counter }}" rows="1"
                                                         cols="100"></textarea></p>
     {% endfor %}

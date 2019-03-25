@@ -11,41 +11,53 @@
 <h1>Micro-learning contents generator</h1>
 
 <p><a class="button" href="{% url 'user_page' %}">Go home</a></p>
-<p><a class="button" href="{% url 'micro_content_manager:edit' id %}">Back</a></p>
+<p><a class="button" href="{% url 'micro_content_manager:index' %}">Back</a></p>
 
 
-<form action="update" method="post">
+<form action="{% url 'micro_content_manager:update' %}" method="post">
 
     {% csrf_token %}
 
     <h2>Content</h2>
-    <input type="hidden" name="id" value="{{ id }}">
-    <p>Title: <input type="text" name="title" value="{{ title }}" required></p>
-    {% for p in text %}
-        <p>Paragraph {{ forloop.counter }}:<textarea name="paragraph{{ forloop.counter }}" rows="2"
-                                                     cols="100">{{ p }}</textarea></p>
-    {% endfor %}
-    <p>Video URL:<input name="videoURL" type="url" value="{{ video.url }}"></p>
-    <p>Video format:<select name="videoFormat">
-        <option value="mp4" {% if video.format == 'mp4' %} selected {% endif %}>mp4</option>
-        <option value="ogg" {% if video.format == 'ogg' %} selected {% endif %}>ogg</option>
-    </select></p>
+        <input type="hidden" name="id" value="{{ id }}">
+        <p>Id: {{ id }}</p>
+        <p>Title: <input type="text" name="title" value="{{ content.title }}" required></p>
+        <p>Tags:<input type="text" name="mc_tags" value="{{mc_tags}}" required>
+         (Tags must be inserted separated by blank spaces (e.g., Tag1 Tag2 Tag3))</p>
+        {% for p in content.text %}
+            <p>Paragraph {{ forloop.counter }}:<textarea name="paragraph{{ forloop.counter }}" rows="2"
+                                                         cols="100">{{ p }}</textarea></p>
+        {% endfor %}
+        <p>Video URL:<input name="videoURL" type="url" value="{{ content.video.url }}"></p>
+        <p>Video format:<select name="videoFormat">
+            <option value="mp4" {% if content.video.format == 'mp4' %} selected {% endif %}>mp4</option>
+            <option value="ogg" {% if content.video.format == 'ogg' %} selected {% endif %}>ogg</option>
+        </select></p>
+
+         <p>Video upload form:<select name="video_upload_form">
+            <option value="from_existing_file" {% if content.video.upload_form == 'from_existing_file' %} selected {% endif %}>From existing file</option>
+            <option value="link_from_youtube" {% if content.video.upload_form == 'link_from_youtube' %} selected {% endif %}>Link from YouTube</option>
+            <option value="download_from_youtube" {% if content.video.upload_form == 'download_from_youtube' %} selected {% endif %}>Download from Youtube</option>
+            <option value="external_repository" {% if content.video.upload_form == 'external_repository' %} selected {% endif %}>From external repository</option>
+        </select></p>
 
     <h2>Quiz</h2>
-    {% for q in quiz %}
-        <p>Question {{ forloop.counter }}: <textarea name="question{{ forloop.counter }}" rows="1"
-                                                     cols="100">{{ q.question }}</textarea></p>
-        Choices {{ forloop.counter }} (write the possible answers and select the correct one):<br>
-        {% for c in q.choices %}
-            <input type="radio" name="answer{{ forloop.parentloop.counter }}"
-                   value="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}"
-                   {% if q.answer == c %}checked {% endif %}>
-            <input type="text" name="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}" value="{{ c }}"><br>
+        {% for q in content.questions.all %}
+                <p>Question {{ forloop.counter }}: <textarea name="question{{ forloop.counter }}" rows="1"
+                                                             cols="100">{{ q.question }}</textarea></p>
+                Choices {{ forloop.counter }} (write the possible answers and select the correct one):<br>
+
+               {% for choice in q.choices.split %}
+                    <input type="radio" name="answer{{ forloop.parentloop.counter }}"
+                           value="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}"
+                           {% if forloop.counter == 1 %}checked {% endif %}>
+                    <input type="text" name="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}" value={{ choice }}>    <br>
+               {% endfor %}
+
+                <p>Explanation {{ forloop.counter }}: <textarea name="explanation{{ forloop.counter }}" rows="2"
+                                                                cols="100">{{ q.explanation }}</textarea></p>
         {% endfor %}
-        <p>Explanation {{ forloop.counter }}: <textarea name="explanation{{ forloop.counter }}" rows="2"
-                                                        cols="100">{{ q.explanation }}</textarea></p>
-    {% endfor %}
-    <input type="submit" value="Edit micro-learning content">
+        <input type="submit" value="Edit micro-learning content">
 
 </form>
 

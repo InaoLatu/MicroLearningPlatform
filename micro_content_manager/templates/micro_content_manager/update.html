@@ -10,10 +10,14 @@
 <h1>Micro-learning contents generator</h1>
 
 <h2>Your micro-learning content has been modified successfully!</h2>
-
-<p>The micro-learning content is stored in <a href="{{ url }}">{{ url }}</a></p>
-<p>Click <a href="download?content={{ id }}">here</a> to download the HTML file of your micro-learning content</p>
-<p><a class="button" href="/AuthoringTool">Go home</a></p>
+<p>Parameters:
+    <ul>
+        <li>{{ id }}</li>
+        <li>New Form</li>
+        <li> {{ video_format }}</li>
+    </ul>
+</p>
+<p><a class="button" href="{% url 'user_page' %}">Go home</a></p>
 
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Do the Micro Content</title>
+</head>
+<body>
+    <h2>{{ micro_content.title }}</h2>
+    {{ error_message }}
+    <p>Tags:
+        {% for tag in micro_content.mc_tags.all %}
+                   <span style="display:inline-block; width: 20px;"> {{ tag.name }} </span>
+        {% endfor %}
+    </p>
+    <p> {{ micro_content.text.0 }}</p>
+
+    <div>
+        <h4>Video</h4>
+        <iframe width="600" height="345" src="{{ micro_content.video.url }}"></iframe>
+    </div>
+
+    <div>
+        <h4>Quiz: </h4>
+
+        <form action="{% url 'micro_content_manager:micro_content_vote' %}" method="post">
+            {% csrf_token %}
+        <input type="hidden" id="mc_id" name="mc_id" value={{ micro_content.id }}>
+        {% for question in micro_content.questions.all %}
+            <p>Question {{ forloop.counter }}: {{ question.question }}</p>
+            {% for choice in question.choices.all %}
+                <input type="radio" name="choice{{forloop.parentloop.counter}}" value="{{ choice.id }}">
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+
+            {% endfor %}
+        {% endfor %}
+
+        <br>
+             <input type="submit" value="Finish">
+        </form>
+
+
+    </div>
+
+
+
+</body>
+</html>
