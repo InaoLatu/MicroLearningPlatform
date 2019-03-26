@@ -23,7 +23,7 @@
         <p>Id: {{ id }}</p>
         <p>Title: <input type="text" name="title" value="{{ content.title }}" required></p>
         <p>Tags:<input type="text" name="mc_tags" value="{{mc_tags}}" required>
-         (Tags must be inserted separated by blank spaces (e.g., Tag1 Tag2 Tag3))</p>
+          Tags must be inserted separated by blank spaces (e.g., Tag1 Tag2 Tag3)</p>
         {% for p in content.text %}
             <p>Paragraph {{ forloop.counter }}:<textarea name="paragraph{{ forloop.counter }}" rows="2"
                                                          cols="100">{{ p }}</textarea></p>
@@ -42,12 +42,13 @@
         </select></p>
 
     <h2>Quiz</h2>
+
         {% for q in content.questions.all %}
                 <p>Question {{ forloop.counter }}: <textarea name="question{{ forloop.counter }}" rows="1"
                                                              cols="100">{{ q.question }}</textarea></p>
                 Choices {{ forloop.counter }} (write the possible answers and select the correct one):<br>
 
-               {% for choice in q.choices.split %}
+               {% for choice in q.choices.all %}
                     <input type="radio" name="answer{{ forloop.parentloop.counter }}"
                            value="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}"
                            {% if forloop.counter == 1 %}checked {% endif %}>

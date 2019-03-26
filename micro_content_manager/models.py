@@ -35,7 +35,7 @@ class Video(models.Model):
 
     @staticmethod
     def create(request):
-        return Video(request.POST['videoURL'], request.POST['videoFormat'], request.POST['video_upload_form'])
+        return Video(Video.buildURL(request), request.POST['videoFormat'], request.POST['video_upload_form'])
 
     def __init__(self, url, video_format, video_upload_form):
         super(Video, self).__init__()
@@ -46,6 +46,14 @@ class Video(models.Model):
     def toDict(self):
         return model_to_dict(self, fields=['url', 'video_format', 'video_upload_form'])
 
+    @staticmethod
+    def buildURL(request):
+        videoURL = request.POST['videoURL']
+        if request.POST['video_upload_form'] == "link_from_youtube":
+            idYoutubeVideo = videoURL.split("v=", 1)[1]
+            videoURL = "http://www.youtube.com/embed/"+idYoutubeVideo
+
+        return videoURL
     class Meta:
         abstract = True
 

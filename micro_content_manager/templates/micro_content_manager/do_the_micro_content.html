@@ -7,6 +7,7 @@
 <body>
     <h2>{{ micro_content.title }}</h2>
     {{ error_message }}
+    <li>ID: {{ micro_content.id }}</li>
     <p>Tags:
         {% for tag in micro_content.mc_tags.all %}
                    <span style="display:inline-block; width: 30px;"> {{ tag.name }}  </span>
@@ -27,11 +28,12 @@
         <input type="hidden" id="mc_id" name="mc_id" value={{ micro_content.id }}>
         {% for question in micro_content.questions.all %}
             <p>Question {{ forloop.counter }}: {{ question.question }}</p>
+
             {% for choice in question.choices.all %}
                 <input type="radio" name="choice{{forloop.parentloop.counter}}" value="{{ choice.id }}">
                 <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-
             {% endfor %}
+
         {% endfor %}
 
         <br>
