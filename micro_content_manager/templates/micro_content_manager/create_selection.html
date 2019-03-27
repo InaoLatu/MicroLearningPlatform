@@ -1,68 +1,130 @@
 <!DOCTYPE html>
 {% load static %}
 <style>
-
-    img { background-color: darkgoldenrod;
-        width: 180px;
-        height: 180px;}
-
-    .option {
+     .selected {
+        background-color: red;
+     }
+     .border-red {
+        border: 1px solid red;
         width: border-box;
+
+    }
+    #options-container{
+        padding-top: 50px;
+    }
+    #option1-container{
+        border: 1px solid mediumvioletred;
+        width: 300px;
+    }
+    #selector {
+        padding-top: 60px;
+    }
+    .border-blue {
+        border: 1px solid blue;
+
+    }
+    #option3 {
+        padding-left: 100px;
+    }
+    #option4 {
+        padding-top: 300px;
+    }
+
+    #guidelineSelection{
         position: absolute;
-        bottom: 20px ;
+        top: 100px;
     }
-    .border {
-        border: 3px solid blue;
+
+    #MicroContentImage{
+        position: absolute;
+        top: 100px;
+        left: 500px;
     }
+
 </style>
 
 
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Selection</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+        <title>Create Selection</title>
+    </head>
 
 
-<body>
-    <h1>Create Selection</h1>
-
-    <script>
-    document.getElementById("option1").addEventListener("click", hey);
-
-     $(document).ready(function() {    //llamamos la a funcion ready() porque vamos a hacer referencia a etiquetas que estan declaradas posteriormente en el documento
-
-           document.getElementById("cerrar").addEventListener("click",cerrar_banner,false);
-           var imagenes=document.querySelectorAll("#carrete img") //Devolvera un array con cada una de las imagenes contenidas en carrete
-           for (var i=0;i<imagenes.length;i++) {
-               imagenes[i].addEventListener("click",intercambio,false);
+    <body>
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script>
+         $(document).ready(function() {    //llamamos la a funcion ready() porque vamos a hacer referencia a etiquetas que estan declaradas posteriormente en el documento
+             var options=document.querySelectorAll("#selector img") //Devolvera un array con cada una de las imagenes contenidas en carrete
+               for (var i=0;i<options.length;i++) {
+                    options[i].addEventListener("click",showMicroLearningContent,false);
+               }
+           });
+         function showMicroLearningContent(num) {
+             switch (num.target) {
+                 case option1:
+                     $("#selector img").removeClass("selected");
+                     $("#selector img").removeClass("animated bounce");
+                     $("#option1").addClass("selected");
+                     $("#option1").addClass("animated bounce");
+                     $("#MicroContentImage").html("<img class = \"border selected\"  src=\"{% static 'images/create_op1.png'%}\">\n");
+                     break;
+                 case option2:
+                     $("#selector img").removeClass("selected");
+                     $("#selector img").removeClass("animated bounce");
+                     $("#option2").addClass("selected");
+                     $("#option2").addClass("animated bounce");
+                     break;
+                 case option3:
+                     $("#selector img").removeClass("selected");
+                     $("#selector img").removeClass("animated bounce");
+                     $("#option3").addClass("selected");
+                     $("#option3").addClass("animated bounce");
+                    break;
+                 case option4:
+                     $("#selector img").removeClass("selected");
+                     $("#selector img").removeClass("animated bounce");
+                     $("#option4").addClass("selected");
+                     $("#option4").addClass("animated bounce");
+                   break;
+             }
            }
-
-       });
-
-
-     function intercambio(num) {
-
-           if(num.target==option1) {
-               $("#image1").replaceWith("<div id='image1'>Agregado al carro</div>");
-           }
-           if(num.target==image2) {
-               $("#image2").replaceWith("<div id='image2'>Agregado al carro</div>");
-           }
-       }
-    </script>
+           window.onload=intercambio; //cuando carga la ventaja ejecutara la funcion indicada
+        </script>
 
 
-    <div class="option" id="carrette">
-        <div class="border"><img id="option1" src="{% static 'images/create_op1.png'%}"></div>
-        <div class="border"><img id="option2" src="{% static 'images/create_op2.png'%}"></div>
-        <div class="border"><img id="option3" src="{% static 'images/create_op3.png'%}"></div>
-        <div class="border"><img id="option4" src="{% static 'images/create_op4.png'%}"></div>
-    </div>
+        <h1>Create Selection</h1>
+        <div class="border-red" id="MicroContentImageContainer">
+            <img class = "border-blue showMC" id="MicroContentImage" src="{% static 'images/create_op4.png'%}">
+            <p class="border-blue" id="guidelineSelection">You should choose one <br> of the four options below.</p>
+        </div>
 
+        <div id="selector">
+            <p>Format options: </p>
+            <div id="optionText">
+                <strong>
+                    <span style="padding-right: 130px;">Option 1</span>
+                    <span style="padding-right: 130px;">Option 2</span>
+                    <span style="padding-right: 130px;">Option 3</span>
+                    <span>Option 4</span>
+                </strong>
+            </div>
 
-
-
-
+            <div id="options-container">
+                <div id="option1-container" class=>
+                    <img id="option1" class="border-blue selected" src="{% static 'images/create_op1.png'%}"><br>
+                </div>
+                <div>
+                    <img class = "border-blue" id="option2" src="{% static 'images/create_op2.png'%}"><br>
+                </div>
+                <div>
+                    <img class = "border-blue" id="option3" src="{% static 'images/create_op3.png'%}"><br>
+                </div>
+                <div>
+                    <img class = "border-blue" id="option4" src="{% static 'images/create_op4.png'%}">
+                </div>
+            </div>
+        </div>
 </body>
 </html>
