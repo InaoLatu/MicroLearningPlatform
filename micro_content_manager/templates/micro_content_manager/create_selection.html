@@ -2,182 +2,67 @@
 {% load static %}
 <style>
 
-    .box {
-        border-style: solid;
-        border-color: black;
-        border-width: 5px;
-        text-align: center;
-     }
-    .blue-box {
-        background-color: rgba(92,114,250,0.81);
-        color: #fff;
-        margin: 20px 1500px 20px 10px ;
-        padding: 1em;
-    }
-    .center-box {
-        background-color: rgba(213,218,250,0.9);
-        padding: 20px 10px 150px 10px;
-    }
-    .selected {
-        background-color: rgba(250,13,28,0.9)
-    }
-    .option-font{
-        font-palette: light;
-        font-size: 15px;
-    }
-    #title{
-        background-color: rgba(45, 45, 45, 0.1)
-    }
+    img { background-color: darkgoldenrod;
+        width: 180px;
+        height: 180px;}
 
-    #createButton {
+    .option {
+        width: border-box;
         position: absolute;
-        background-color: green;
-        color: white;
-        font-size: 25px;
-        height: 0.8in;
-        width: 1.5in;
-        margin: 3in 0in 0in 14in;
-
+        bottom: 20px ;
     }
-    #disableButton {
-        position: absolute;
-        background-color: green;
-        color: white;
-        font-size: 25px;
-        height: 0.8in;
-        width: 1.5in;
-        margin: 5in 0in 0in 14in;
+    .border {
+        border: 3px solid blue;
     }
-     #microContentPreview-container{
-         background-color: mediumvioletred;
-         margin: 0 7in 0.3in 6.5in;
-
-    }
-     #microContentImage {
-         height: 7.1in;
-         width: 5.2in;
-         margin-bottom: -0.05in;
-
-     }
-
-    #options-container {
-        margin-left: 50px;
-    }
-    #guideline-container{
-        text-align: center;
-        font-size: 30px;
-        margin: -650px 1500px 80px 40px ;
-
-    }
-
-
 </style>
 
 
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-        <title>Create Selection</title>
-    </head>
-
-    <body>
-        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script>
+<head>
+    <meta charset="UTF-8">
+    <title>Create Selection</title>
+</head>
 
 
-         $(document).ready(function() {    //llamamos la a funcion ready() porque vamos a hacer referencia a etiquetas que estan declaradas posteriormente en el documento
-             var options=document.querySelectorAll("#options-container h5") //Devolvera un array con cada una de las imagenes contenidas en carrete
-               for (var i=0;i<options.length;i++) {
-                    options[i].addEventListener("click",showMicroLearningContent,false);
-               }
-           });
-         function showMicroLearningContent(num) {
-             switch (num.target) {
-                 case option1:
-                     $("#options-container  h5").removeClass("selected");
-                     $("#options-container  h5").removeClass("animated bounce");
-                     $("#option1").addClass("selected");
-                     $("#option1").addClass("animated bounce");
-                     $("#microContentImage-container").html("<img id=\"microContentImage\" class = \"border selected\"  src=\"{% static 'images/1video_3questions.png'%}\">\n");
-
-
-
-                     $(document.getElementById("previewText").textContent="Preview of option 1");
-                     break;
-                 case option2:
-                     $("#options-container  h5").removeClass("selected");
-                     $("#options-container  h5").removeClass("animated bounce");
-                     $("#option2").addClass("selected");
-                     $("#option2").addClass("animated bounce");
-                     $("#microContentImage-container").html("<img id=\"microContentImage\" class = \"border selected\"  src=\"{% static 'images/1video_5questions.png'%}\">\n");
-
-                     $(document.getElementById("previewText").textContent="Preview of option 2");
-
-                     break;
-                 case option3:
-                     $("#options-container  h5").removeClass("selected");
-                     $("#options-container  h5").removeClass("animated bounce");
-                     $("#option3").addClass("selected");
-                     $("#option3").addClass("animated bounce");
-                     $(document.getElementById("previewText").textContent="Preview of option 3");
-
-                    break;
-                 case option4:
-                     $("#options-container  h5").removeClass("selected");
-                     $("#options-container  h5").removeClass("animated bounce");
-                     $("#option4").addClass("selected");
-                     $("#option4").addClass("animated bounce");
-                     $(document.getElementById("previewText").textContent="Preview of option 4");
-
-                   break;
-             }
-           }
-           window.onload=intercambio; //cuando carga la ventaja ejecutara la funcion indicada
-        </script>
-
-        <div id="container-full">
-            <h1 id="title">Create Selection <hr></h1>
-
-
-            <div id="center-container" class="center-box">
-
-                <input id="disableButton" type="button" value="Dis">
-
-                <div id="createButton-container">
-                    <input id ="createButton" class="box" type="submit" value="Create">
-                </div>
-                <div id="microContentPreview-container" class="box">
-                    <h3 id="previewText">Preview of option 1 </h3>
-                    <div id="microContentImage-container">
-                        <img id="microContentImage" src="{% static 'images/1video_3questions.png'%}">
-                    </div>
-                </div>
-                <div id="guideline-container">
-                    <p id="guidelineSelection">Choose one <br> of the four options below.</p>
-                </div>
-
-                <div id="options-container">
-                    <div id="option1-container">
-                        <h5 id="option1" class="box blue-box option-font">1 Video <br> 3 Questions</h5>
-                    </div>
-                    <div id="option2-container">
-                            <h5 id="option2" class="box blue-box option-font">1 Video <br> 5 Questions</h5>
-                    </div>
-                    <div id="option3-container">
-                            <h5 id="option3" class="box blue-box option-font">2 Videos <br> 5 Questions</h5>
-                    </div>
-                    <div id="option4-container">
-                            <h5 id="option4" class="box blue-box option-font">2 Videos <br> 7 Questions</h5>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
+<body>
+    <h1>Create Selection</h1>
 
     <script>
-        $("#disableButton").prop("disabled", true);
+    document.getElementById("option1").addEventListener("click", hey);
+
+     $(document).ready(function() {    //llamamos la a funcion ready() porque vamos a hacer referencia a etiquetas que estan declaradas posteriormente en el documento
+
+           document.getElementById("cerrar").addEventListener("click",cerrar_banner,false);
+           var imagenes=document.querySelectorAll("#carrete img") //Devolvera un array con cada una de las imagenes contenidas en carrete
+           for (var i=0;i<imagenes.length;i++) {
+               imagenes[i].addEventListener("click",intercambio,false);
+           }
+
+       });
+
+
+     function intercambio(num) {
+
+           if(num.target==option1) {
+               $("#image1").replaceWith("<div id='image1'>Agregado al carro</div>");
+           }
+           if(num.target==image2) {
+               $("#image2").replaceWith("<div id='image2'>Agregado al carro</div>");
+           }
+       }
     </script>
+
+
+    <div class="option" id="carrette">
+        <div class="border"><img id="option1" src="{% static 'images/create_op1.png'%}"></div>
+        <div class="border"><img id="option2" src="{% static 'images/create_op2.png'%}"></div>
+        <div class="border"><img id="option3" src="{% static 'images/create_op3.png'%}"></div>
+        <div class="border"><img id="option4" src="{% static 'images/create_op4.png'%}"></div>
+    </div>
+
+
+
+
+
 </body>
 </html>
