@@ -18,7 +18,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 import pymongo
 
 NUMBER_PARAGRAPHS = 1
-NUMBER_QUESTIONS = 2
+NUMBER_QUESTIONS = 5
 NUMBER_CHOICES = 3
 
 MONGODB_HOST = 'localhost'
@@ -166,7 +166,7 @@ def store(request):
         else:
             content.mc_tags.add(MicroContentTag.objects.create(name=tag))
 
-    for i in [1, 2]:
+    for i in [1, 2, 3]:
             question = request.POST['question' + str(i)]
             choices_text = Question.getChoices(request, i)
             answer = request.POST[request.POST['answer' + str(i)]]

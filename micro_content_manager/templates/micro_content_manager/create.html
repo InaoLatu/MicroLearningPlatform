@@ -17,7 +17,7 @@
     {% csrf_token %}
     <span> User: {{ user.username }}</span>
     <h2>Content</h2>
-    <p>Title: <input type="text" name="title" required></p>
+    <p><label for="title">Title: <input type="text" placeholder="Title" name="title" required></label></p>
     <p>Tags: <input type="text" name="mc_tags" required>
      (Tags must be inserted separated by blank spaces (e.g., Tag1 Tag2 Tag3))</p>
 
@@ -26,17 +26,21 @@
                                                      cols="100"></textarea></p>
     {% endfor %}
     <p>Video URL:<input name="videoURL" type="url"></p>
-    <p>Video format:<select name="videoFormat">
-        <option value="mp4" selected>mp4</option>
-        <option value="ogg">ogg</option>
-    </select></p>
+    <p>Video format:
+        <select name="videoFormat">
+            <option value="mp4" selected>mp4</option>
+            <option value="ogg">ogg</option>
+        </select>
+    </p>
 
-    <p>Video upload form:<select name="video_upload_form">
-        <option value="from_existing_file" selected>From existing file</option>
-        <option value="link_from_youtube">Link from YouTube</option>
-        <option value="download_from_youtube">Download from Youtube</option>
-        <option value="external_repository">From external repository</option>
-    </select></p>
+    <p>Video upload form:
+        <select name="video_upload_form">
+            <option value="from_existing_file" selected>From existing file</option>
+            <option value="link_from_youtube">Link from YouTube</option>
+            <option value="download_from_youtube">Download from Youtube</option>
+            <option value="external_repository">From external repository</option>
+        </select>
+    </p>
 
     <h2>Quiz</h2>
     {% for q in questions %}
