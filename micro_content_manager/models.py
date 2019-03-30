@@ -34,8 +34,9 @@ class Video(models.Model):
     )
 
     @staticmethod
-    def create(request):
-        return Video(Video.buildURL(request), request.POST['videoFormat'], request.POST['video_upload_form'])
+    def create(request, number):
+        return Video(Video.buildURL(request, number), request.POST['videoFormat'+str(number)], request.POST['video_upload_form'+str(number)])
+
 
     def __init__(self, url, video_format, video_upload_form):
         super(Video, self).__init__()
@@ -47,13 +48,14 @@ class Video(models.Model):
         return model_to_dict(self, fields=['url', 'video_format', 'video_upload_form'])
 
     @staticmethod
-    def buildURL(request):
-        videoURL = request.POST['videoURL']
-        if request.POST['video_upload_form'] == "link_from_youtube":
+    def buildURL(request, number):
+        videoURL = request.POST['videoURL'+str(number)]
+        if request.POST['video_upload_form'+str(number)] == "link_from_youtube":
             idYoutubeVideo = videoURL.split("v=", 1)[1]
             videoURL = "http://www.youtube.com/embed/"+idYoutubeVideo
 
         return videoURL
+
     class Meta:
         abstract = True
 
@@ -66,12 +68,16 @@ class Choice(models.Model):
         return self.choice_text
 
 
+
 class Question(models.Model):
     question = models.TextField()
     choices = models.ManyToManyField(Choice)
     choices_text = models.TextField()
     answer = models.TextField()
     explanation = models.TextField()
+
+
+
 
     def __str__(self):
         return self.question
@@ -129,19 +135,16 @@ class MetaData(models.Model):
         abstract = True
 
 
-class Quiz(models.Model):
-    title = models.CharField(max_length=100)
-
-    def create(request):
-        return Quiz(title="quiz")
-
 
 class MicroLearningContent(models.Model):
     mc_tags = models.ManyToManyField(Tag)
     questions = models.ManyToManyField(Question)
     title = models.CharField(max_length=100)
     text = models.ListField()
-    video = models.EmbeddedModelField(
+   # video = models.EmbeddedModelField(
+   #     model_container=Video
+   # )
+    videos = models.ArrayModelField(
         model_container=Video
     )
 
@@ -149,12 +152,14 @@ class MicroLearningContent(models.Model):
         model_container=MetaData
     )
 
-    def __init__(self, id, title, text, video, meta_data):
+
+
+    def __init__(self, id, title, text, videos, meta_data):
         super(MicroLearningContent, self).__init__()
         self.id = id
         self.title = title
         self.text = text
-        self.video = video
+        self.videos = videos
         self.meta_data = meta_data
 
 
@@ -162,7 +167,7 @@ class MicroLearningContent(models.Model):
     @staticmethod
     def create(request):
         return MicroLearningContent(None, request.POST['title'], MicroLearningContent.getText(request),
-                                    Video.create(request), MetaData.create(request))
+                                    MicroLearningContent.getVideos(request), MetaData.create(request))
 
     @staticmethod
     def getText(request):
@@ -177,20 +182,20 @@ class MicroLearningContent(models.Model):
         return text
 
     @staticmethod
-    def getQuiz(request):
-        quiz = []
+    def getVideos(request):
+        videos = []
         i = 1
         while True:
-            if 'question' + str(i) in request.POST:
-                quiz.append(Question.create(request, i))
+            if 'videoURL' + str(i) in request.POST:
+                videos.append(Video.create(request, i))
                 i += 1
             else:
                 break
-        return quiz
+        return videos
 
     def toDict(self):
         dict = model_to_dict(self, fields=['title', 'text'])
-        dict['video'] = self.video.toDict()
+        dict['video'] = self.videos.toDict()
         return dict
 
     def get_mc_tags(self):

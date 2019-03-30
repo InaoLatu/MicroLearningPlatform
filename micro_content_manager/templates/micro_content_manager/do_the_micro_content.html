@@ -22,8 +22,10 @@
         <p> {{ micro_content.text.0 }}</p>
 
         <div>
-            <h4>Video</h4>
-            <iframe width="300" height="160" src="{{ micro_content.video.url }}"></iframe>
+            {% for v in micro_content.videos %}
+              <iframe width="300" height="160" src="{{ v.url }}"></iframe>
+            {% endfor%}
+
         </div>
 
         <div>

@@ -18,8 +18,9 @@ from django.utils.datastructures import MultiValueDictKeyError
 import pymongo
 
 NUMBER_PARAGRAPHS = 1
-NUMBER_QUESTIONS = 5
+NUMBER_QUESTIONS = 3
 NUMBER_CHOICES = 3
+NUMBER_VIDEOS = 1
 
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
@@ -27,21 +28,24 @@ DB_NAME = 'tfg'
 COLLECTION_NAME = 'micro_content_manager_microlearningcontent'
 
 
-class MicroContentCreationView(generic.CreateView):
-    success_url = reverse_lazy('auth_tool:index')
-    template_name = 'micro_content_manager/create.html'
-
-    def get(self, request, *args, **kwargs):
-        return render(request, 'micro_content_manager/create.html', {'paragraphs': ' ' * NUMBER_PARAGRAPHS,
-                                                                     'questions': ' ' * NUMBER_QUESTIONS,
-                                                                     'choices': ' ' * NUMBER_CHOICES})
-
 class CreateSelectionView(generic.TemplateView):
     template_name = 'micro_content_manager/create_selection.html'
 
     def get(self, request, *args, **kwargs):
         return render(request, 'micro_content_manager/create_selection.html')
 
+
+class MicroContentCreationView(generic.CreateView):
+    success_url = reverse_lazy('auth_tool:index')
+    template_name = 'micro_content_manager/create.html'
+
+    def get(self, request, *args, **kwargs):
+        NUMBER_QUESTIONS = kwargs['q']
+        return render(request, 'micro_content_manager/create.html', {'paragraphs': ' ' * NUMBER_PARAGRAPHS,
+                                                                     'videos': ' ' * kwargs['v'],
+                                                                     'questions': ' ' * kwargs['q'],
+                                                                     'nQuestions': kwargs['q'],
+                                                                     'choices': ' ' * NUMBER_CHOICES})
 
 class DoTheMicroContentView(generic.DetailView):
     template_name = 'micro_content_manager/do_the_micro_content.html'
@@ -151,36 +155,43 @@ class MicroContentEditView(generic.FormView):
                                                                             "video_format": self.request.POST['videoFormat']})
 
 
-def store(request):
-    try:
-        content = MicroLearningContent.create(request)
-    except MultiValueDictKeyError:
-        return HttpResponseBadRequest("Error 400. Bad request.")
 
-    content.save()
-    tags = request.POST['mc_tags']
-    tag_args = tags.split()
-    for tag in tag_args:
-        if MicroContentTag.objects.filter(name=tag).count() > 0:
-            content.mc_tags.add(MicroContentTag.objects.get(name=tag))
-        else:
-            content.mc_tags.add(MicroContentTag.objects.create(name=tag))
 
-    for i in [1, 2, 3]:
-            question = request.POST['question' + str(i)]
-            choices_text = Question.getChoices(request, i)
-            answer = request.POST[request.POST['answer' + str(i)]]
-            explanation = request.POST['explanation' + str(i)]
-            question = Question.objects.create(question=question, choices_text=choices_text, answer=answer, explanation=explanation)
-            question.save()
-            for c in [1, 2, 3]:
-                question.choices.add(Choice.objects.create(choice_text=request.POST['choice'+str(i)+'_'+str(c)], votes=0))
-            content.questions.add(question)
 
-    Tag.objects.update_tags(content, tags)
+class StoreView(generic.TemplateView):
+    template_name = 'micro_content_manager/store.html'
 
-    url = 'http://' + request.META['SERVER_NAME'] + '/micro_content_manager/json?content=' + str(content.id)
-    return render(request, 'micro_content_manager/store.html', {'id': content.id, 'url': url})
+    def post(self, request, *args, **kwargs):
+        try:
+            content = MicroLearningContent.create(request)
+        except MultiValueDictKeyError:
+            return HttpResponseBadRequest("Error 400. Bad request.")
+
+        content.save()
+        tags = request.POST['mc_tags']
+        tag_args = tags.split()
+        for tag in tag_args:
+            if MicroContentTag.objects.filter(name=tag).count() > 0:
+                content.mc_tags.add(MicroContentTag.objects.get(name=tag))
+            else:
+                content.mc_tags.add(MicroContentTag.objects.create(name=tag))
+        i = 0
+        for n in ' ' * kwargs['questions']:
+                i += 1
+                question = request.POST['question' + str(i)]
+                choices_text = Question.getChoices(request, i)
+                answer = request.POST[request.POST['answer' + str(i)]]
+                explanation = request.POST['explanation' + str(i)]
+                question = Question.objects.create(question=question, choices_text=choices_text, answer=answer, explanation=explanation)
+                question.save()
+                for c in [1, 2, 3]:
+                    question.choices.add(Choice.objects.create(choice_text=request.POST['choice'+str(i)+'_'+str(c)], votes=0))
+                content.questions.add(question)
+
+        Tag.objects.update_tags(content, tags)
+
+        url = 'http://' + request.META['SERVER_NAME'] + '/micro_content_manager/json?content=' + str(content.id)
+        return render(request, 'micro_content_manager/store.html', {'id': content.id, 'url': url})
 
 
 def update(request, **kwargs):

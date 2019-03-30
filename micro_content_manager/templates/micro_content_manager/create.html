@@ -12,7 +12,7 @@
 
 <p><a class="button" href="{%  url 'user_page'%}">Go home</a></p>
 
-<form action="{% url 'micro_content_manager:store' %}" method="post">
+<form action="{% url 'micro_content_manager:store' nQuestions %}" method="post">
 
     {% csrf_token %}
     <span> User: {{ user.username }}</span>
@@ -25,23 +25,27 @@
         <p>Paragraph {{ forloop.counter }}:<textarea name="paragraph{{ forloop.counter }}" rows="1"
                                                      cols="100"></textarea></p>
     {% endfor %}
-    <p>Video URL:<input name="videoURL" type="url"></p>
-    <p>Video format:
-        <select name="videoFormat">
-            <option value="mp4" selected>mp4</option>
-            <option value="ogg">ogg</option>
-        </select>
-    </p>
 
-    <p>Video upload form:
-        <select name="video_upload_form">
-            <option value="from_existing_file" selected>From existing file</option>
-            <option value="link_from_youtube">Link from YouTube</option>
-            <option value="download_from_youtube">Download from Youtube</option>
-            <option value="external_repository">From external repository</option>
-        </select>
-    </p>
+    <h2>Videos</h2>
+    {% for v in videos %}
+        <h4>Video {{ forloop.counter }}</h4>
+        <p>URL:<input name="videoURL{{ forloop.counter }}" type="url"></p>
+        <p>Format:
+            <select name="videoFormat{{ forloop.counter }}">
+                <option value="mp4" selected>mp4</option>
+                <option value="ogg">ogg</option>
+            </select>
+        </p>
 
+        <p>Upload form:
+            <select name="video_upload_form{{ forloop.counter }}">
+                <option value="from_existing_file" selected>From existing file</option>
+                <option value="link_from_youtube">Link from YouTube</option>
+                <option value="download_from_youtube">Download from Youtube</option>
+                <option value="external_repository">From external repository</option>
+            </select>
+        </p>
+    {% endfor %}
     <h2>Quiz</h2>
     {% for q in questions %}
         <p>Question {{ forloop.counter }}: <textarea name="question{{ forloop.counter }}" rows="1"
