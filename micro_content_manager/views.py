@@ -8,6 +8,10 @@ from django.utils import timezone
 from django.views import generic
 from pymongo import MongoClient
 from tagging.models import Tag, TaggedItem
+from tagging.utils import LOGARITHMIC, LINEAR
+from tagging.utils import calculate_cloud
+from tagging.models import TagManager
+
 
 from micro_content_manager.forms import MicroContentEditForm
 from micro_content_manager.models import MicroLearningContent, Question, Choice
@@ -51,6 +55,7 @@ class DoTheMicroContentView(generic.DetailView):
 
     def get(self, request, *args, **kwargs):
         micro_content = MicroLearningContent.objects.get(pk=kwargs['id'])
+
         return render(request, 'micro_content_manager/do_the_micro_content.html', {"micro_content": micro_content})
 
 
@@ -79,10 +84,8 @@ class MicroContentSearchView(generic.DetailView):
     def get(self, request, *args, **kwargs):
         list = MicroLearningContent.objects.all()
         list_result = {}
-
         for mc in list:
-            list_result.update({mc.id: mc.title})
-
+            list_result.update({mc.id: [mc.title, mc.meta_data.author]})
 
         return render(request, 'micro_content_manager/mc_search.html', {"list_result": list_result})
 
@@ -93,6 +96,7 @@ class MicroContentSearchView(generic.DetailView):
         list = MicroLearningContent.objects.all()
         list_result = {}
 
+
         for mc in list:
             mc_tags: List[str] = []
             mc_queryset = mc.mc_tags.all()
@@ -100,10 +104,10 @@ class MicroContentSearchView(generic.DetailView):
                 mc_tags.append(str(tag))
             if bool(set(micro_contents_search) & set(mc_tags)):
                 if searchIn == "all":
-                    list_result.update({mc.id: mc.title})
+                    list_result.update({mc.id: {mc.title, mc.meta_data.author}})
                 else:
                     if request.user == mc.meta_data.author:
-                        list_result.update({mc.id: mc.title})
+                        list_result.update({mc.id: {mc.title, mc.meta_data.author}})
 
         return render(self.request, 'micro_content_manager/mc_search.html', {"list_result": list_result})
 
@@ -119,7 +123,6 @@ def json(request):
         return JsonResponse(content.toDict())
     except (MicroLearningContent.DoesNotExist, MultiValueDictKeyError):
         raise Http404()
-
 
 
 class MicroContentEditView(generic.FormView):
@@ -165,6 +168,29 @@ class MicroContentEditView(generic.FormView):
 
 
 
+class MicroContentCopyView(generic.TemplateView):
+    template_name = 'micro_content_manager/copy.html'
+
+    def get(self, request, *args, **kwargs):
+
+        micro_content = MicroLearningContent.objects.get(pk=kwargs['id'])
+        micro_content.id = None
+        micro_content.meta_data.author = request.user
+        micro_content.save()
+        return render(request, 'micro_content_manager/copy.html', {"micro_content": micro_content})
+
+
+
+class MicroContentDeleteView(generic.TemplateView):
+    template_name = 'micro_content_manager/delete.html'
+
+    def get(self, request, *args, **kwargs):
+
+        micro_content = MicroLearningContent.objects.get(pk=kwargs['id'])
+        connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+        collection = connection[DB_NAME][COLLECTION_NAME]
+        collection.delete_one({'id': kwargs['id']})
+        return render(request, 'micro_content_manager/delete.html', {"micro_content": micro_content})
 
 
 class StoreView(generic.TemplateView):
@@ -227,7 +253,6 @@ def update(request, **kwargs):
                                                     "meta_data.title": request.POST['title'],
                                                     "meta_data.last_modification": timezone.now()
                                                     }})
-
         if 'videoURL' + str(2) in request.POST:
 
             collection.update_one({"id": id}, {"$set": {

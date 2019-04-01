@@ -16,8 +16,8 @@
                   <img src='{% static 'images/search.png' %}' width="14px" height="12px">
               </button><br>
             <p>Search in:
-                <input type="radio" name="searchIn" value="own" checked> Own micro contents &nbsp;
-                <input type="radio" name="searchIn" value="all"> All<br>
+                <input type="radio" name="searchIn" value="all" checked> All &nbsp;
+                <input type="radio" name="searchIn" value="own" > Own micro contents
             </p>
 
         </form>
@@ -27,12 +27,18 @@
 <ul>
     <table>
     <h3>Micro Contents</h3> <p>User: {{ user.username }} </p>
-        {% for id, title in list_result.items %}
+        {% for id, info in list_result.items %}
             <tr>
-                <td><li><span style="display:inline-block; width: 80px;"><a href="{% url 'micro_content_manager:micro_content_data' id%}">{{ title }}</a></span></li></td>
-                <td><a class="button" href="{% url 'micro_content_manager:edit' id %}">Edit</a></td>
-                <td><a class="button" href="download?content={{ id }}">Download</a></td>
-                <td><a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}">Do it!</a></td>
+                <td><li><span style="display:inline-block; width: 80px;"><a href="{% url 'micro_content_manager:micro_content_data' id%}">{{ info.0}}</a></span></li></td>
+                {% if user.username == info.1 %}
+                     <td><a class="button" href="{% url 'micro_content_manager:edit' id %}" style="margin-right: 50px;">Edit</a></td>
+                {% else %}
+                     <td><a class="button" href="{% url 'micro_content_manager:copy' id %}">Copy</a></td>
+                {% endif %}
+                <td><a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}" style="margin-right: 50px;">Do it!</a></td>
+                {% if user.username == info.1 %}
+                    <td><a class="button" href="{% url 'micro_content_manager:delete' id %}" style="margin-right: 50px;">Delete</a></td>
+                {% endif %}
             </tr>
         {% empty %}
             <tr>
@@ -43,6 +49,13 @@
         {% endfor %}
     </table>
 </ul>
+
+
+    <p>
+        {% for tag in tags_list %}
+            {{ tag.name }} <br>
+        {% endfor %}
+    </p>
 
 
 </body>
