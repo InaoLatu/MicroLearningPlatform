@@ -14,10 +14,15 @@
                    <span > {{ t }} &nbsp; </span>
                 {% endfor %}
             </li>
-            <li>Video:</li>
-                Url: {{ micro_content.video.url }} <br>
-                Format: {{ micro_content.video.video_format }} <br>
-                Upload_form: {{ micro_content.video.video_upload_form }}
+            <li>Videos:</li>
+              {% for v in micro_content.videos %}
+                   <li>Video {{ forloop.counter }}</li>
+                    Url: {{ v.url }}
+                    Format: {{ v.video_format }}
+                    Upload_form: {{ v.video_upload_form }}
+              {% endfor%}
+
+
             <li></li>
             <li>MetaData:</li>
             <li>Author: {{ micro_content.meta_data.author }}</li>

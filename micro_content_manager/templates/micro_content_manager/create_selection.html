@@ -29,13 +29,17 @@
     }
     #createButton {
         position: absolute;
+        text-align: center;
+        vertical-align: center;
         background-color: green;
+        padding-top: 20px;
         color: white;
         font-size: 25px;
-        height: 0.8in;
+        height: 0.6in;
         width: 1.5in;
-        margin: 3in 0in 0in 14in;
+        margin: 3.3in 0in 1in 14in;
     }
+
     #disableButton {
         position: absolute;
         background-color: green;
@@ -48,11 +52,15 @@
      #microContentPreview-container{
          background-color: mediumvioletred;
          margin: 0 7in 0.3in 6.5in;
+         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px     6px rgba(0,0,0,0.23);
+
     }
      #microContentImage {
          height: 7.1in;
          width: 5.2in;
          margin-bottom: -0.05in;
+         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px     6px rgba(0,0,0,0.23);
+
      }
     #options-container {
         margin-left: 50px;
@@ -61,6 +69,8 @@
         text-align: center;
         font-size: 30px;
         margin: -650px 1500px 80px 40px ;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px     6px rgba(0,0,0,0.23);
+
     }
 </style>
 
@@ -127,24 +137,21 @@
 
         <div id="container-full">
             <h1 id="title">Create Selection <hr></h1>
-
             <div id="center-container" class="center-box">
-
-                <input id="disableButton" type="button" value="Dis">
-
                 <div id="createButton-container">
-                    <a id="createButton" href="{% url 'micro_content_manager:micro_content_creation' 1 3 %}">Create</a>
+                    <a id="createButton" href="{% url 'micro_content_manager:micro_content_creation' 1 3 %}" class="box">Create</a>
                 </div>
-                <div id="microContentPreview-container" class="box">
+
+                <div id="microContentPreview-container" >
                     <h3 id="previewText">Preview of option 1 </h3>
                     <div id="microContentImage-container">
                         <img id="microContentImage" src="{% static 'images/1video_3questions.png'%}">
                     </div>
                 </div>
+
                 <div id="guideline-container">
                     <p id="guidelineSelection">Choose one <br> of the four options below.</p>
                 </div>
-
                 <div id="options-container">
                     <div id="option1-container">
                         <h5 id="option1" class="box blue-box option-font">1 Video <br> 3 Questions</h5>
@@ -160,8 +167,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
 
     <script>

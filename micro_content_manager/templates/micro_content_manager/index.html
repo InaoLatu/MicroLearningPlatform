@@ -16,7 +16,6 @@
                 <!--    <li><span style="display:inline-block; width: 80px;"><a href="json?content={{ id }}">{{ title }}</a></span></li> -->
                 <li><span style="display:inline-block; width: 80px;"><a href="{% url 'micro_content_manager:micro_content_data' id%}">{{ title }}</a></span></li>
                 </td>
-                <!--   <td><a class="button" href="edit?content={{ id }}">Edit</a></td>  -->
                 <td><a class="button" href="{% url 'micro_content_manager:edit' id %}">Edit</a></td>
                 <td><a class="button" href="download?content={{ id }}">Download</a></td>
                 <td><a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}">Do it!</a></td>

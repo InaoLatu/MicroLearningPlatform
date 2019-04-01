@@ -5,12 +5,16 @@
     <title>User Data</title>
 </head>
 <body>
+    <h3>User Information</h3>
+    <a href="{% url 'users_manager:edit_user_data' user.id %}">Edit my user data</a>
     <ol>
         <li>Username: {{ user.username }}</li>
         <li>First name: {{ user.first_name }}</li>
         <li>Last name: {{ user.last_name }}</li>
         <li>Email: {{ user.email }}</li>
     </ol>
+    <p><a href="{% url 'users_manager:password_change' %}"><span style="margin-left: 40px;">Password change<span></a></p>
+
 <a href="{% url 'user_page' %}">Back to my user profile</a>
 </body>
 </html>

@@ -28,18 +28,30 @@
             <p>Paragraph {{ forloop.counter }}:<textarea name="paragraph{{ forloop.counter }}" rows="2"
                                                          cols="100">{{ p }}</textarea></p>
         {% endfor %}
-        <p>Video URL:<input name="videoURL" type="url" value="{{ content.video.url }}"></p>
-        <p>Video format:<select name="videoFormat">
-            <option value="mp4" {% if content.video.format == 'mp4' %} selected {% endif %}>mp4</option>
-            <option value="ogg" {% if content.video.format == 'ogg' %} selected {% endif %}>ogg</option>
-        </select></p>
 
-         <p>Video upload form:<select name="video_upload_form">
-            <option value="from_existing_file" {% if content.video.upload_form == 'from_existing_file' %} selected {% endif %}>From existing file</option>
-            <option value="link_from_youtube" {% if content.video.upload_form == 'link_from_youtube' %} selected {% endif %}>Link from YouTube</option>
-            <option value="download_from_youtube" {% if content.video.upload_form == 'download_from_youtube' %} selected {% endif %}>Download from Youtube</option>
-            <option value="external_repository" {% if content.video.upload_form == 'external_repository' %} selected {% endif %}>From external repository</option>
-        </select></p>
+
+     {% for v in micro_content.videos %}
+                   <li>Video {{ forloop.counter }}</li>
+                    Url: {{ v.url }}
+                    Format: {{ v.video_format }}
+                    Upload_form: {{ v.video_upload_form }}
+              {% endfor%}
+
+        {% for v in content.videos %}
+            <p>Video {{ forloop.counter }}</p>
+            <p>Video URL:<input name="videoURL{{ forloop.counter }}" type="url" value="{{ v.url }}" style="width: 500px;"></p>
+            <p>Video format:<select name="videoFormat{{ forloop.counter }}">
+                <option value="mp4" {% if v.format == 'mp4' %} selected {% endif %}>mp4</option>
+                <option value="ogg" {% if v.format == 'ogg' %} selected {% endif %}>ogg</option>
+            </select></p>
+
+             <p>Video upload form:<select name="video_upload_form{{ forloop.counter }}">
+                <option value="from_existing_file" {% if v.upload_form == 'from_existing_file' %} selected {% endif %}>From existing file</option>
+                <option value="link_from_youtube" {% if v.upload_form == 'link_from_youtube' %} selected {% endif %}>Link from YouTube</option>
+                <option value="download_from_youtube" {% if v.upload_form == 'download_from_youtube' %} selected {% endif %}>Download from Youtube</option>
+                <option value="external_repository" {% if v.upload_form == 'external_repository' %} selected {% endif %}>From external repository</option>
+            </select></p>
+        {% endfor %}
 
     <h2>Quiz</h2>
 

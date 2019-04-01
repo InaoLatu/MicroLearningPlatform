@@ -1,4 +1,3 @@
-from _ctypes import sizeof
 from typing import List
 
 import null as null
@@ -78,14 +77,21 @@ class MicroContentSearchView(generic.DetailView):
     template_name = 'micro_content_manager/mc_search.html'
 
     def get(self, request, *args, **kwargs):
-        micro_contents_search = null
-        return render(request, 'micro_content_manager/mc_search.html', {"micro_contents_search": micro_contents_search})
+        list = MicroLearningContent.objects.all()
+        list_result = {}
+
+        for mc in list:
+            list_result.update({mc.id: mc.title})
+
+
+        return render(request, 'micro_content_manager/mc_search.html', {"list_result": list_result})
 
     def post(self, request):
         micro_contents_search = self.request.POST['search']
+        searchIn = self.request.POST['searchIn']
         micro_contents_search = micro_contents_search.split()
         list = MicroLearningContent.objects.all()
-        list_result: List[str] = []
+        list_result = {}
 
         for mc in list:
             mc_tags: List[str] = []
@@ -93,10 +99,13 @@ class MicroContentSearchView(generic.DetailView):
             for tag in mc_queryset:
                 mc_tags.append(str(tag))
             if bool(set(micro_contents_search) & set(mc_tags)):
-                list_result.append(str(mc.title))
+                if searchIn == "all":
+                    list_result.update({mc.id: mc.title})
+                else:
+                    if request.user == mc.meta_data.author:
+                        list_result.update({mc.id: mc.title})
 
-        return render(self.request, 'micro_content_manager/mc_search.html', {"micro_contents_search": micro_contents_search,
-                                                                            "list": list, "list_result": list_result})
+        return render(self.request, 'micro_content_manager/mc_search.html', {"list_result": list_result})
 
 
 def index(request):
@@ -215,13 +224,28 @@ def update(request, **kwargs):
         collection = connection[DB_NAME][COLLECTION_NAME]
         collection.update_one({"id": id}, {"$set": {"title": request.POST['title'],
                                                     "text":  MicroLearningContent.getText(request),
-                                                    "video": {"url": request.POST['videoURL'],
-                                                              "video_format": request.POST['videoFormat'],
-                                                              "video_upload_form": request.POST['video_upload_form']
-                                                              },
                                                     "meta_data.title": request.POST['title'],
                                                     "meta_data.last_modification": timezone.now()
                                                     }})
+
+        if 'videoURL' + str(2) in request.POST:
+
+            collection.update_one({"id": id}, {"$set": {
+                "videos.0.url": request.POST['videoURL1'],
+                "videos.0.video_format": request.POST['videoFormat1'],
+                "videos.0.video_upload_form": request.POST['video_upload_form1'],
+
+                "videos.1.url": request.POST['videoURL2'],
+                "videos.1.video_format": request.POST['videoFormat2'],
+                "videos.1.video_upload_form": request.POST['video_upload_form2']
+                }
+            })
+        else:
+            collection.update_one({"id": id}, {"$set": {
+                "videos.0.url": request.POST['videoURL1'],
+                "videos.0.video_format": request.POST['videoFormat1'],
+                "videos.0.video_upload_form": request.POST['video_upload_form1']
+            }})
 
         q = 0
         for question in content.questions.all():

@@ -12,19 +12,37 @@
         <form action='{% url 'micro_content_manager:micro_content_search' %}' method="post">
             {% csrf_token %}
               <input type="text" placeholder="Search by tags.." name="search">
-              <button type="submit"><i class="fa fa-search">
+              <button type="submit">
                   <img src='{% static 'images/search.png' %}' width="14px" height="12px">
-              </i></button>
+              </button><br>
+            <p>Search in:
+                <input type="radio" name="searchIn" value="own" checked> Own micro contents &nbsp;
+                <input type="radio" name="searchIn" value="all"> All<br>
+            </p>
+
         </form>
       </div>
     </div>
 
-
-    <p>  List Result:
-          {% for mcs in list_result %}
-              {{ mcs }} <br>
+<ul>
+    <table>
+    <h3>Micro Contents</h3> <p>User: {{ user.username }} </p>
+        {% for id, title in list_result.items %}
+            <tr>
+                <td><li><span style="display:inline-block; width: 80px;"><a href="{% url 'micro_content_manager:micro_content_data' id%}">{{ title }}</a></span></li></td>
+                <td><a class="button" href="{% url 'micro_content_manager:edit' id %}">Edit</a></td>
+                <td><a class="button" href="download?content={{ id }}">Download</a></td>
+                <td><a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}">Do it!</a></td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td>
+                    <li>There is no micro-learning content with those search parameters</li>
+                </td>
+            </tr>
         {% endfor %}
-    </p>
+    </table>
+</ul>
 
 
 </body>

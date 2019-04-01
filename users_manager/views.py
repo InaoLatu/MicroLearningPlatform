@@ -54,7 +54,7 @@ UserModel = get_user_model()
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 DB_NAME = 'tfg'
-COLLECTION_NAME = 'users_manager_registereduser'
+COLLECTION_NAME = 'auth_user'
 
 class HomeView(TemplateView):
 
@@ -352,13 +352,28 @@ def activate(request, uidb64, token):
         )
         email.send()
 
-       # send_mail(
-       #     'Your account is already activated',
-       #     'Your account is already activated.',
-       #     'inaocosasvarias@gmail.com',   #from
-       #     [user.email],                  #to
-       #     fail_silently=False,
-       # )
         return HttpResponse('The selected account has been activated.')
     else:
         return HttpResponse('Activation link is invalid!')
+
+
+class EditUserDataView(generic.TemplateView):
+    template_name = "users_manager/edit_user_info.html"
+
+
+    def get(self, request, *args, **kwargs):
+        return render(request, template_name="users_manager/edit_user_info.html")
+
+
+    def post(self, request, *args, **kwargs):
+        connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+        collection = connection[DB_NAME][COLLECTION_NAME]
+        collection.update_one({"id": kwargs['id']}, {"$set": {"username": request.POST['userName'],
+                                                    "first_name": request.POST['firstName'],
+                                                    "last_name": request.POST['lastName'],
+                                                    "email": request.POST['email']
+                                                    }})
+        return render(request, template_name="users_manager/user_data.html")
+
+
+
