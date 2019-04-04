@@ -193,6 +193,13 @@ class MicroContentDeleteView(generic.TemplateView):
         return render(request, 'micro_content_manager/delete.html', {"micro_content": micro_content})
 
 
+class RecordVideoView(generic.TemplateView):
+    template_name = 'micro_content_manager/webcam_record.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'micro_content_manager/webcam_record.html')
+
+
 class StoreView(generic.TemplateView):
     template_name = 'micro_content_manager/store.html'
 
@@ -325,3 +332,6 @@ def vote(request):
 def test(request):
 
     return render(request, 'micro_content_manager/test.html')
+
+
+

@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f7406ea-5c76-44f9-b058-ab529d3762a2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/micro_content_manager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/micro_content_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,17 +22,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1479">
+            <state relative-caret-position="2220">
               <caret line="148" column="30" selection-start-line="148" selection-end-line="149" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
+            <state relative-caret-position="268">
               <caret line="178" column="18" selection-start-line="178" selection-start-column="18" selection-end-line="178" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="120" column="86" lean-forward="true" selection-start-line="120" selection-start-column="86" selection-end-line="120" selection-end-column="86" />
+              <folding>
+                <element signature="n#style#0;n#header#0;n#article#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/micro_content_manager/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+            <state relative-caret-position="225">
+              <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -54,10 +62,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="62" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/micro_content_manager/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="324" column="18" selection-start-line="324" selection-start-column="18" selection-end-line="324" selection-end-column="18" />
+            <state relative-caret-position="255">
+              <caret line="199" column="72" selection-start-line="199" selection-start-column="72" selection-end-line="199" selection-end-column="72" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -68,8 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="147" column="22" lean-forward="true" selection-start-line="147" selection-end-line="148" />
+            <state relative-caret-position="2205">
+              <caret line="147" column="22" selection-start-line="147" selection-end-line="148" />
             </state>
           </provider>
         </entry>
@@ -105,6 +122,9 @@
       <find>user</find>
       <find>UserDa</find>
       <find>searc</find>
+      <find>chk-fixSeeking</find>
+      <find>fix</find>
+      <find>chkFixSeeking</find>
     </findStrings>
     <replaceStrings>
       <replace>micro_conteçnt_manager</replace>
@@ -159,14 +179,15 @@
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/copy.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/delete.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html" />
-        <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" />
         <option value="$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html" />
-        <option value="$PROJECT_DIR$/micro_content_manager/urls.py" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/test.html" />
-        <option value="$PROJECT_DIR$/micro_content_manager/views.py" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html" />
+        <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html" />
+        <option value="$PROJECT_DIR$/micro_content_manager/views.py" />
+        <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" />
+        <option value="$PROJECT_DIR$/micro_content_manager/urls.py" />
       </list>
     </option>
   </component>
@@ -182,6 +203,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -253,7 +275,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -266,6 +287,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager" />
       <recent name="$PROJECT_DIR$/users_manager/static/images" />
     </key>
   </component>
@@ -339,7 +361,8 @@
       <workItem from="1554210555359" duration="398000" />
       <workItem from="1554213466319" duration="2917000" />
       <workItem from="1554247013352" duration="18938000" />
-      <workItem from="1554319333280" duration="11812000" />
+      <workItem from="1554319333280" duration="11886000" />
+      <workItem from="1554400960308" duration="4292000" />
     </task>
     <task id="LOCAL-00001" summary="First.">
       <created>1552258613764</created>
@@ -418,11 +441,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554158348272</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add/Delete question completed.">
+      <created>1554336222125</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1554336222125</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="295599000" />
+    <option name="totallyTimeSpent" value="299965000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -435,9 +465,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14593698" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19402985" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" />
@@ -445,15 +474,15 @@
       <window_info anchor="bottom" id="Database Changes" order="2" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.33333334" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.14942528" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.33751306" />
-      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.4997236" weight="0.38662487" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5002764" side_tool="true" weight="0.55903864" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3297062" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.3991276" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.3291536" />
-      <window_info anchor="bottom" id="Run" order="13" visible="true" weight="0.23092999" />
+      <window_info active="true" anchor="bottom" id="Run" order="13" visible="true" weight="0.23092999" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -461,7 +490,7 @@
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16086236" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17910448" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" />
@@ -469,8 +498,8 @@
       <window_info anchor="bottom" id="Database Changes" order="2" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.33333334" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.14942528" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.33751306" />
-      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.4997236" weight="0.38662487" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5002764" side_tool="true" weight="0.55903864" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3297062" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.3991276" />
@@ -500,17 +529,11 @@
     <MESSAGE value="Create Selection and Storage completed." />
     <MESSAGE value="Search by tags in all and own micro contents completed." />
     <MESSAGE value="Copy and Delete functionality completed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Copy and Delete functionality completed." />
+    <MESSAGE value="Add/Delete question completed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add/Delete question completed." />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/admin/base_site.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -781,13 +804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -822,44 +838,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/urls.py">
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2220">
+          <caret line="148" column="30" selection-start-line="148" selection-end-line="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2205">
+          <caret line="147" column="22" selection-start-line="147" selection-end-line="148" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="178" column="18" selection-start-line="178" selection-start-column="18" selection-end-line="178" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/micro_content_manager/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="324" column="18" selection-start-line="324" selection-start-column="18" selection-end-line="324" selection-end-column="18" />
+        <state relative-caret-position="255">
+          <caret line="199" column="72" selection-start-line="199" selection-start-column="72" selection-end-line="199" selection-end-column="72" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html">
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="147" column="22" lean-forward="true" selection-start-line="147" selection-end-line="148" />
+        <state relative-caret-position="255">
+          <caret line="17" column="62" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html">
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="148" column="30" selection-start-line="148" selection-end-line="149" />
+        <state relative-caret-position="225">
+          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html">
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="178" column="18" selection-start-line="178" selection-start-column="18" selection-end-line="178" selection-end-column="18" />
+        <state relative-caret-position="279">
+          <caret line="120" column="86" lean-forward="true" selection-start-line="120" selection-start-column="86" selection-end-line="120" selection-end-column="86" />
+          <folding>
+            <element signature="n#style#0;n#header#0;n#article#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
