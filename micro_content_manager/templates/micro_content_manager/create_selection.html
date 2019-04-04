@@ -10,12 +10,13 @@
     .blue-box {
         background-color: rgba(92,114,250,0.81);
         color: #fff;
-        margin: 20px 1500px 20px 10px ;
+        margin: 20px 1000px 20px 50px ;
         padding: 1em;
     }
     .center-box {
         background-color: rgba(213,218,250,0.9);
-        padding: 20px 10px 150px 10px;
+        padding: 20px 0px 130px 0px;
+        margin: 0px 170px 0px 200px;
     }
     .selected {
         background-color: rgba(250,13,28,0.9)
@@ -23,6 +24,9 @@
     .option-font{
         font-palette: light;
         font-size: 15px;
+    }
+    #container-full {
+        margin-right: 100px;
     }
     #title{
         background-color: rgba(45, 45, 45, 0.1)
@@ -37,7 +41,7 @@
         font-size: 25px;
         height: 0.6in;
         width: 1.5in;
-        margin: 3.3in 0in 1in 14in;
+        margin: 3.3in 0in 1in 11in;
     }
 
     #disableButton {
@@ -51,7 +55,7 @@
     }
      #microContentPreview-container{
          background-color: mediumvioletred;
-         margin: 0 7in 0.3in 6.5in;
+         margin: 0 5in 0.3in 5in;
          box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px     6px rgba(0,0,0,0.23);
 
     }
@@ -64,11 +68,12 @@
      }
     #options-container {
         margin-left: 50px;
+
     }
     #guideline-container{
         text-align: center;
         font-size: 30px;
-        margin: -650px 1500px 80px 40px ;
+        margin: -650px 1000px 80px 140px ;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px     6px rgba(0,0,0,0.23);
 
     }
@@ -86,11 +91,19 @@
         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script>
          $(document).ready(function() {    //llamamos la a funcion ready() porque vamos a hacer referencia a etiquetas que estan declaradas posteriormente en el documento
-             var options=document.querySelectorAll("#options-container h5") //Devolvera un array con cada una de las imagenes contenidas en carrete
+             var options=document.querySelectorAll("#options-container h5");
                for (var i=0;i<options.length;i++) {
                     options[i].addEventListener("click",showMicroLearningContent,false);
                }
+
            });
+
+         function init() {
+             $("#option1").addClass("selected");
+             $("#option1").addClass("animated bounce");
+
+         }
+
 
          function showMicroLearningContent(num) {
              switch (num.target) {
@@ -132,7 +145,7 @@
                    break;
              }
            }
-           window.onload=intercambio; //cuando carga la ventaja ejecutara la funcion indicada
+           window.onload=init; //cuando carga la ventaja ejecutara la funcion indicada
         </script>
 
         <div id="container-full">

@@ -210,18 +210,22 @@ class StoreView(generic.TemplateView):
                 content.mc_tags.add(MicroContentTag.objects.get(name=tag))
             else:
                 content.mc_tags.add(MicroContentTag.objects.create(name=tag))
+
         i = 0
-        for n in ' ' * kwargs['questions']:
-                i += 1
-                question = request.POST['question' + str(i)]
-                choices_text = Question.getChoices(request, i)
-                answer = request.POST[request.POST['answer' + str(i)]]
-                explanation = request.POST['explanation' + str(i)]
-                question = Question.objects.create(question=question, choices_text=choices_text, answer=answer, explanation=explanation)
-                question.save()
-                for c in [1, 2, 3]:
-                    question.choices.add(Choice.objects.create(choice_text=request.POST['choice'+str(i)+'_'+str(c)], votes=0))
-                content.questions.add(question)
+        for n in ' ' * int(request.POST['idQuestions']):
+                try:
+                    i += 1
+                    question = request.POST['question' + str(i)]
+                    choices_text = Question.getChoices(request, i)
+                    answer = request.POST[request.POST['answer' + str(i)]]
+                    explanation = request.POST['explanation' + str(i)]
+                    question = Question.objects.create(question=question, choices_text=choices_text, answer=answer, explanation=explanation)
+                    question.save()
+                    for c in [1, 2, 3]:
+                        question.choices.add(Choice.objects.create(choice_text=request.POST['choice'+str(i)+'_'+str(c)], votes=0))
+                    content.questions.add(question)
+                except MultiValueDictKeyError:
+                    pass
 
         Tag.objects.update_tags(content, tags)
 
@@ -316,3 +320,8 @@ def vote(request):
         if question.answer.strip() == selected_choice.choice_text.strip():
                 correct_answers += 1
     return render(request, 'micro_content_manager/results.html', {"micro_content": micro_content, "correct_answers": correct_answers})
+
+
+def test(request):
+
+    return render(request, 'micro_content_manager/test.html')

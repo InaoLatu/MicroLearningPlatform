@@ -10,16 +10,16 @@
     <form action="{% url 'users_manager:edit_user_data' user.id %}" method="post">
         {% csrf_token %}
         <label for="userName">Username
-            <input name="userName" type="text" value="{{ user.username }}">
+            <input name="userName" type="text" value="{{ user.username }}" style="margin-left: 30px;">
         </label><br>
-         <label for="firstName">First name:
-            <input name="firstName" type="text" value="{{ user.first_name }}">
+         <label for="firstName" >First name:
+            <input name="firstName" type="text" value="{{ user.first_name }}" style="margin-left: 23px; margin-top: 10px;">
         </label><br>
          <label for="lastName">Last name:
-            <input name="lastName" type="text" value="{{ user.last_name }}">
+            <input name="lastName" type="text" value="{{ user.last_name }}" style="margin-left: 23px;">
         </label><br>
-         <label for="email">Email
-            <input name="email" type="text" value="{{ user.email }}">
+         <label for="email">Email:
+            <input name="email" type="text" value="{{ user.email }}" style="width: 200px; margin-left: 52px;">
         </label><br>
 
     <input type="submit" value="Save changes"style="margin-top:30px;">
