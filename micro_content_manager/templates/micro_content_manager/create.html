@@ -51,7 +51,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    <title>Create</title>
+    <title>Create Micro content</title>
 </head>
 <body>
 
@@ -113,7 +113,6 @@
         <p><a class="button" href="{%  url 'user_page'%}">Go home</a></p>
       <form action="{% url 'micro_content_manager:store' nQuestions %}" method="post">
             {% csrf_token %}
-            <span> User: {{ user.username }}</span>
             <h2>Content</h2>
             <p><label for="title">Title: <input type="text" placeholder="Title" name="title"></label></p>
             <p>Tags: <input type="text" name="mc_tags">

@@ -1,54 +1,66 @@
 <!DOCTYPE html>
+
+<style>
+
+#full-container{
+    margin-left: 540px;
+}
+
+</style>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Micro Content Info</title>
 </head>
 <body>
-<h2>Micro Content Information</h2>
-    <ul>
-        <li>Title: {{ micro_content.title}}</li>
 
-            <li>Tags:
-                {% for t in micro_content.mc_tags.all %}
-                   <span > {{ t }} &nbsp; </span>
+<div id="full-container">
+    <h2>Micro Content Information</h2>
+        <ul>
+            <li>Title: {{ micro_content.title}}</li>
+
+                <li>Tags:
+                    {% for t in micro_content.mc_tags.all %}
+                       <span > {{ t }} &nbsp; </span>
+                    {% endfor %}
+                </li>
+                <li>Videos:</li>
+                  {% for v in micro_content.videos %}
+                       <li>Video {{ forloop.counter }}</li>
+                        Url: {{ v.url }}
+                        Format: {{ v.video_format }}
+                        Upload_form: {{ v.video_upload_form }}
+                  {% endfor%}
+
+
+                <li></li>
+                <li>MetaData:</li>
+                <li>Author: {{ micro_content.meta_data.author }}</li>
+                <li>Publication date: {{ micro_content.meta_data.pub_date }}</li>
+                <li>Last modification: {{ micro_content.meta_data.last_modification }}</li>
+                <li>Creation type: {{ micro_content.meta_data.creation_type }}</li>
+                <li></li>
+                <li>Text:
+                 {% for text in micro_content.text %}
+                        {{ text }} <br>
+                    {% endfor %}
+                </li>
+                <li>Quiz: {{  micro_content.questions.count }}
+                    <br>
+                {% for q in micro_content.questions.all %}
+                       Question {{ forloop.counter }}:  {{ q.question}}  <br>
+
+                       Choices:
+                       {% for c in q.choices.all %}
+                        <span>'{{ c.choice_text.strip }}' &nbsp;</span>
+                       {% endfor %} <br>
+                       Answer:  '{{ q.answer }}'  <br>
+                       Explanation:  {{ q.explanation }}  <br><br>
                 {% endfor %}
             </li>
-            <li>Videos:</li>
-              {% for v in micro_content.videos %}
-                   <li>Video {{ forloop.counter }}</li>
-                    Url: {{ v.url }}
-                    Format: {{ v.video_format }}
-                    Upload_form: {{ v.video_upload_form }}
-              {% endfor%}
-
-
-            <li></li>
-            <li>MetaData:</li>
-            <li>Author: {{ micro_content.meta_data.author }}</li>
-            <li>Publication date: {{ micro_content.meta_data.pub_date }}</li>
-            <li>Last modification: {{ micro_content.meta_data.last_modification }}</li>
-            <li>Creation type: {{ micro_content.meta_data.creation_type }}</li>
-            <li></li>
-            <li>Text:
-             {% for text in micro_content.text %}
-                    {{ text }} <br>
-                {% endfor %}
-            </li>
-            <li>Quiz: {{  micro_content.questions.count }}
-                <br>
-            {% for q in micro_content.questions.all %}
-                   Question {{ forloop.counter }}:  {{ q.question}}  <br>
-
-                   Choices:
-                   {% for c in q.choices.all %}
-                    <span>'{{ c.choice_text.strip }}' &nbsp;</span>
-                   {% endfor %} <br>
-                   Answer:  '{{ q.answer }}'  <br>
-                   Explanation:  {{ q.explanation }}  <br><br>
-            {% endfor %}
-        </li>
-    </ul>
-<a href="{% url 'user_page' %}">Back to my user profile</a>
+        </ul>
+    <a href="{% url 'user_page' %}">Back to my user profile</a>
+</div>
 </body>
 </html>

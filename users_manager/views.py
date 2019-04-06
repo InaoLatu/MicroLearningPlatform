@@ -317,7 +317,6 @@ class SignUp(generic.CreateView):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                 'token': account_activation_token.make_token(user),
             })
-            #to_email = form.cleaned_data.get('email')
             email = EmailMessage(
                mail_subject, message, to=['inao.latourrette@gmail.com'] #admin email
              )

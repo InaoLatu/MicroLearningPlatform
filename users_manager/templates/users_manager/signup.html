@@ -7,8 +7,9 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_ul  }}
+      <br>
     <button type="submit">Sign up</button>
-      <a class="button" href="{% url 'login' %}">Back</a>
+      <a class="button" href="{% url 'login' %}">Back</a> <br>
 
   </form>
 

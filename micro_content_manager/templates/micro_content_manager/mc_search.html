@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 {% load static %}
+
+<style>
+    #full-container {
+        margin-left: 600px;
+    }
+</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Mc search</title>
 </head>
 <body>
+
+<div id="full-container">
     <a href="{% url 'user_page' %}">Back to my user profile</a> <br> <br>
     <div class="topnav">
       <div class="search-container">
@@ -57,6 +65,6 @@
         {% endfor %}
     </p>
 
-
+</div>
 </body>
 </html>
