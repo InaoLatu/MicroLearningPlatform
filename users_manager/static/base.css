@@ -1,0 +1,44 @@
+{% load static %}
+body {
+        background-image: url("images/background_base.png");
+    }
+    #header {
+        margin-top: 0.6em;
+    }
+    #full-container {
+        margin: 50px 650px 0px 650px;
+        color: black;
+        background-color: white;
+        text-align: center;
+        border-radius: 1%;
+        padding-top: 0.2em;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.19), 0 20px 20px rgba(0,0,0,0.23);
+    }
+    #id_username, #id_password {
+        text-indent: 10px;
+        margin-left: 60px;
+        margin-bottom: 10px;
+        font-size: 22px;
+        border-radius: 7%;
+    }
+    #loginButton {
+        font-size: 20px;
+        background-color: rgba(130,250,27,0.76);
+        border-radius: 30%;
+        padding: 0.4em  0.6em  0.4em 0.6em;
+        margin: 15px 0 0 -110px;
+    }
+    #forgotPassword {
+
+        font-size: 18px;
+    }
+    #signupParagraph {
+        background-color: rgba(250,180,82,0.81);
+        padding-top: 1em;
+        padding-bottom: 1em;
+        font-size: 18px;
+    }
+    footer {
+        margin: 550px 650px 0px 770px;
+        color: white;
+    }

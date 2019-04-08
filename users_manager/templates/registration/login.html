@@ -1,50 +1,76 @@
+{% load static %}
 <!DOCTYPE html>
-<style>
-    #full-container {
-        margin-left: 600px;
-    }
-</style>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User Data</title>
-</head>
-<body>
-    <div id="full-container">
-        <h1>Log in to Micro learning platform</h1>
-            {% if form.errors %}
-            <p>Your username and password didn't match. Please try again.</p>
-            {% endif %}
+<html>
+	<head>
+		<title>Log in</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'demo.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
 
-            {% if next %}
-                {% if user.is_authenticated %}
-                <p>Your account doesn't have access to this page. To proceed,
-                please login with an account that has access.</p>
-                {% else %}
-                <p>Please login to see this page.</p>
-                {% endif %}
-            {% endif %}
 
-            <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            <table>
-            <tr>
-                <td>{{ form.username.label_tag }}</td>
-                <td>{{ form.username }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.password.label_tag }}</td>
-                <td>{{ form.password }}</td>
-            </tr>
-            </table>
+	</head>
+	<body class="bg-study">
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
-            <input type="submit" value="login">
-            <input type="hidden" name="next" value="{{ next }}">
-            </form>
-            {# Assumes you setup the password_reset view in your URLconf #}
-            <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
-                <p>New to the Platform? <a href="{% url 'users_manager:signup' %}">Sign up >></a></p>
+		<div class="body body-s">
 
-    </div>
-</body>
+			 <form class="sky-form" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+				<header>MicroLearning Platform</header>
+
+				<fieldset>
+                    {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                     {% endif %}
+					<section>
+						<div class="row">
+							<div class="col col-8">
+								<label class="input">
+                                    <input type="text" placeholder="username" name="username" autofocus="" required="" id="id_username">
+                                </label>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<div class="row">
+							<div class="col col-8">
+								<label class="input">
+                                    <input type="password" placeholder="password" name="password" required="" id="id_password">
+                                </label>
+								<div class="note"><a id="forgotPassword" href="{% url 'password_reset' %}">Forgot password?</a></div>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<div class="row">
+							<div class="col col-4"></div>
+						</div>
+					</section>
+                    <input type="hidden" name="next" value="{{ next }}">
+
+				</fieldset>
+				<footer>
+					<button type="submit" class="button" style="background-color: green;">Log in</button>
+                    <a class="button button-secondary" href="{% url 'users_manager:signup' %}">Register</a>
+				</footer>
+			</form>
+
+		</div>
+	</body>
 </html>
+

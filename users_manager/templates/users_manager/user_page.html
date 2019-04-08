@@ -1,32 +1,44 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block title %}Home{% endblock %}
 <head>
+    <title>User page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'user_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'demo.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
 </head>
-<body>
-    {% block content %}
-    {% if user.is_authenticated %}
-        Hi {{ user.username }}!
-        <p><a href="{% url 'logout' %}">logout</a></p>
-        <p><a href="{% url 'password_reset' %}">reset password</a></p>
-        <p><a href="{% url 'users_manager:user_data' %}">User data</a>
-        <p><a href="{% url 'micro_content_manager:micro_content_search' %}">Search</a></p>
-        <p><a href="{% url 'micro_content_manager:create_selection' %}">Create Selection</a></p>
-        <p><a href="{% url 'micro_content_manager:record_video' %}">Record Video</a></p>
+<body class="bg-study">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/jquery.placeholder.min.js"></script>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+        <div class="body body-s">
+            <div class="sky-form">
+            <header>User page</header>
+
+                    {% if user.is_authenticated %}
+                        <fieldset>       Hi {{ user.username }}!
+                        <p><a href="{% url 'logout' %}">logout</a></p>
+                        <p><a href="{% url 'password_reset' %}">reset password</a></p>
+                        <p><a href="{% url 'users_manager:password_change' %}">Password change</a></p>
+                        <p><a href="{% url 'users_manager:user_data' %}">User data</a></fieldset>
 
 
-    {% else %}
-      <p>You are not logged in</p>
-      <a href="{% url 'login' %}">login</a>
+            <fieldset>
+                <p><a href="{% url 'micro_content_manager:micro_content_search' %}">Search micro contents</a></p>
+                <p><a href="{% url 'micro_content_manager:create_selection' %}">Create micro content</a></p>
+                <p><a href="{% url 'micro_content_manager:record_video' %}">Record Video</a></p>
+            </fieldset>
 
-    {% endif %}
-        <footer>
-        <p>Copyright 2019, MicroLearningPlatform</p>
-        </footer>
+                {% else %}
+                  <p>You are not logged in</p>
+                  <a href="{% url 'login' %}">login</a>
 
-    {% endblock %}
+                {% endif %}
+                    <footer>
+                    <p>Copyright 2019, MicroLearningPlatform</p>
+                    </footer>
 
+            </div>
+    </div>
 
 </body>

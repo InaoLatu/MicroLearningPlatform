@@ -309,6 +309,7 @@ class SignUp(generic.CreateView):
             user = form.save(commit=False)
             user.is_active = False
             user.save()
+
             current_site = get_current_site(self.request)
             mail_subject = 'Activate the new user account.'
             message = render_to_string('users_manager/acc_active_email.html', {
