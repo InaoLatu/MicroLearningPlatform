@@ -1,0 +1,45 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	background-attachment: fixed;
+	background-position: 50% 50%;
+	background-size: cover;
+    color: white;
+}
+
+.bg-study {
+        background-image: url("images/background_base.png");
+    }
+
+.body {
+	max-width: 1600px;
+	margin: 0 auto;
+	padding: 40px;
+    color: white !important;
+}
+
+.white{
+    background-color: white;
+    text-indent: 20px;
+    margin-top: 15px;
+    font-size: 13px !important;
+}
+
+.red {
+    background-color: red !important;
+    margin-right: 500px !important;
+}
+.green {
+    background-color: green!important;
+    margin-right: 1250px !important;
+    font-size: 15px;
+}
+
+.choice {
+    margin-left: 100px!important;
+}
+
+
+#createButton{
+    margin: 0 100px 500px 0 !important;
+}

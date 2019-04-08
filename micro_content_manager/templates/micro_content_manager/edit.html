@@ -1,58 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
-<style>
 
-     .box {
-        border-style: solid;
-        border-color: black;
-        border-width: 5px;
-        text-align: center;
-     }
-
-    .option-font{
-        font-palette: light;
-        font-size: 15px;
-    }
-    #full-container {
-        margin-left: 450px;
-    }
-
-    .button {
-        font: bold 11px Arial;
-        text-decoration: none;
-        background-color: #EEEEEE;
-        color: #333333;
-        padding: 2px 6px 2px 6px;
-        border-top: 1px solid #CCCCCC;
-        border-right: 1px solid #333333;
-        border-bottom: 1px solid #333333;
-        border-left: 1px solid #CCCCCC;
-        cursor: pointer;
-    }
-     .blue-box {
-        background-color: rgba(92,114,250,0.81);
-        color: #fff;
-        margin: 20px 1200px 20px 10px ;
-        padding: 0.6em;
-        cursor: pointer;
-         text-align: center;
-    }
-    .delete-box {
-        background-color: red;
-        color: #fff;
-        margin: 20px 1200px 20px 10px ;
-        padding: 0.6em;
-        cursor: pointer;
-         text-align: center;
-    }
-
-</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Edit</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'demo2.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
 </head>
-<body>
+<body class="bg-study">
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script>
@@ -85,12 +41,12 @@
                     $("#newQuestions-container").append("<div id=\"q"+id+"\" >");
 
                      $("#q"+id).append("<p>Question "+$("#idQuestions").val()+": <textarea name=\"question"+$("#idQuestions").val()+"\" rows=\"1\"\n" +
-                         "                                                             cols=\"80\"></textarea><span id=\"deleteq"+$("#idQuestions").val()+"\" class=\"button delete-box\">Delete</span></p></p>");
+                         "                                                             cols=\"80\"></textarea><span id=\"deleteq"+$("#idQuestions").val()+"\" class=\"button red delete-box\" >Delete question "+$("#idQuestions").val()+" </span></p></p>");
                      $("#q"+id).append("<p>Choices "+$("#idQuestions").val()+" (write the possible answers and select the correct one):</p>\n");
 
                      $("#q"+id).append("  {% for c in "   " %}\n"+
                          "                    <p>\n"+
-                         "                        <input type=\"radio\" name=\"answer"+$("#idQuestions").val()+"\"\n"
+                         "                        <input class=\"choice\" type=\"radio\" name=\"answer"+$("#idQuestions").val()+"\"\n"
                          +
                          "                               value=\"choice"+$("#idQuestions").val()+"_{{ forloop.counter }}\"\n"
                          +
@@ -107,87 +63,92 @@
          }
        </script>
 
-    <div id="full-container">
+    <div class="body">
         <h1>Micro-learning contents generator</h1>
-        <p><a class="button" href="{% url 'user_page' %}">Go home</a></p>
-        <p><a class="button" href="{% url 'micro_content_manager:index' %}">Back</a></p>
-        <form action="{% url 'micro_content_manager:update' %}" method="post">
+
+        <form action="{% url 'micro_content_manager:update' %}" method="post" class="sky-form">
 
             {% csrf_token %}
+            <div class="white">
+                <h2>Content</h2>
+                    <input type="hidden" name="id" value="{{ id }}">
+                    <fieldset>
+                    <section> <p>Title: <input type="text" name="title" value="{{ content.title }}" required></p></section>
+                    <section>  <p>Tags:<input type="text" name="mc_tags" value="{{mc_tags}}" required>
+                      Tags must be inserted separated by blank spaces (e.g., Tag1 Tag2 Tag3)</p></section>
 
-            <h2>Content </h2>
-                <input type="hidden" name="id" value="{{ id }}">
-                <p>Id: {{ id }}</p>
-                <p>Title: <input type="text" name="title" value="{{ content.title }}" required></p>
-                <p>Tags:<input type="text" name="mc_tags" value="{{mc_tags}}" required>
-                  Tags must be inserted separated by blank spaces (e.g., Tag1 Tag2 Tag3)</p>
-                {% for p in content.text %}
-                    <p>Paragraph {{ forloop.counter }}:<textarea name="paragraph{{ forloop.counter }}" rows="2"
-                                                                 cols="100">{{ p }}</textarea></p>
-                {% endfor %}
-
-
-             {% for v in micro_content.videos %}
-                           <li>Video {{ forloop.counter }}</li>
-                            Url: {{ v.url }}
-                            Format: {{ v.video_format }}
-                            Upload_form: {{ v.video_upload_form }}
-                      {% endfor%}
-
-                {% for v in content.videos %}
-                    <p>Video {{ forloop.counter }}</p>
-                    <p>Video URL:<input name="videoURL{{ forloop.counter }}" type="url" value="{{ v.url }}" style="width: 500px;"></p>
-                    <p>Video format:<select name="videoFormat{{ forloop.counter }}">
-                        <option value="mp4" {% if v.format == 'mp4' %} selected {% endif %}>mp4</option>
-                        <option value="ogg" {% if v.format == 'ogg' %} selected {% endif %}>ogg</option>
-                    </select></p>
-
-                     <p>Video upload form:<select name="video_upload_form{{ forloop.counter }}">
-                        <option value="from_existing_file" {% if v.upload_form == 'from_existing_file' %} selected {% endif %}>From existing file</option>
-                        <option value="link_from_youtube" {% if v.upload_form == 'link_from_youtube' %} selected {% endif %}>Link from YouTube</option>
-                        <option value="download_from_youtube" {% if v.upload_form == 'download_from_youtube' %} selected {% endif %}>Download from Youtube</option>
-                        <option value="external_repository" {% if v.upload_form == 'external_repository' %} selected {% endif %}>From external repository</option>
-                    </select></p>
-                {% endfor %}
-
-            <h2>Quiz</h2>
-                <div id="addQuestion-container">
-                    <h5 id="addQuestion" class="button blue-box">Add Question</h5>
-                </div>
-
-            <div id="questions-container">
-                {% for q in content.questions.all %}
-
-                    <div id="q{{ forloop.counter }}">
-
-                        <p>Question {{ forloop.counter }}: <textarea name="question{{ forloop.counter }}" rows="1"
-                                                                     cols="100">{{ q.question }}</textarea><span id="deleteq{{ forloop.counter }}" class="button delete-box">Delete</span></p>
-                        Choices {{ forloop.counter }} (write the possible answers and select the correct one):<br>
-
-                       {% for choice in q.choices.all %}
-                            <input type="radio" name="answer{{ forloop.parentloop.counter }}"
-                                   value="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}"
-                                   {% if forloop.counter == 1 %}checked {% endif %}>
-                            <input type="text" name="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}" value={{ choice }}>    <br>
-                       {% endfor %}
-
-                        <p>Explanation {{ forloop.counter }}: <textarea name="explanation{{ forloop.counter }}" rows="2"
-                                                                        cols="100">{{ q.explanation }}</textarea></p>
-
-                    </div>
-                {% endfor %}
-            </div>
-                <input type="hidden" id="idQuestions" name="idQuestions" value={{ content.questions.count }}>
-
-                <div id="newQuestions-container">
-
-                </div>
+                    <section> {% for p in content.text %}
+                        <p>Paragraph {{ forloop.counter }}:<textarea name="paragraph{{ forloop.counter }}" rows="1"
+                                                                     cols="100">{{ p }}</textarea></p>
+                    {% endfor %}</section>
 
 
+                    </fieldset>
 
-                <input type="submit" value="Edit micro-learning content">
+                    <fieldset>
+                        <h2>Videos </h2>
+                    {% for v in content.videos %}
+                        <section>Video {{ forloop.counter }}</section>
+                        <section>URL:<input name="videoURL{{ forloop.counter }}" type="url" value="{{ v.url }}" style="width: 500px;"></section>
+                        <section>Format:<select name="videoFormat{{ forloop.counter }}">
+                            <option value="mp4" {% if v.format == 'mp4' %} selected {% endif %}>mp4</option>
+                            <option value="ogg" {% if v.format == 'ogg' %} selected {% endif %}>ogg</option>
+                        </select></section>
 
-        </form>
+                         <section>Upload form:<select name="video_upload_form{{ forloop.counter }}">
+                            <option value="from_existing_file" {% if v.upload_form == 'from_existing_file' %} selected {% endif %}>From existing file</option>
+                            <option value="link_from_youtube" {% if v.upload_form == 'link_from_youtube' %} selected {% endif %}>Link from YouTube</option>
+                            <option value="download_from_youtube" {% if v.upload_form == 'download_from_youtube' %} selected {% endif %}>Download from Youtube</option>
+                            <option value="external_repository" {% if v.upload_form == 'external_repository' %} selected {% endif %}>From external repository</option>
+                        </select></section>
+                    {% endfor %}
+
+                    </fieldset>
+                    <fieldset>
+
+                                <div id="addQuestion-container">
+                                    <h2>Quiz </h2>
+                                    <h5 id="addQuestion" class="button green">Add Question</h5>
+                                </div>
+                                <br><br><br>
+
+
+                            <div id="questions-container">
+                                {% for q in content.questions.all %}
+
+
+                                    <div id="q{{ forloop.counter }}">
+
+
+                                        <p>Question {{ forloop.counter }}: <textarea name="question{{ forloop.counter }}" rows="1"
+                                                                                     cols="100">{{ q.question }}</textarea><span id="deleteq{{ forloop.counter }}" class="button red delete-box">Delete question {{ forloop.counter }}</span></p>
+
+                                        <div style="margin-left: 100px;">
+                                            Choices {{ forloop.counter }} (write the possible answers and select the correct one):<br>
+
+                                           {% for choice in q.choices.all %}
+                                                <input type="radio" name="answer{{ forloop.parentloop.counter }}"
+                                                       value="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}"
+                                                       {% if forloop.counter == 1 %}checked {% endif %}>
+                                                <input type="text" name="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}" value={{ choice }}>    <br>
+                                           {% endfor %}
+                                        </div>
+                                        <p>Explanation {{ forloop.counter }}: <textarea name="explanation{{ forloop.counter }}" rows="1"
+                                                                                        cols="100">{{ q.explanation }}</textarea></p>
+                                        <br><br>
+
+                                    </div>
+                                {% endfor %}
+                            </div>
+                                <input type="hidden" id="idQuestions" name="idQuestions" value={{ content.questions.count }}>
+                                <div id="newQuestions-container">
+                                </div>
+                        <input class="button" type="submit" value="Save changes" style="background-color: green; margin: 0px 300px 100px 0px;">
+
+                    </fieldset>
+                 </div>
+            </form>
+
     </div>
 </body>
 </html>

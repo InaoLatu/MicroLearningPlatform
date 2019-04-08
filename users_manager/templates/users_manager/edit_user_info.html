@@ -1,30 +1,75 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit User data</title>
-</head>
-<body>
+<style>
+</style>
+<html>
+	<head>
+		<title>Edit user info</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'demo.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
+	</head>
+	<body class="bg-study">
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+			<script src="js/jquery.placeholder.min.js"></script>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
-    <h2>Edit your information</h2>
-    <form action="{% url 'users_manager:edit_user_data' user.id %}" method="post">
-        {% csrf_token %}
-        <label for="userName">Username
-            <input name="userName" type="text" value="{{ user.username }}" style="margin-left: 30px;">
-        </label><br>
-         <label for="firstName" >First name:
-            <input name="firstName" type="text" value="{{ user.first_name }}" style="margin-left: 23px; margin-top: 10px;">
-        </label><br>
-         <label for="lastName">Last name:
-            <input name="lastName" type="text" value="{{ user.last_name }}" style="margin-left: 23px;">
-        </label><br>
-         <label for="email">Email:
-            <input name="email" type="text" value="{{ user.email }}" style="width: 200px; margin-left: 52px;">
-        </label><br>
+		<div class="body body-s">
+			<form  action="{% url 'users_manager:edit_user_data' user.id %}" method="post" class="sky-form">
+                {% csrf_token %}
+				<header>Edit user data<a id="id_back_button" class="button" onclick="window.history.back();" >Back</a></header>
+				<fieldset>
+                    {{ form.errors }}
+					<section>
+						<label class="input">Username:
+                            <input name="userName" type="text" value="{{ user.username }}">
+							<b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+						</label>
+					</section>
 
-    <input type="submit" value="Save changes"style="margin-top:30px;">
+					<section>
+						<label class="input">First name:
+                            <input name="firstName" type="text" value="{{ user.first_name }}"><b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+						</label>
+					</section>
 
-    </form>
+					<section>
+						<label class="input" >Last name:
+                            <input name="lastName" type="text" value="{{ user.last_name }}">
+							<b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+						</label>
+					</section>
 
-</body>
+					<section>
+						<label class="input">Email
+                              <input name="email" type="text" value="{{ user.email }}">
+							<b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+						</label>
+					</section>
+				</fieldset>
+
+				<fieldset>
+					<div class="row">
+						<section class="col col-6">
+							<label class="input">
+                                {{ form.first_name }}
+							</label>
+						</section>
+						<section class="col col-6">
+							<label class="input">
+								{{ form.last_name }}
+							</label>
+						</section>
+					</div>
+				</fieldset>
+				<footer>
+					<button type="submit" class="button" style="background-color: green">Save changes</button>
+				</footer>
+			</form>
+
+		</div>
+
+
+	</body>
 </html>

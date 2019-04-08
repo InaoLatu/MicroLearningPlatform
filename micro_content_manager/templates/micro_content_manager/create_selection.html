@@ -1,58 +1,18 @@
-<!DOCTYPE html>
 {% load static %}
 <style>
-    .box {
-        border-style: solid;
-        border-color: black;
-        border-width: 5px;
+
+    #createButton{
+    margin: 400px 100px 500px 0px !important;
+}
+
+    #guideline-container{
         text-align: center;
-     }
-    .blue-box {
-        background-color: rgba(92,114,250,0.81);
-        color: #fff;
-        margin: 20px 1000px 20px 50px ;
-        padding: 1em;
-    }
-    .center-box {
-        background-color: rgba(213,218,250,0.9);
-        padding: 20px 0px 130px 0px;
-        margin: 0px 170px 0px 200px;
-    }
-    .selected {
-        background-color: rgba(250,13,28,0.9)
-    }
-    .option-font{
-        font-palette: light;
-        font-size: 15px;
-    }
-    #container-full {
-        margin-right: 100px;
-    }
-    #title{
-        background-color: rgba(45, 45, 45, 0.1)
-    }
-    #createButton {
-        position: absolute;
-        text-align: center;
-        vertical-align: center;
-        background-color: green;
-        padding-top: 20px;
-        color: white;
-        font-size: 25px;
-        height: 0.6in;
-        width: 1.5in;
-        margin: 3.3in 0in 1in 11in;
+        font-size: 20px;
+        margin: 500px 1200px 80px 60px ;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px     6px rgba(0,0,0,0.23);
     }
 
-    #disableButton {
-        position: absolute;
-        background-color: green;
-        color: white;
-        font-size: 25px;
-        height: 0.8in;
-        width: 1.5in;
-        margin: 5in 0in 0in 14in;
-    }
+
      #microContentPreview-container{
          background-color: mediumvioletred;
          margin: 0 5in 0.3in 5in;
@@ -69,29 +29,22 @@
      #previewText {
          text-align: center;
      }
-    #options-container {
-        margin-left: 50px;
-
+    #options-container{
+        margin-top: -1000px!important;
     }
-    #guideline-container{
-        text-align: center;
-        font-size: 30px;
-        margin: -650px 1000px 80px 140px ;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px     6px rgba(0,0,0,0.23);
 
-    }
+
 </style>
-
-
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-        <title>Create Selection</title>
-    </head>
-
-    <body>
-        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Create selection</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'demo2.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
+</head>
+<body class="bg-study">
+ <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script>
          $(document).ready(function() {    //llamamos la a funcion ready() porque vamos a hacer referencia a etiquetas que estan declaradas posteriormente en el documento
              var options=document.querySelectorAll("#options-container h5");
@@ -150,44 +103,38 @@
            }
            window.onload=init; //cuando carga la ventaja ejecutara la funcion indicada
         </script>
+    <div class="body">
+        <h1>Create Selection</h1>
 
-        <div id="container-full">
+        <div class="sky-form">
 
-            <div id="center-container" class="center-box">
-                <h1 id="title">Create Selection <hr></h1>
-                <div id="createButton-container">
-                    <a id="createButton" href="{% url 'micro_content_manager:micro_content_creation' 1 3 %}" class="box">Create</a>
-                </div>
+            <div class="white">
+                    <fieldset>
+                        <a id="createButton" href="{% url 'micro_content_manager:micro_content_creation' 1 3 %}" class="button" style="background-color: green;">Create</a>
 
-                <div id="microContentPreview-container" >
-                    <h3 id="previewText">Option 1 preview</h3>
-                    <div id="microContentImage-container">
-                        <img id="microContentImage" src="{% static 'images/1video_3questions.png'%}">
-                    </div>
-                </div>
+                                    <div id="microContentPreview-container" >
+                                        <h3 id="previewText">Option 1 preview</h3>
+                                        <div id="microContentImage-container">
+                                            <img id="microContentImage" src="{% static 'images/1video_3questions.png'%}">
+                                        </div>
+                                    </div>
+                                    <div id="left-container">
+                                         <div id="options-container">
+                                                    <h5 id="option1" class="button green option" style="background-color: #2da5da!important;">1 Video 3 Questions</h5>
+                                                    <h5 id="option2" class="button green option" style="background-color: #2da5da!important;">1 Video 5 Questions</h5>
+                                                    <h5 id="option3" class="button green option" style="background-color: #2da5da!important;">2 Videos 5 Questions</h5>
+                                                    <h5 id="option4" class="button green" style="background-color: #2da5da!important;">2 Videos 7 Questions</h5>
 
-                <div id="guideline-container">
-                    <p id="guidelineSelection">Choose one <br> of the four options below.</p>
-                </div>
-                <div id="options-container">
-                    <div id="option1-container">
-                        <h5 id="option1" class="box blue-box option-font">1 Video <br> 3 Questions</h5>
-                    </div>
-                    <div id="option2-container">
-                            <h5 id="option2" class="box blue-box option-font">1 Video <br> 5 Questions</h5>
-                    </div>
-                    <div id="option3-container">
-                            <h5 id="option3" class="box blue-box option-font">2 Videos <br> 5 Questions</h5>
-                    </div>
-                    <div id="option4-container">
-                            <h5 id="option4" class="box blue-box option-font">2 Videos <br> 7 Questions</h5>
-                    </div>
-                </div>
-            </div>
+                                        </div>
+                                        <div id="guideline-container">
+                                            <h2>Choose one out of the four options below. </h2>
+                                        </div>
+
+                                    </div>
+                    </fieldset>
+                 </div>
         </div>
 
-    <script>
-        $("#disableButton").prop("disabled", true);
-    </script>
+    </div>
 </body>
 </html>
