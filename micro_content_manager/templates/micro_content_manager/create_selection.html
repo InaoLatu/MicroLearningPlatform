@@ -1,47 +1,15 @@
 {% load static %}
 <style>
-
-    #createButton{
-    margin: 400px 100px 500px 0px !important;
-}
-
-    #guideline-container{
-        text-align: center;
-        font-size: 20px;
-        margin: 500px 1200px 80px 60px ;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px     6px rgba(0,0,0,0.23);
-    }
-
-
-     #microContentPreview-container{
-         background-color: mediumvioletred;
-         margin: 0 5in 0.3in 5in;
-         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px     6px rgba(0,0,0,0.23);
-
-    }
-     #microContentImage {
-         height: 7.1in;
-         width: 5.2in;
-         margin-bottom: -0.05in;
-         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px     6px rgba(0,0,0,0.23);
-
-     }
-     #previewText {
-         text-align: center;
-     }
-    #options-container{
-        margin-top: -1000px!important;
-    }
-
-
 </style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Create selection</title>
-      <link rel="stylesheet" type="text/css" href="{% static 'demo2.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
+          <link rel="stylesheet" type="text/css" href="{% static 'demo2.css' %}">
+        <meta name="author" content="Inao Latourrette">
+
 </head>
 <body class="bg-study">
  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -53,14 +21,11 @@
                }
 
            });
-
          function init() {
              $("#option1").addClass("selected");
              $("#option1").addClass("animated bounce");
 
          }
-
-
          function showMicroLearningContent(num) {
              switch (num.target) {
                  case option1:
@@ -68,7 +33,7 @@
                      $("#options-container  h5").removeClass("animated bounce");
                      $("#option1").addClass("selected");
                      $("#option1").addClass("animated bounce");
-                     $("#microContentImage-container").html("<img id=\"microContentImage\" class = \"border selected\"  src=\"{% static 'images/1video_3questions.png'%}\">\n");
+                     $("#microContentImage-container").html("<img id=\"microContentImage\" class = \"adjust\"  src=\"{% static 'images/1_1.png'%}\">\n");
                      $('#createButton').attr('href', '{% url 'micro_content_manager:micro_content_creation' 1 3 %}');
                      $(document.getElementById("previewText").textContent="Option 1 preview");
                      break;
@@ -77,7 +42,7 @@
                      $("#options-container  h5").removeClass("animated bounce");
                      $("#option2").addClass("selected");
                      $("#option2").addClass("animated bounce");
-                     $("#microContentImage-container").html("<img id=\"microContentImage\" class = \"border selected\"  src=\"{% static 'images/1video_5questions2.png'%}\">\n");
+                     $("#microContentImage-container").html("<img id=\"microContentImage\" class = \"adjust\"  src=\"{% static 'images/2_1.png'%}\">\n");
                      $('#createButton').attr('href', "{% url 'micro_content_manager:micro_content_creation' 1 5 %}");
                      $(document.getElementById("previewText").textContent="Option 2 preview");
                      break;
@@ -86,7 +51,7 @@
                      $("#options-container  h5").removeClass("animated bounce");
                      $("#option3").addClass("selected");
                      $("#option3").addClass("animated bounce");
-                     $("#microContentImage-container").html("<img id=\"microContentImage\" class = \"border selected\"  src=\"{% static 'images/2videos_5questions.png'%}\">\n");
+                     $("#microContentImage-container").html("<img id=\"microContentImage\" class = \"adjust\"  src=\"{% static 'images/3_1.png'%}\">\n");
                      $('#createButton').attr('href', "{% url 'micro_content_manager:micro_content_creation' 2 5 %}");
                      $(document.getElementById("previewText").textContent="Option 3 preview");
                     break;
@@ -95,7 +60,7 @@
                      $("#options-container  h5").removeClass("animated bounce");
                      $("#option4").addClass("selected");
                      $("#option4").addClass("animated bounce");
-                     $("#microContentImage-container").html("<img id=\"microContentImage\" class = \"border selected\"  src=\"{% static 'images/2videos_7questions.png'%}\">\n");
+                     $("#microContentImage-container").html("<img id=\"microContentImage\" class = \"adjust\"  src=\"{% static 'images/4.png'%}\">\n");
                      $('#createButton').attr('href', "{% url 'micro_content_manager:micro_content_creation' 2 7 %}");
                      $(document.getElementById("previewText").textContent="Option 4 preview");
                    break;
@@ -103,34 +68,54 @@
            }
            window.onload=init; //cuando carga la ventaja ejecutara la funcion indicada
         </script>
-    <div class="body">
+    <div class="body" style="max-width: 1800px!important;">
         <h1>Create Selection</h1>
 
         <div class="sky-form">
 
             <div class="white">
                     <fieldset>
-                        <a id="createButton" href="{% url 'micro_content_manager:micro_content_creation' 1 3 %}" class="button" style="background-color: green;">Create</a>
-
-                                    <div id="microContentPreview-container" >
-                                        <h3 id="previewText">Option 1 preview</h3>
+                        <div class="wrapper">
+                          <div class="row">
+                            <div class="col">1</div>
+                            <div class="col">2</div>
+                            <div class="col">3</div>
+                            <div class="col">4</div>
+                            <div class="col">5</div>
+                            <div class="col">6</div>
+                            <div class="col">7</div>
+                            <div class="col">8</div>
+                            <div class="col">9</div>
+                            <div class="col">10</div>
+                            <div class="col">11</div>
+                            <div class="col">12</div>
+                            <div class="col">13</div>
+                              <div class="col">14</div>
+                              <div class="col">15</div>
+                              <div class="col">16</div>
+                          </div>
+                          <div class="row">
+                            <div class="col span3">
+                                <div id="guideline-container">
+                                    <h2>Choose one out of the four options below. </h2>
+                                </div>
+                                <div id="options-container">
+                                                    <h5 id="option1" class="button option" style="background-color: #2da5da!important;">1 Video 3 Questions</h5>
+                                                    <h5 id="option2" class="button option" style="background-color: #2da5da!important;">1 Video 5 Questions</h5>
+                                                    <h5 id="option3" class="button option" style="background-color: #2da5da!important;">2 Videos 5 Questions</h5>
+                                                    <h5 id="option4" class="button " style="background-color: #2da5da!important;">2 Videos 7 Questions</h5>
+                                </div>
+                            </div>
+                            <div id="div2" class="col span10">
                                         <div id="microContentImage-container">
-                                            <img id="microContentImage" src="{% static 'images/1video_3questions.png'%}">
+                                            <img id="microContentImage" src="{% static 'images/1_1.png'%}" class="adjust">
                                         </div>
-                                    </div>
-                                    <div id="left-container">
-                                         <div id="options-container">
-                                                    <h5 id="option1" class="button green option" style="background-color: #2da5da!important;">1 Video 3 Questions</h5>
-                                                    <h5 id="option2" class="button green option" style="background-color: #2da5da!important;">1 Video 5 Questions</h5>
-                                                    <h5 id="option3" class="button green option" style="background-color: #2da5da!important;">2 Videos 5 Questions</h5>
-                                                    <h5 id="option4" class="button green" style="background-color: #2da5da!important;">2 Videos 7 Questions</h5>
+                            </div>
+                               <div class="col span3"><br><br><br><br><br><br><br><a id="createButton" href="{% url 'micro_content_manager:micro_content_creation' 1 3 %}" class="button" style="background-color: green;">Create</a></div>
+                            </div>
 
-                                        </div>
-                                        <div id="guideline-container">
-                                            <h2>Choose one out of the four options below. </h2>
-                                        </div>
-
-                                    </div>
+                          </div>
+                        </div>
                     </fieldset>
                  </div>
         </div>

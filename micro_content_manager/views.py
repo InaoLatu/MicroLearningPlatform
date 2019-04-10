@@ -104,7 +104,7 @@ class MicroContentSearchView(generic.DetailView):
                 mc_tags.append(str(tag))
             if bool(set(micro_contents_search) & set(mc_tags)):
                 if searchIn == "all":
-                    list_result.update({mc.id: {mc.title, mc.meta_data.author}})
+                    list_result.update({mc.id: [mc.title, mc.meta_data.author]})
                 else:
                     if request.user == mc.meta_data.author:
                         list_result.update({mc.id: {mc.title, mc.meta_data.author}})

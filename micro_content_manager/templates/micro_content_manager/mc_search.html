@@ -1,70 +1,108 @@
 <!DOCTYPE html>
 {% load static %}
-
-<style>
-    #full-container {
-        margin-left: 600px;
-    }
-</style>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Mc search</title>
+     <meta charset="UTF-8">
+     <title>Micro Content Search</title>
+     <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'demo2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'searchBar.css' %}">
+
 </head>
-<body>
+<body class="bg-study">
 
-<div id="full-container">
-    <a href="{% url 'user_page' %}">Back to my user profile</a> <br> <br>
-    <div class="topnav">
-      <div class="search-container">
-        <form action='{% url 'micro_content_manager:micro_content_search' %}' method="post">
-            {% csrf_token %}
-              <input type="text" placeholder="Search by tags.." name="search">
-              <button type="submit">
-                  <img src='{% static 'images/search.png' %}' width="14px" height="12px">
-              </button><br>
-            <p>Search in:
-                <input type="radio" name="searchIn" value="all" checked> All &nbsp;
-                <input type="radio" name="searchIn" value="own" > Own micro contents
-            </p>
+    <div class="body">
+     <h1>Micro contents search</h1>
 
-        </form>
-      </div>
+        <div class="sky-form">
+            <div class="white">
+                <fieldset>
+                    <div class="wrapper">
+                          <div class="row">
+                                <div class="col">1</div>
+                                <div class="col">2</div>
+                                <div class="col">3</div>
+                                <div class="col">4</div>
+                                <div class="col">5</div>
+                                <div class="col">6</div>
+                                <div class="col">7</div>
+                                <div class="col">8</div>
+                                <div class="col">9</div>
+                                <div class="col">10</div>
+                                <div class="col">11</div>
+                                <div class="col">12</div>
+                                  <div class="col">13</div>
+                                  <div class="col">14</div>
+                                  <div class="col">15</div>
+                                  <div class="col">16</div>
+                          </div>
+                          <div class="row">
+                              <section>
+                                    <form action='{% url 'micro_content_manager:micro_content_search' %}' method="post">
+                                        {% csrf_token %}
+
+                                         <div class="col span3" >
+                                            <button type="submit" class="button" style="margin-left: 0px!important;">My Micro Contents</button>
+                                        </div>
+                                        <div class="col span3">
+                                            <button type="submit" class="button"  style="margin-left: 0px!important;">All Micro Contents</button>
+                                        </div>
+                                     </form>
+                              </section>
+                          </div>
+                            <br>
+                          <div class="row">
+
+                              <div class="col span7 wrap" >
+
+                                   <div class="search">
+                                      <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                                      <button type="submit" class="searchButton">
+                                        <i class="fa fa-search"><img src='{% static 'images/search.png' %}' width="20px" height="17px" style="color: white;"></i>
+                                     </button>
+                                   </div>
+
+                              </div>
+                          </div>
+                    </div>
+                    <br><br><br>
+                </fieldset>
+                <fieldset>
+                    <table>
+                    <h3>Micro Contents</h3> <p>User: {{ user.username }} </p>
+                        {% for id, info in list_result.items %}
+                            <tr>
+                                <td><span style="display:inline-block; width: 80px;"><a href="{% url 'micro_content_manager:micro_content_data' id%}"> {{ info.0}}</a></span></td>
+                                <td><span style="display:inline-block; width: 80px;">{{ info.1}}</span></td>
+                                {% if user.username == info.1 %}
+                                     <td><a class="button" href="{% url 'micro_content_manager:edit' id %}" style="margin-right: 50px;">Edit</a></td>
+                                {% else %}
+                                     <td><a class="button" href="{% url 'micro_content_manager:copy' id %}" style="margin-right: 50px;">Copy</a></td>
+                                {% endif %}
+                                <td><a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}" style="margin-right: 50px; background-color: green;">Try it!</a></td>
+                                {% if user.username == info.1 %}
+                                    <td><a class="button" href="{% url 'micro_content_manager:delete' id %}" style="margin-right: 50px; background-color: red;">Delete</a></td>
+                                {% endif %}
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td>
+                                    <li>There is no micro-learning content with those search parameters</li>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+
+
+                    <p>
+                        {% for tag in tags_list %}
+                            {{ tag.name }} <br>
+                        {% endfor %}
+                    </p>
+                </fieldset>
+            </div>
+        </div>
     </div>
-
-<ul>
-    <table>
-    <h3>Micro Contents</h3> <p>User: {{ user.username }} </p>
-        {% for id, info in list_result.items %}
-            <tr>
-                <td><li><span style="display:inline-block; width: 80px;"><a href="{% url 'micro_content_manager:micro_content_data' id%}">{{ info.0}}</a></span></li></td>
-                {% if user.username == info.1 %}
-                     <td><a class="button" href="{% url 'micro_content_manager:edit' id %}" style="margin-right: 50px;">Edit</a></td>
-                {% else %}
-                     <td><a class="button" href="{% url 'micro_content_manager:copy' id %}">Copy</a></td>
-                {% endif %}
-                <td><a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}" style="margin-right: 50px;">Do it!</a></td>
-                {% if user.username == info.1 %}
-                    <td><a class="button" href="{% url 'micro_content_manager:delete' id %}" style="margin-right: 50px;">Delete</a></td>
-                {% endif %}
-            </tr>
-        {% empty %}
-            <tr>
-                <td>
-                    <li>There is no micro-learning content with those search parameters</li>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-</ul>
-
-
-    <p>
-        {% for tag in tags_list %}
-            {{ tag.name }} <br>
-        {% endfor %}
-    </p>
-
-</div>
 </body>
 </html>

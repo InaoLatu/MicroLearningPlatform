@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <style>
     #full-container {
@@ -6,51 +7,55 @@
 </style>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Do the Micro Content</title>
+     <meta charset="UTF-8">
+     <link rel="stylesheet" type="text/css" href="{% static 'demo2.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
+     <title>Do the Micro Content</title>
 </head>
-<body>
-    <div id="full-container">
+<body class="bg-study">
+    <div class="body" style="max-width: 1000px!important;">
         <h2>{{ micro_content.title }}</h2>
-        {{ error_message }}
-    <!--    <li>ID: {{ micro_content.id }}</li> -->
-        <p>Tags:
-            {% for tag in micro_content.mc_tags.all %}
-                       <span style="display:inline-block; width: 30px;"> {{ tag.name }}  </span>
-            {% endfor %}
-        </p>
-        <p> {{ micro_content.text.0 }}</p>
+        <div class="sky-form">
+        <div class="white">
+            {{ error_message }}
+            <fieldset>
+                <p>Tags:
+                    {% for tag in micro_content.mc_tags.all %}
+                               <span style="display:inline-block; width: 30px;"> {{ tag.name }}  </span>
+                    {% endfor %}
+                </p>
+                <p> {{ micro_content.text.0 }}</p>
+            </fieldset>
+            <fieldset>
+                <div>
+                    {% for v in micro_content.videos %}
+                      <iframe width="300" height="160" src="{{ v.url }}"></iframe>
+                    {% endfor%}
+                </div>
+            </fieldset>
 
-        <div>
-            {% for v in micro_content.videos %}
-              <iframe width="300" height="160" src="{{ v.url }}"></iframe>
-            {% endfor%}
+            <fieldset>
+                    <h4>Quiz: </h4>
+                    <form action="{% url 'micro_content_manager:micro_content_vote' %}" method="post">
+                        {% csrf_token %}
+                    <input type="hidden" id="mc_id" name="mc_id" value={{ micro_content.id }}>
+                    {% for question in micro_content.questions.all %}
+                        <section>{{ forloop.counter }}: {{ question.question }}</section>
+                            {% for choice in question.choices.all %}
+                                <label class="choice">
+                                    <input type="radio" name="choice{{forloop.parentloop.counter}}" value="{{ choice.id }}" required>
+                                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                                </label>
+                            {% endfor %}
+                        <br>
+                    {% endfor %}
+                    <br>
+                        <input class="button" type="submit" value="Finish" style="background-color: green; margin: 0px 300px 100px 0px;">
+                    </form>
+                </div>
+            </fieldset>
         </div>
-
-        <div>
-            <h4>Quiz: </h4>
-
-            <form action="{% url 'micro_content_manager:micro_content_vote' %}" method="post">
-                {% csrf_token %}
-            <input type="hidden" id="mc_id" name="mc_id" value={{ micro_content.id }}>
-            {% for question in micro_content.questions.all %}
-                <p>{{ forloop.counter }}: {{ question.question }}</p>
-
-                {% for choice in question.choices.all %}
-                    <input type="radio" name="choice{{forloop.parentloop.counter}}" value="{{ choice.id }}" required>
-                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-                {% endfor %}
-
-            {% endfor %}
-
-            <br>
-                 <input type="submit" value="Finish">
-            </form>
-
-
         </div>
-
     </div>
-
 </body>
 </html>

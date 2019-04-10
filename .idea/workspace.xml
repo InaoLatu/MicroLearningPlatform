@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f7406ea-5c76-44f9-b058-ab529d3762a2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/edit_mc.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users_manager/static/demo2.css" afterDir="false" />
+    <list default="true" id="2f7406ea-5c76-44f9-b058-ab529d3762a2" name="Default Changelist" comment="After meeting.">
+      <change afterPath="$PROJECT_DIR$/users_manager/static/searchBar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/micro_content_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/micro_content_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/static/form.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/registration/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/registration/password_reset_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/password_change.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/password_change.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/user_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/user_data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/static/demo2.css" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/static/demo2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/static/sky-forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/static/sky-forms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,103 +27,66 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/signup.html">
+        <entry file="file://$PROJECT_DIR$/users_manager/static/demo2.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="52" selection-start-line="21" selection-end-line="22" />
+            <state relative-caret-position="548">
+              <caret line="87" column="1" lean-forward="true" selection-start-line="87" selection-start-column="1" selection-end-line="87" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html">
+        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1650">
-              <caret line="110" column="71" selection-start-line="110" selection-end-line="111" />
+            <state relative-caret-position="275">
+              <caret line="99" column="38" lean-forward="true" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
               <folding>
-                <element signature="n#style#0;n#input#0;n#section#1;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#fieldset#2;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#fieldset#2;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h5#0;n#div#1;n#div#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h5#1;n#div#1;n#div#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h5#2;n#div#1;n#div#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h5#3;n#div#1;n#div#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#2;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/users_manager/static/searchBar.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html">
+        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-915">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="300">
+              <caret line="55" column="56" selection-start-line="55" selection-start-column="56" selection-end-line="55" selection-end-column="56" />
               <folding>
-                <element signature="n#style#0;n#a#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#0;n#div#0;n#div#1;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#1;n#div#0;n#div#1;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#2;n#div#0;n#div#1;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h5#3;n#div#0;n#div#1;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#form#0;n#section#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#section#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#i#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#td#1;n#tr#0;n#table#0;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#td#2;n#tr#0;n#table#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#td#4;n#tr#0;n#table#0;n#fieldset#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#td#5;n#tr#0;n#table#0;n#fieldset#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users_manager/static/demo2.css">
+        <entry file="file://$PROJECT_DIR$/micro_content_manager/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" selection-start-line="13" selection-end-line="14" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users_manager/static/base.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/static/edit_mc.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_data.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="102" selection-start-line="21" selection-start-column="102" selection-end-line="21" selection-end-column="102" />
+            <state relative-caret-position="202">
+              <caret line="111" column="68" selection-start-line="111" selection-start-column="59" selection-end-line="111" selection-end-column="68" />
               <folding>
-                <element signature="n#style#0;n#a#0;n#footer#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#footer#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/micro_content_info.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="85" column="132" selection-start-line="85" selection-start-column="132" selection-end-line="85" selection-end-column="132" />
-              <folding>
-                <element signature="e#1086#1092#0#HTML" expanded="true" />
-                <element signature="e#4220#4226#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#footer#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users_manager/static/sky-forms.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="80" column="17" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -142,14 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>registration</find>
-      <find>microlearningweb</find>
-      <find>signup</find>
-      <find>mc_search</find>
-      <find>mc_ser</find>
-      <find>Tag.</find>
-      <find>content</find>
-      <find>id</find>
       <find>creation</find>
       <find>form.clea</find>
       <find>select</find>
@@ -162,7 +118,6 @@
       <find>chkFixSeeking</find>
       <find>SignUp</find>
       <find>btn-start-recording</find>
-      <find>media</find>
       <find>media-</find>
       <find>video</find>
       <find>user</find>
@@ -170,8 +125,17 @@
       <find>LoginView</find>
       <find>color</find>
       <find>delete</find>
-      <find>button</find>
       <find>add</find>
+      <find>choice</find>
+      <find>media</find>
+      <find>media-container</find>
+      <find>recording-media</find>
+      <find>html</find>
+      <find>article</find>
+      <find>before</find>
+      <find>search</find>
+      <find>button</find>
+      <find>mc_search</find>
     </findStrings>
     <replaceStrings>
       <replace>micro_conteçnt_manager</replace>
@@ -184,7 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/store.html" />
         <option value="$PROJECT_DIR$/users_manager/admin.py" />
         <option value="$PROJECT_DIR$/MicroLearningPlatform/urls.py" />
         <option value="$PROJECT_DIR$/users_manager/models.py" />
@@ -198,18 +161,13 @@
         <option value="$PROJECT_DIR$/micro_content_manager/admin.py" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/results.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/models.py" />
-        <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html" />
         <option value="$PROJECT_DIR$/users_manager/urls.py" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/index.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/copy.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/delete.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/test.html" />
-        <option value="$PROJECT_DIR$/micro_content_manager/views.py" />
         <option value="$PROJECT_DIR$/micro_content_manager/urls.py" />
-        <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" />
-        <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html" />
         <option value="$PROJECT_DIR$/users_manager/static/base.css" />
         <option value="$PROJECT_DIR$/users_manager/static/images/form.scss" />
         <option value="$PROJECT_DIR$/users_manager/static/images/form.css" />
@@ -222,8 +180,6 @@
         <option value="$PROJECT_DIR$/users_manager/templates/registration/password_reset_done.html" />
         <option value="$PROJECT_DIR$/users_manager/templates/registration/password_reset_confirm.html" />
         <option value="$PROJECT_DIR$/users_manager/templates/registration/password_reset_complete.html" />
-        <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" />
-        <option value="$PROJECT_DIR$/users_manager/static/sky-forms.css" />
         <option value="$PROJECT_DIR$/users_manager/templates/users_manager/signup.html" />
         <option value="$PROJECT_DIR$/users_manager/templates/users_manager/password_change.html" />
         <option value="$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html" />
@@ -232,9 +188,17 @@
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/micro_content_info.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/static/edit_mc.css" />
         <option value="$PROJECT_DIR$/users_manager/static/demo.css" />
+        <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html" />
-        <option value="$PROJECT_DIR$/users_manager/static/demo2.css" />
+        <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html" />
+        <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" />
+        <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html" />
+        <option value="$PROJECT_DIR$/micro_content_manager/views.py" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html" />
+        <option value="$PROJECT_DIR$/users_manager/static/sky-forms.css" />
+        <option value="$PROJECT_DIR$/users_manager/static/demo2.css" />
+        <option value="$PROJECT_DIR$/users_manager/static/searchBar.css" />
+        <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html" />
       </list>
     </option>
   </component>
@@ -250,7 +214,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -268,6 +231,13 @@
               <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
               <item name="micro_content_manager" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="micro_content_manager" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
@@ -322,6 +292,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -412,7 +383,8 @@
       <workItem from="1554213466319" duration="2917000" />
       <workItem from="1554247013352" duration="18938000" />
       <workItem from="1554319333280" duration="11886000" />
-      <workItem from="1554400960308" duration="68367000" />
+      <workItem from="1554400960308" duration="69043000" />
+      <workItem from="1554823718892" duration="33013000" />
     </task>
     <task id="LOCAL-00001" summary="First.">
       <created>1552258613764</created>
@@ -519,11 +491,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554690195002</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="After meeting.">
+      <created>1554721342972</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1554721342972</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="364040000" />
+    <option name="totallyTimeSpent" value="397729000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -536,8 +515,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19347706" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20232172" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" />
@@ -553,7 +533,7 @@
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.10449321" />
-      <window_info active="true" anchor="bottom" id="Run" order="13" visible="true" weight="0.3061651" />
+      <window_info anchor="bottom" id="Run" order="13" visible="true" weight="0.27899686" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -561,7 +541,7 @@
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19347706" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20232172" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" />
@@ -577,7 +557,7 @@
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.10449321" />
-      <window_info anchor="bottom" id="Run" order="13" weight="0.031347964" />
+      <window_info anchor="bottom" id="Run" order="13" visible="true" weight="0.031347964" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -604,75 +584,11 @@
     <MESSAGE value="Record Video added." />
     <MESSAGE value="Previous to apply final style." />
     <MESSAGE value="Forms with style applied" />
-    <option name="LAST_COMMIT_MESSAGE" value="Forms with style applied" />
+    <MESSAGE value="After meeting." />
+    <option name="LAST_COMMIT_MESSAGE" value="After meeting." />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/ideas.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/1video_5questions2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="26" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/store.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/db/models/manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/migrations/0001_initial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="30" selection-start-column="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/delete.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/copy.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -700,23 +616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="137" column="21" lean-forward="true" selection-start-line="137" selection-start-column="21" selection-end-line="138" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/base_site.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -726,52 +625,10 @@
     <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/logged_out.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2141">
-          <caret line="247" column="28" selection-start-line="247" selection-start-column="28" selection-end-line="247" selection-end-column="28" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#h2#0;n#section#0;n#article#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#section#0;n#article#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#section#0;n#article#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#section#0;n#article#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/user_page.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="15" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/images/form.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/form.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/static/images/form.css" />
+    <entry file="file://$PROJECT_DIR$/users_manager/static/form.css" />
     <entry file="file://$PROJECT_DIR$/users_manager/static/images/background_base.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="199" column="72" selection-start-line="199" selection-start-column="72" selection-end-line="199" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_link_confirmation.html">
       <provider selected="true" editor-type-id="text-editor" />
@@ -827,16 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="8" selection-end-column="83" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#footer#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users_manager/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -861,13 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="107" selection-start-line="20" selection-start-column="107" selection-end-line="20" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/password_change.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -875,29 +715,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html">
+    <entry file="file://$PROJECT_DIR$/users_manager/static/form.scss" />
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/signup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="7" selection-start-line="7" selection-end-line="43" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="41" column="25" lean-forward="true" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="128" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/micro_content_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="85" column="132" selection-start-line="85" selection-start-column="132" selection-end-line="85" selection-end-column="132" />
-          <folding>
-            <element signature="e#1086#1092#0#HTML" expanded="true" />
-            <element signature="e#4220#4226#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#footer#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="315">
+          <caret line="21" column="52" selection-start-line="21" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -905,10 +727,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="102" selection-start-line="21" selection-start-column="102" selection-end-line="21" selection-end-column="102" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#footer#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#footer#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/micro_content_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="85" column="132" selection-start-line="85" selection-start-column="132" selection-end-line="85" selection-end-column="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/static/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -919,27 +751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/form.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1935">
-          <caret line="129" column="1" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/base.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="52" selection-start-line="21" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users_manager/static/demo.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -947,42 +758,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/sky-forms.css">
+    <entry file="file://$PROJECT_DIR$/users_manager/static/user_page.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="80" column="17" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="17" />
+        <state relative-caret-position="240">
+          <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="57" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/2videos_7questions.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/1video_5questions2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="107" selection-start-line="20" selection-start-column="107" selection-end-line="20" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/2videos_5questions.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="110" column="71" selection-start-line="110" selection-end-line="111" />
+        <state relative-caret-position="230">
+          <caret line="68" column="58" lean-forward="true" selection-start-line="68" selection-start-column="58" selection-end-line="68" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="41" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="41" />
           <folding>
-            <element signature="n#style#0;n#input#0;n#section#1;n#fieldset#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#fieldset#2;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#fieldset#2;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/1video_3questions.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/4.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/2_1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="148" column="61" selection-start-line="148" selection-end-line="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="69" column="19" lean-forward="true" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="157" column="58" lean-forward="true" selection-start-line="157" selection-start-column="58" selection-end-line="157" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="111" column="68" selection-start-line="111" selection-start-column="59" selection-end-line="111" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/static/sky-forms.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="155" column="14" selection-start-line="155" selection-start-column="14" selection-end-line="155" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/users_manager/static/demo2.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="14" selection-end-column="22" />
+        <state relative-caret-position="548">
+          <caret line="87" column="1" lean-forward="true" selection-start-line="87" selection-start-column="1" selection-end-line="87" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-915">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="275">
+          <caret line="99" column="38" lean-forward="true" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#0;n#div#0;n#div#1;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#1;n#div#0;n#div#1;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#2;n#div#0;n#div#1;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#3;n#div#0;n#div#1;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h5#0;n#div#1;n#div#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h5#1;n#div#1;n#div#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h5#2;n#div#1;n#div#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h5#3;n#div#1;n#div#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#2;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/static/searchBar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="55" column="56" selection-start-line="55" selection-start-column="56" selection-end-line="55" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#0;n#form#0;n#section#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#section#0;n#div#1;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#i#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#1;n#tr#0;n#table#0;n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#2;n#tr#0;n#table#0;n#fieldset#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#4;n#tr#0;n#table#0;n#fieldset#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#5;n#tr#0;n#table#0;n#fieldset#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

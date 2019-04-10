@@ -1,6 +1,6 @@
 {% load static %}
 <head>
-    <title>User page</title>
+    <title>Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'user_page.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'demo.css' %}">
@@ -13,14 +13,16 @@
 
         <div class="body body-s">
             <div class="sky-form">
-            <header>User page</header>
+            <header>Home</header>
 
                     {% if user.is_authenticated %}
-                        <fieldset>       Hi {{ user.username }}!
-                        <p><a href="{% url 'logout' %}">logout</a></p>
-                        <p><a href="{% url 'password_reset' %}">reset password</a></p>
-                        <p><a href="{% url 'users_manager:password_change' %}">Password change</a></p>
-                        <p><a href="{% url 'users_manager:user_data' %}">User data</a></fieldset>
+                        <fieldset>
+                            Hi {{ user.username }}!
+                            <p><a href="{% url 'logout' %}">logout</a></p>
+                            <p><a href="{% url 'password_reset' %}">reset password</a></p>
+                            <p><a href="{% url 'users_manager:password_change' %}">Password change</a></p>
+                            <p><a href="{% url 'users_manager:user_data' %}">User data</a>
+                        </fieldset>
 
 
             <fieldset>
