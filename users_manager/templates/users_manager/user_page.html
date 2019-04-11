@@ -2,9 +2,11 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'user_page.css' %}">
+
     <link rel="stylesheet" type="text/css" href="{% static 'demo.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/icons/home.ico' %}"/>
+
 </head>
 <body class="bg-study">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -13,22 +15,37 @@
 
         <div class="body body-s">
             <div class="sky-form">
-            <header>Home</header>
+            <header><i><img style="max-height: 30px; max-width: 30px; margin-bottom: -4px;" src="{% static 'images/icons/home.ico'%}"></i> Home</header>
 
                     {% if user.is_authenticated %}
                         <fieldset>
                             Hi {{ user.username }}!
                             <p><a href="{% url 'logout' %}">logout</a></p>
                             <p><a href="{% url 'password_reset' %}">reset password</a></p>
-                            <p><a href="{% url 'users_manager:password_change' %}">Password change</a></p>
                             <p><a href="{% url 'users_manager:user_data' %}">User data</a>
                         </fieldset>
 
 
             <fieldset>
-                <p><a href="{% url 'micro_content_manager:micro_content_search' %}">Search micro contents</a></p>
-                <p><a href="{% url 'micro_content_manager:create_selection' %}">Create micro content</a></p>
-                <p><a href="{% url 'micro_content_manager:record_video' %}">Record Video</a></p>
+
+            <div class="wrapper">
+                <div class="row">
+                    <div class="col span4">
+                        <p><a class="button left" href="{% url 'micro_content_manager:micro_content_search' %}">Search micro contents</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span4">
+                        <p><a class="button left" href="{% url 'micro_content_manager:create_selection' %}">Create micro content</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span4">
+                        <p><a class="button left" href="{% url 'micro_content_manager:record_video' %}">Record Video</a></p>
+                    </div>
+                 </div>
+            </div>
+            <br>
             </fieldset>
 
                 {% else %}
@@ -36,7 +53,7 @@
                   <a href="{% url 'login' %}">login</a>
 
                 {% endif %}
-                    <footer>
+                    <footer style="text-align: center;">
                     <p>Copyright 2019, MicroLearningPlatform</p>
                     </footer>
 

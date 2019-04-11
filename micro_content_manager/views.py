@@ -194,8 +194,6 @@ class MicroContentDeleteView(generic.TemplateView):
 
 
 class RecordVideoView(generic.TemplateView):
-    template_name = 'micro_content_manager/webcam_record.html'
-
     def get(self, request, *args, **kwargs):
         return render(request, 'micro_content_manager/webcam_record.html')
 

@@ -4,9 +4,25 @@
 <head>
      <meta charset="UTF-8">
      <title>Micro Content Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
      <link rel="stylesheet" type="text/css" href="{% static 'demo2.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'searchBar.css' %}">
+
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'images/icons/book.png' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}" >
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'searchBar.css' %}">
 
 </head>
 <body class="bg-study">
@@ -36,8 +52,10 @@
                                   <div class="col">15</div>
                                   <div class="col">16</div>
                           </div>
+                        <div class="row">
+                            <p><strong>Search in: </strong> </p>
+                        </div>
                           <div class="row">
-                              <section>
                                     <form action='{% url 'micro_content_manager:micro_content_search' %}' method="post">
                                         {% csrf_token %}
 
@@ -48,15 +66,21 @@
                                             <button type="submit" class="button"  style="margin-left: 0px!important;">All Micro Contents</button>
                                         </div>
                                      </form>
-                              </section>
                           </div>
-                            <br>
+                            <br><br>
+                            <div class="row">
+                                <section>
+                                        <p><strong>Search parameters: </strong></p>
+                                </section>
+                            </div>
                           <div class="row">
 
                               <div class="col span7 wrap" >
 
                                    <div class="search">
-                                      <input type="text" class="searchTerm" placeholder="What are you looking for?">
+
+                                      <input type="text" class="searchTerm" placeholder="Search by tags">
+
                                       <button type="submit" class="searchButton">
                                         <i class="fa fa-search"><img src='{% static 'images/search.png' %}' width="20px" height="17px" style="color: white;"></i>
                                      </button>
@@ -68,41 +92,98 @@
                     <br><br><br>
                 </fieldset>
                 <fieldset>
-                    <table>
-                    <h3>Micro Contents</h3> <p>User: {{ user.username }} </p>
-                        {% for id, info in list_result.items %}
-                            <tr>
-                                <td><span style="display:inline-block; width: 80px;"><a href="{% url 'micro_content_manager:micro_content_data' id%}"> {{ info.0}}</a></span></td>
-                                <td><span style="display:inline-block; width: 80px;">{{ info.1}}</span></td>
-                                {% if user.username == info.1 %}
-                                     <td><a class="button" href="{% url 'micro_content_manager:edit' id %}" style="margin-right: 50px;">Edit</a></td>
-                                {% else %}
-                                     <td><a class="button" href="{% url 'micro_content_manager:copy' id %}" style="margin-right: 50px;">Copy</a></td>
-                                {% endif %}
-                                <td><a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}" style="margin-right: 50px; background-color: green;">Try it!</a></td>
-                                {% if user.username == info.1 %}
-                                    <td><a class="button" href="{% url 'micro_content_manager:delete' id %}" style="margin-right: 50px; background-color: red;">Delete</a></td>
-                                {% endif %}
-                            </tr>
-                        {% empty %}
-                            <tr>
-                                <td>
-                                    <li>There is no micro-learning content with those search parameters</li>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </table>
+
+                                  <div class="limiter">
+                                      <h2><strong>My micro contents</strong></h2>
+		                                <div class="container-table100">
+                                            <div class="wrap-table100">
+                                                <div class="table100 ver1 m-b-110">
+                                                    <div class="table100-head">
+                                                        <table>
+                                                            <thead>
+                                                                <tr class="row100 head">
+                                                                    <th class="cell100 column1">Title</th>
+                                                                    <th class="cell100 column2">Author</th>
+                                                                    <th class="cell100 column3">Options</th>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="table100-body js-pscroll">
+                                                        <table>
+                                                            <tbody>
+
+
+                                                            {% for id, info in list_result.items %}
+                                                                <tr class="row100 body">
+                                                                    <td class="cell100 column1"><a href="{% url 'micro_content_manager:micro_content_data' id%}"> {{ info.0}}</a></td>
+                                                                    <td class="cell100 column2">{{ info.1 }}</td>
+
+                                                                    {% if user.username == info.1 %}
+                                                                         <td class="cell100 column3" style="margin-right: 30px;">
+                                                                             <a class="button" href="{% url 'micro_content_manager:edit' id %}" style="margin-right:30px;">Edit</a>
+                                                                             <a class="button" href="{% url 'micro_content_manager:delete' id %}" style=" background-color: red;">Delete</a>
+                                                                             <a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}" style=" background-color: green;">Try it!</a>
+
+                                                                         </td>
+                                                                    {% else %}
+                                                                         <td class="cell100 column3">
+                                                                             <a class="button" href="{% url 'micro_content_manager:copy' id %}" style="margin-right: 50px;">Copy</a>
+                                                                             <a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}" style="margin-right: 50px; background-color: green;">Try it!</a>
+                                                                         </td>
+                                                                    {% endif %}
+                                                                </tr>
+                                                                {% empty %}
+                                                                    <tr>
+                                                                        <td>There is no micro-learning content with those search parameters</td>
+                                                                    </tr>
+                                                                {% endfor %}
 
 
 
-                    <p>
-                        {% for tag in tags_list %}
-                            {{ tag.name }} <br>
-                        {% endfor %}
-                    </p>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                  </div>
+
+
+
+
+
+
                 </fieldset>
             </div>
         </div>
     </div>
+
+
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.css' %}" ></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}" ></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+
+
+	</script>
+<!--===============================================================================================-->
+	<script  src="{% static 'micro_content_manager/js/main.js' %}"></script>
 </body>
 </html>

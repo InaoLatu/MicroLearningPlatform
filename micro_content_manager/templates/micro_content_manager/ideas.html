@@ -1,38 +1,87 @@
-<style>
-  .injected-text {
-    margin-bottom: -25px;
-    text-align: center;
-  }
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'images/icons/home.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}" >
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
 
-  .box {
-    border-style: solid;
-    border-color: black;
-    border-width: 5px;
-    text-align: center;
-  }
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100 ver1 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+								<tr class="row100 head">
+									<th class="cell100 column1">Title</th>
+									<th class="cell100 column2">Author</th>
+									<th class="cell100 column3">Options</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
 
-  .yellow-box {
-    background-color: yellow;
-    padding: 10px;
-  }
-  
-  .red-box {
-    background-color: crimson;
-    color: #fff;
-    padding: 20px;
-    margin: 20px;
-  }
+					<div class="table100-body js-pscroll">
+						<table>
+							<tbody>
+								<tr class="row100 body">
+									<td class="cell100 column1">Introduction to Python</td>
+									<td class="cell100 column2">inaolatu</td>
+									<td class="cell100 column3">Edit    Try it!    Delete</td>
+								</tr>
+								<tr class="row100 body">
+									<td class="cell100 column1">Java</td>
+									<td class="cell100 column2">polgar</td>
+									<td class="cell100 column3">Edit    Try it!    Delete</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 
-  .blue-box {
-    background-color: blue;
-    color: #fff;
-    padding: 20px;
-    margin: 10px;
-  }
-</style>
-<h5 class="injected-text">margin</h5>
+			</div>
+		</div>
+	</div>
 
-<div class="box yellow-box">
-  <h5 class="box red-box">1 video<br>2 Questions</h5>
-  <h5 class="box blue-box">padding</h5>
-</div>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.css' %}" ></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}" ></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+
+
+	</script>
+<!--===============================================================================================-->
+	<script  src="{% static 'micro_content_manager/js/main.js' %}"></script>
+
+</body>
+</html>
