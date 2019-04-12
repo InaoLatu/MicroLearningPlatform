@@ -2,7 +2,6 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link rel="stylesheet" type="text/css" href="{% static 'demo.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
     <link rel="icon" type="image/png" href="{% static 'images/icons/home.ico' %}"/>
@@ -19,13 +18,11 @@
 
                     {% if user.is_authenticated %}
                         <fieldset>
-                            Hi {{ user.username }}!
+                            Welcome, {{ user.username }}
                             <p><a href="{% url 'logout' %}">logout</a></p>
                             <p><a href="{% url 'password_reset' %}">reset password</a></p>
                             <p><a href="{% url 'users_manager:user_data' %}">User data</a>
                         </fieldset>
-
-
             <fieldset>
 
             <div class="wrapper">
@@ -54,7 +51,7 @@
 
                 {% endif %}
                     <footer style="text-align: center;">
-                    <p>Copyright 2019, MicroLearningPlatform</p>
+                    <p>Copyright © 2019 MicroLearningPlatform</p>
                     </footer>
 
             </div>

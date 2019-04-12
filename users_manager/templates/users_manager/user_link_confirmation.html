@@ -3,6 +3,7 @@ Hi administrator,
 Your account in the MicroLearning Platform is already activated:
         Username: {{ user.username }}
         First name: {{ user.first_name }}
+        Last name: {{ user.last_name }}
 
 You can now login in: http://{{ domain }}{% url 'users_manager:logIn'%}
 {% endautoescape %}

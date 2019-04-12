@@ -1,24 +1,16 @@
 from typing import List
-
-import null as null
-import request as request
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views import generic
 from pymongo import MongoClient
-from tagging.models import Tag, TaggedItem
-from tagging.utils import LOGARITHMIC, LINEAR
-from tagging.utils import calculate_cloud
-from tagging.models import TagManager
-
+from tagging.models import Tag
 
 from micro_content_manager.forms import MicroContentEditForm
 from micro_content_manager.models import MicroLearningContent, Question, Choice
 from micro_content_manager.models import Tag as MicroContentTag
 from django.http import Http404, JsonResponse, HttpResponseBadRequest, HttpResponse, HttpResponseRedirect
 from django.utils.datastructures import MultiValueDictKeyError
-import pymongo
 
 NUMBER_PARAGRAPHS = 1
 NUMBER_QUESTIONS = 3
@@ -43,7 +35,6 @@ class MicroContentCreationView(generic.CreateView):
     template_name = 'micro_content_manager/create.html'
 
     def get(self, request, *args, **kwargs):
-        NUMBER_QUESTIONS = kwargs['q']
         return render(request, 'micro_content_manager/create.html', {'paragraphs': ' ' * NUMBER_PARAGRAPHS,
                                                                      'videos': ' ' * kwargs['v'],
                                                                      'questions': ' ' * kwargs['q'],
@@ -110,19 +101,6 @@ class MicroContentSearchView(generic.DetailView):
                         list_result.update({mc.id: {mc.title, mc.meta_data.author}})
 
         return render(self.request, 'micro_content_manager/mc_search.html', {"list_result": list_result})
-
-
-def index(request):
-    contents = [(e.id, e.title) for e in MicroLearningContent.objects.all()]
-    return render(request, 'micro_content_manager/index.html', {'contents': contents})
-
-
-def json(request):
-    try:
-        content = MicroLearningContent.objects.get(pk=request.GET['content'])
-        return JsonResponse(content.toDict())
-    except (MicroLearningContent.DoesNotExist, MultiValueDictKeyError):
-        raise Http404()
 
 
 class MicroContentEditView(generic.FormView):
@@ -299,19 +277,6 @@ def update(request, **kwargs):
         return render(request, 'micro_content_manager/update.html', {"id": request.POST['id']})
 
 
-def download(request):
-    try:
-        content = 'http://' + request.META['SERVER_NAME'] + '/micro_content_manager/json?content=' + request.GET['content']
-        script = 'http://' + request.META['SERVER_NAME'] + '/static/micro_content_manager/micro-learning.js'
-        image = 'http://' + request.META['SERVER_NAME'] + '/static/micro_content_manager/elemend-logo.png'
-        response = render(request, 'micro_content_manager/download.html',
-                          {'content': content, 'script': script, 'image': image})
-    except MultiValueDictKeyError:
-        raise Http404()
-    response['Content-Disposition'] = 'attachment; filename=%s' % 'micro-learning.html'
-    return response
-
-
 def vote(request):
     micro_content = get_object_or_404(MicroLearningContent, pk=int(request.POST['mc_id']))
     correct_answers = 0
@@ -328,7 +293,6 @@ def vote(request):
 
 
 def test(request):
-
     return render(request, 'micro_content_manager/test.html')
 
 

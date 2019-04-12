@@ -1,7 +1,6 @@
 from django.utils import timezone
 from djongo import models
 from django.forms.models import model_to_dict
-from djongo.models import ListField
 from tagging.registry import register
 
 class Tag(models.Model):
@@ -68,16 +67,12 @@ class Choice(models.Model):
         return self.choice_text
 
 
-
 class Question(models.Model):
     question = models.TextField()
     choices = models.ManyToManyField(Choice)
     choices_text = models.TextField()
     answer = models.TextField()
     explanation = models.TextField()
-
-
-
 
     def __str__(self):
         return self.question
@@ -108,8 +103,6 @@ class Question(models.Model):
 
     def toDict(self):
         return model_to_dict(self, fields=['question', 'choices', 'answer', 'explanation'])
-
-
 
 
 class MetaData(models.Model):
@@ -152,8 +145,6 @@ class MicroLearningContent(models.Model):
         model_container=MetaData
     )
 
-
-
     def __init__(self, id, title, text, videos, meta_data):
         super(MicroLearningContent, self).__init__()
         self.id = id
@@ -161,8 +152,6 @@ class MicroLearningContent(models.Model):
         self.text = text
         self.videos = videos
         self.meta_data = meta_data
-
-
 
     @staticmethod
     def create(request):

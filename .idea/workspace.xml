@@ -2,50 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f7406ea-5c76-44f9-b058-ab529d3762a2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/images/1_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/images/2_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/images/3_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/images/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/images/desk-notebook-writing-work-table-pen-812199-pxhere.com (2).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/images/icons/book.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/images/icons/books.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/images/icons/home.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/micro_content_manager/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/static/util.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/1video_3questions.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/1video_5questions2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/2videos_5questions.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/2videos_7questions.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/micro_content_manager/micro_learning.js" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/static/micro_content_manager/js/micro_learning.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/copy.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/copy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/delete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/ideas.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/ideas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/micro_content_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/micro_content_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/store.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/store.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroLearningPlatform/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/MicroLearningPlatform/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/micro_content_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/static/demo2.css" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/static/demo2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/static/searchBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/static/searchBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/registration/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/registration/password_reset_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/registration/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/registration/password_reset_confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/registration/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/registration/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/registration/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/registration/password_reset_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/confirm_registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/confirm_registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/password_change.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/password_change.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/user_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/user_data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/base_site.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/unavailable.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/static/base.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/templates/registration/logged_out.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/user_link_confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/user_link_confirmation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,87 +29,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html">
+        <entry file="file://$PROJECT_DIR$/micro_content_manager/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="66" selection-start-line="11" selection-end-line="12" />
+            <state relative-caret-position="1610">
+              <caret line="294" column="18" selection-start-line="294" selection-start-column="18" selection-end-line="294" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html">
+        <entry file="file://$PROJECT_DIR$/micro_content_manager/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="135">
+              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html">
+        <entry file="file://$PROJECT_DIR$/micro_content_manager/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="45">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/copy.html">
+        <entry file="file://$PROJECT_DIR$/micro_content_manager/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/ideas.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="83" column="66" selection-start-line="83" selection-start-column="66" selection-end-line="83" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/download.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/delete.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="135">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -159,8 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>creation</find>
-      <find>form.clea</find>
       <find>select</find>
       <find>password_ch</find>
       <find>UserDa</find>
@@ -189,6 +116,8 @@
       <find>search</find>
       <find>button</find>
       <find>mc_search</find>
+      <find>user_page</find>
+      <find>copy</find>
     </findStrings>
     <replaceStrings>
       <replace>micro_conteçnt_manager</replace>
@@ -201,23 +130,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/MicroLearningPlatform/settings.py" />
-        <option value="$PROJECT_DIR$/micro_content_manager/tests.py" />
-        <option value="$PROJECT_DIR$/micro_content_manager/forms.py" />
-        <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_link_confirmation.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/admin.py" />
-        <option value="$PROJECT_DIR$/micro_content_manager/models.py" />
         <option value="$PROJECT_DIR$/users_manager/urls.py" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/index.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/test.html" />
-        <option value="$PROJECT_DIR$/micro_content_manager/urls.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/users_manager/static/base.css" />
         <option value="$PROJECT_DIR$/users_manager/static/images/form.scss" />
         <option value="$PROJECT_DIR$/users_manager/static/images/form.css" />
         <option value="$PROJECT_DIR$/users_manager/static/form.css" />
         <option value="$PROJECT_DIR$/users_manager/static/form.scss" />
-        <option value="$PROJECT_DIR$/users_manager/views.py" />
         <option value="$PROJECT_DIR$/users_manager/forms.py" />
         <option value="$PROJECT_DIR$/micro_content_manager/static/edit_mc.css" />
         <option value="$PROJECT_DIR$/users_manager/static/demo.css" />
@@ -230,8 +152,6 @@
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html" />
         <option value="$PROJECT_DIR$/users_manager/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/users_manager/static/user_page.css" />
-        <option value="$PROJECT_DIR$/micro_content_manager/views.py" />
-        <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" />
         <option value="$PROJECT_DIR$/users_manager/templates/users_manager/signup.html" />
         <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_data.html" />
         <option value="$PROJECT_DIR$/users_manager/templates/users_manager/password_change.html" />
@@ -252,6 +172,15 @@
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/copy.html" />
+        <option value="$PROJECT_DIR$/users_manager/templates/registration/logged_out.html" />
+        <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_link_confirmation.html" />
+        <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" />
+        <option value="$PROJECT_DIR$/MicroLearningPlatform/urls.py" />
+        <option value="$PROJECT_DIR$/micro_content_manager/urls.py" />
+        <option value="$PROJECT_DIR$/users_manager/views.py" />
+        <option value="$PROJECT_DIR$/micro_content_manager/views.py" />
+        <option value="$PROJECT_DIR$/micro_content_manager/tests.py" />
+        <option value="$PROJECT_DIR$/micro_content_manager/models.py" />
       </list>
     </option>
   </component>
@@ -282,57 +211,7 @@
             <path>
               <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
               <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="micro_content_manager" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
               <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="micro_content_manager" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="micro_content_manager" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="micro_content_manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="users_manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="users_manager" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="users_manager" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="users_manager" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="registration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="users_manager" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="users_manager" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -377,7 +256,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.ideas.html">
+  <component name="RunManager" selected="Django server.MicroLearningPlatform">
     <configuration name="ideas.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/MicroLearningPlatform/micro_content_manager/templates/micro_content_manager/ideas.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -450,7 +329,7 @@
       <workItem from="1554319333280" duration="11886000" />
       <workItem from="1554400960308" duration="69043000" />
       <workItem from="1554823718892" duration="33661000" />
-      <workItem from="1554996219478" duration="11879000" />
+      <workItem from="1554996219478" duration="16998000" />
     </task>
     <task id="LOCAL-00001" summary="First.">
       <created>1552258613764</created>
@@ -571,11 +450,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554935828056</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="All styles completed.">
+      <created>1555022661682</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1555022661682</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="410256000" />
+    <option name="totallyTimeSpent" value="415375000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -598,7 +484,7 @@
       <window_info anchor="bottom" id="Database Changes" order="2" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.33333334" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.14942528" />
-      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.4997236" weight="0.38581857" />
+      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.4997236" weight="0.38557994" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5002764" side_tool="true" weight="0.55903864" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3297062" />
@@ -606,7 +492,7 @@
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.10449321" />
-      <window_info anchor="bottom" id="Run" order="13" weight="0.27899686" />
+      <window_info anchor="bottom" id="Run" order="13" weight="0.111807734" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -622,7 +508,7 @@
       <window_info anchor="bottom" id="Database Changes" order="2" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.33333334" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.14942528" />
-      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.4997236" weight="0.38581857" />
+      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.4997236" weight="0.38557994" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5002764" side_tool="true" weight="0.55903864" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3297062" />
@@ -630,7 +516,7 @@
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.10449321" />
-      <window_info anchor="bottom" id="Run" order="13" visible="true" weight="0.27899686" />
+      <window_info anchor="bottom" id="Run" order="13" visible="true" weight="0.111807734" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -659,121 +545,15 @@
     <MESSAGE value="Forms with style applied" />
     <MESSAGE value="After meeting." />
     <MESSAGE value="All styles but the Home." />
-    <option name="LAST_COMMIT_MESSAGE" value="All styles but the Home." />
+    <MESSAGE value="All styles completed." />
+    <option name="LAST_COMMIT_MESSAGE" value="All styles completed." />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/desedit3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/desedit5.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/4.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/2_1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/edit_mc.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/desk-notebook-writing-work-table-pen-812199-pxhere.com (2).jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/images/search.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/images/background_base.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MicroLearningPlatform/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-637" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/fonts/Lato/OFL.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-822" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/base.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="146" column="11" selection-start-line="146" selection-start-column="11" selection-end-line="146" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/micro_content_manager/js/main.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/util.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/sky-forms.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/static/images/icons/home.ico">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/demo2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-682">
-          <caret line="10" column="53" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/static/user_page.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27" lean-forward="true" selection-start-column="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users_manager/static/demo.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="197" column="72" selection-start-line="197" selection-start-column="72" selection-end-line="197" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="68" lean-forward="true" selection-start-line="7" selection-end-line="8" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#i#0;n#header#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#footer#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -791,77 +571,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_link_confirmation.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_data.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/password_change.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/confirm_registration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/acc_active_email.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/password_reset_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/password_reset_done.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/password_reset_confirm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/password_reset_complete.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/logged_out.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/webcam_record.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -915,13 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/ideas.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="83" column="66" selection-start-line="83" selection-start-column="66" selection-end-line="83" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -932,19 +640,14 @@
     <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/download.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/templates/unavailable.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/delete.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/base_site.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -962,8 +665,235 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/copy.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/ideas.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="83" column="66" selection-start-line="83" selection-start-column="66" selection-end-line="83" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/delete.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/static/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/password_reset_complete.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/logged_out.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="10" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_link_confirmation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/password_change.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/confirm_registration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/acc_active_email.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/password_reset_confirm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/password_reset_done.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/registration/password_reset_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2217">
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/tokens.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="262" column="27" lean-forward="true" selection-start-line="262" selection-start-column="27" selection-end-line="262" selection-end-column="27" />
+          <folding>
+            <element signature="e#2#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MicroLearningPlatform/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MicroLearningPlatform/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="14" lean-forward="true" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1610">
+          <caret line="294" column="18" selection-start-line="294" selection-start-column="18" selection-end-line="294" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
