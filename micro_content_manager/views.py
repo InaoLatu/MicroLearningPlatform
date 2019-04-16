@@ -101,11 +101,11 @@ class MicroContentSearchView(generic.DetailView):
         for mc in list:
             list_result.update({mc.id: [mc.title, mc.meta_data.author]})
 
-        return render(request, 'micro_content_manager/mc_search.html', {"list_result": list_result})
+        return render(request, 'micro_content_manager/mc_search.html', {"list_result": list_result, "tab": kwargs['tab']})
 
-    def post(self, request):
+    def post(self, request, tab):
         micro_contents_search = self.request.POST['search']
-        searchIn = self.request.POST['searchIn']
+        searchIn = self.kwargs['tab']
         micro_contents_search = micro_contents_search.split()
         list = MicroLearningContent.objects.all()
         list_result = {}
@@ -117,13 +117,8 @@ class MicroContentSearchView(generic.DetailView):
             for tag in mc_queryset:
                 mc_tags.append(str(tag))
             if bool(set(micro_contents_search) & set(mc_tags)):
-                if searchIn == "all":
                     list_result.update({mc.id: [mc.title, mc.meta_data.author]})
-                else:
-                    if request.user == mc.meta_data.author:
-                        list_result.update({mc.id: {mc.title, mc.meta_data.author}})
-
-        return render(self.request, 'micro_content_manager/mc_search.html', {"list_result": list_result})
+        return render(self.request, 'micro_content_manager/mc_search.html', {"list_result": list_result, "tab": searchIn, "search": micro_contents_search})
 
 
 class MicroContentEditView(generic.FormView):

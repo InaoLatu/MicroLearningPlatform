@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,6 @@
 
     <p>You deleted the <strong>'{{ micro_content.title }}'</strong> micro content.</p>
 
-    <p><a href="{% url 'micro_content_manager:micro_content_search' %}">Back to search page</a></p>
+    <p><a href="{% url 'micro_content_manager:micro_content_search' 1 %}">Back to search page</a></p>
 </body>
 </html>

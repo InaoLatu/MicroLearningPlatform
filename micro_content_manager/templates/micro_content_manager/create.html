@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'demo2.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
-    	<link rel="icon" type="image/png" href="{% static 'images/icons/book.png' %}"/>
+    <link rel="icon" type="image/png" href="{% static 'images/icons/book.png' %}"/>
 
     <title>Create Micro Content</title>
 </head>
@@ -23,15 +23,15 @@
                           del[i].addEventListener("click",deleteQuestion, false);
                       }
          });
+
          function deleteQuestion(num) {
 
               var id = num.target.id;
               id = id.toString();
               i =  id[7];
               $("#q"+i).replaceWith("<span> </span>");
-
-
          }
+
          function addQuestion() {
                      $("#addQuestion-container h5").removeClass("animated bounce");
                      $("#addQuestion-container h5").addClass("animated bounce");
@@ -61,6 +61,13 @@
                                  "                                                                cols=\"100\"></textarea></p></div><br><br>");
                      document.getElementById("deleteq"+id).addEventListener("click", deleteQuestion, false);
          }
+
+
+
+
+            function storeURL() {
+                document.getElementById("stURL").value = document.getElementById("chooseFile").value;
+            }
        </script>
 
 
@@ -76,14 +83,14 @@
                     <section><p>Tags: <input type="text" name="mc_tags">
                      (Tags must be inserted separated by blank spaces (e.g., Tag1 Tag2 Tag3))</p></section>
                     {% for p in paragraphs %}
-                        <section><p>Paragraph {{ forloop.counter }}:<textarea name="paragraph{{ forloop.counter }}" rows="1" cols="100"></textarea></p></section>
+                        <section><p>Paragraph {{ forloop.counter }}:&nbsp;<textarea name="paragraph{{ forloop.counter }}" rows="1" cols="100"></textarea></p></section>
                     {% endfor %}
                 </fieldset>
                 <fieldset>
                     <h2>Videos</h2>
                     {% for v in videos %}
                         <section><h4>Video {{ forloop.counter }}</h4></section>
-                        <section><p>URL:<input name="videoURL{{ forloop.counter }}" type="url"></p></section>
+                        <section><span>URL:&nbsp;<input name="videoURL{{ forloop.counter }}" type="url"></span></section>
                         <section><p>Format:
                             <select name="videoFormat{{ forloop.counter }}">
                                 <option value="mp4" selected>mp4</option>
@@ -96,7 +103,6 @@
                             <select name="video_upload_form{{ forloop.counter }}">
                                 <option value="from_existing_file" selected>From existing file</option>
                                 <option value="link_from_youtube">Link from YouTube</option>
-                                <option value="download_from_youtube">Download from Youtube</option>
                                 <option value="external_repository">From external repository</option>
                             </select>
                         </p></section>

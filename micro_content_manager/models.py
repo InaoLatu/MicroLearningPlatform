@@ -53,6 +53,7 @@ class Video(models.Model):
             idYoutubeVideo = videoURL.split("v=", 1)[1]
             videoURL = "http://www.youtube.com/embed/"+idYoutubeVideo
 
+
         return videoURL
 
     class Meta:

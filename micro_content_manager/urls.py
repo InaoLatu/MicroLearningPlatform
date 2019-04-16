@@ -8,7 +8,7 @@ urlpatterns = [
     path('', user_views.HomeView.as_view()),
     path('newMicroContent/<int:v>/<int:q>', views.MicroContentCreationView.as_view(), name='micro_content_creation'),
     path('micro_content_data/<int:id>/', views.MicroContentInfoView.as_view(), name='micro_content_data'),
-    path('mc_search/', views.MicroContentSearchView.as_view(), name='micro_content_search'),
+    path('mc_search/<int:tab>', views.MicroContentSearchView.as_view(), name='micro_content_search'),
     path('copy/<int:id>', views.MicroContentCopyView.as_view(), name='copy'),
     path('delete/<int:id>', views.MicroContentDeleteView.as_view(), name='delete'),
     path('edit/<int:pk>', views.MicroContentEditView.as_view(), name='edit'),
