@@ -125,12 +125,11 @@
 
                                         <div style="margin-left: 100px;">
                                             Choices {{ forloop.counter }} (write the possible answers and select the correct one):<br>
-
                                            {% for choice in q.choices.all %}
                                                 <input type="radio" name="answer{{ forloop.parentloop.counter }}"
                                                        value="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}"
-                                                       {% if forloop.counter == 1 %}checked {% endif %}>
-                                                <input type="text" name="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}" value={{ choice }}>    <br>
+                                                       {% if q.answer == choice.choice_text %}checked {% endif %}>
+                                                <input type="text" name="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}" value={{ choice.choice_text }}>    <br>
                                            {% endfor %}
                                         </div>
                                         <br>

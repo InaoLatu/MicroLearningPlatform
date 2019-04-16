@@ -50,6 +50,29 @@ class DoTheMicroContentView(generic.DetailView):
         return render(request, 'micro_content_manager/do_the_micro_content.html', {"micro_content": micro_content})
 
 
+def vote(request):
+    micro_content = get_object_or_404(MicroLearningContent, pk=int(request.POST['mc_id']))
+    correct_answers = 0
+    i = 0
+    sol_messages = {}
+    selections = {}
+
+    for question in micro_content.questions.all():
+        i += 1
+        selected_choice = question.choices.get(pk=int(request.POST['choice'+str(i)]))
+        selected_choice.votes += 1
+        selected_choice.save()
+        selections[i] = selected_choice.choice_text.strip()
+        if question.answer.strip() == selected_choice.choice_text.strip():
+                correct_answers += 1
+                sol_messages[i] = "CORRECT!"
+        else:
+            sol_messages[i] = "WRONG. The correct answer is '"+question.answer.strip()+"'."
+
+    return render(request, 'micro_content_manager/do_the_micro_content.html', {"micro_content": micro_content, "correct_answers": correct_answers,
+                                                                               "sol_messages": sol_messages, "selections": selections})
+
+
 class MicroContentInfoView(generic.DetailView):
     template_name = 'micro_content_manager/micro_content_info.html'
 
@@ -173,7 +196,7 @@ class MicroContentDeleteView(generic.TemplateView):
 
 class RecordVideoView(generic.TemplateView):
     def get(self, request, *args, **kwargs):
-        return render(request, 'micro_content_manager/webcam_record.html')
+        return render(request, 'micro_content_manager/rec.html')
 
 
 class StoreView(generic.TemplateView):
@@ -277,19 +300,7 @@ def update(request, **kwargs):
         return render(request, 'micro_content_manager/update.html', {"id": request.POST['id']})
 
 
-def vote(request):
-    micro_content = get_object_or_404(MicroLearningContent, pk=int(request.POST['mc_id']))
-    correct_answers = 0
-    i = 0
-    for question in micro_content.questions.all():
-        i += 1
-        pk = request.POST['choice1']
-        selected_choice = question.choices.get(pk=int(request.POST['choice'+str(i)]))
-        selected_choice.votes += 1
-        selected_choice.save()
-        if question.answer.strip() == selected_choice.choice_text.strip():
-                correct_answers += 1
-    return render(request, 'micro_content_manager/results.html', {"micro_content": micro_content, "correct_answers": correct_answers})
+
 
 
 def test(request):

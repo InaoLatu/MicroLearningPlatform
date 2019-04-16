@@ -4,6 +4,8 @@
     #full-container {
         margin-left: 500px;
     }
+
+   
 </style>
 <html lang="en">
 <head>
@@ -11,10 +13,45 @@
      <link rel="stylesheet" type="text/css" href="{% static 'demo2.css' %}">
      <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
      <title>Do the Micro Content</title>
-    	<link rel="icon" type="image/png" href="{% static 'images/icons/book.png' %}"/>
-
 </head>
 <body class="bg-study">
+
+<script>
+    function solution() {
+        var del = document.querySelectorAll(".solution");
+        var sol = document.querySelectorAll(".aux");
+        for (var i=0;i<del.length;i++) {
+            del[i].innerHTML = sol[i].innerHTML;
+        }
+
+        for(var z=0; z<sol.length; z++){
+            sol[z].remove();
+        }
+    }
+
+    function checking() {
+        var sel = document.querySelectorAll(".sel");
+        var rad = document.querySelectorAll(".rad");
+        var text = document.querySelectorAll(".option");
+
+
+        for (var i=0; i<{{ micro_content.questions.count }}; i++) {
+
+            for (var z=0; z<3; z++) {
+               if(text[z+3*i].innerHTML == sel[i].innerHTML) {
+                   rad[z+3*i].checked = true;
+               }
+            }
+        }
+        for (var u=0; u<sel.length; u++) {
+                sel[u].remove();
+        }
+    }
+
+
+
+
+</script>
     <div class="body" style="max-width: 1000px!important;">
         <h2>{{ micro_content.title }}</h2>
         <div class="sky-form">
@@ -34,28 +71,65 @@
                       <iframe width="300" height="160" src="{{ v.url }}"></iframe>
                     {% endfor%}
                 </div>
+
             </fieldset>
 
-            <fieldset>
+            <fieldset id="quiz-container">
                     <h4>Quiz: </h4>
-                    <form action="{% url 'micro_content_manager:micro_content_vote' %}" method="post">
-                        {% csrf_token %}
-                    <input type="hidden" id="mc_id" name="mc_id" value={{ micro_content.id }}>
-                    {% for question in micro_content.questions.all %}
-                        <section>{{ forloop.counter }}: {{ question.question }}</section>
-                            {% for choice in question.choices.all %}
-                                <label class="choice">
-                                    <input type="radio" name="choice{{forloop.parentloop.counter}}" value="{{ choice.id }}" required>
-                                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-                                </label>
-                            {% endfor %}
-                        <br>
-                    {% endfor %}
-                    <br>
-                        <input class="button" type="submit" value="Finish" style="background-color: green; margin: 0px 300px 100px 0px;">
-                    </form>
-                </div>
+                        {% if sol_messages  %}
+                        {% for sel in selections.values %}
+                            <p class="sel" id="sel{{ forloop.counter }}">{{ sel }}</p>
+                        {% endfor %}
+
+                        <form action="{% url 'micro_content_manager:micro_content_vote' %}" method="post">
+                        <p>You got <strong>{{ correct_answers }}</strong> correct answers out of <strong>{{ micro_content.questions.count }}</strong> questions at <strong>{{ micro_content.title }}</strong></p>
+                            {% csrf_token %}
+                                <input type="hidden" id="mc_id" name="mc_id" value={{ micro_content.id }}>
+
+                                {% for question in  micro_content.questions.all %}
+                                    <section>{{ forloop.counter }}: {{ question.question }}</section>
+                                        {% for choice in question.choices.all %}
+                                            <label class="choice">
+                                                <input class="rad"  id="radio{{ forloop.parentloop.counter }}{{ forloop.counter }}" type="radio" name="choice{{forloop.parentloop.counter}}" value="{{ choice.id }}" disabled>
+                                                <label class="option" for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                                            </label>
+                                        {% endfor %}
+                                    <section class="solution" id="sol{{ forloop.counter }}" style="font-weight: bold;"></section>
+                                    <section>Explanation: {{ question.explanation }}</section>
+                                    <br>
+                                {% endfor %}
+
+                               {% for sol in sol_messages.values %}
+                                    <p class="aux" id="aux{{ forloop.counter }}"> {{ sol }}</p>
+                               {% endfor %}
+
+                                <script>solution();</script>
+                                <script>testing();</script>
+                                <br>
+                        </form>
+
+                     {% else %}
+                            <form action="{% url 'micro_content_manager:micro_content_vote' %}" method="post">
+                                {% csrf_token %}
+                                    <input type="hidden" id="mc_id" name="mc_id" value={{ micro_content.id }}>
+                                    {% for question in micro_content.questions.all %}
+                                        <section>{{ forloop.counter }}: {{ question.question }}</section>
+                                            {% for choice in question.choices.all %}
+                                                <label class="choice">
+                                                    <input type="radio" name="choice{{forloop.parentloop.counter}}" value="{{ choice.id }}" required>
+                                                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                                                </label>
+                                            {% endfor %}
+                                        <br>
+                                    {% endfor %}
+                                    <br>
+                                        <input class="button" type="submit" value="Finish" style="background-color: green; margin: 0px 300px 100px 0px;">
+                            </form>
+                    {% endif %}
+
             </fieldset>
+            <script>checking();</script>
+          </div>
         </div>
         </div>
     </div>
