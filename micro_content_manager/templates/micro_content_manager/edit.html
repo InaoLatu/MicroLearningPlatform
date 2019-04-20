@@ -28,27 +28,40 @@
               i =  id[7];
               $("#q"+i).replaceWith("<span> </span>");
 
-             // var index = id.substring(id.indexOf("q")+1, id.length());
-          //   $("#q"+index+"-container").replaceWith("");
-
-
          }
-         function addQuestion() {
+          function addQuestion() {
                      $("#addQuestion-container h5").removeClass("animated bounce");
                      $("#addQuestion-container h5").addClass("animated bounce");
                      $("#idQuestions").attr('value',  parseInt($("#idQuestions").val()) + 1);
 
                     var id = $("#idQuestions").val();
 
-                    $("#newQuestions-container").append("<div id=\"q"+id+"\" >");
+                    $("#questions-container").append("<div class=\"quest\"  id=\"q"+$("#idQuestions").val()+"\" style=\"order: "+$("#idQuestions").val()+";\">");
 
+
+
+                     $("#q"+id).append("<section>\n" +
+                         "                                        <label><strong>Position in the Quiz: </strong>\n" +
+                         "                                            <select name=\"order"+$("#idQuestions").val()+"\" id=\"order"+$("#idQuestions").val()+"\" onchange=\"applyPosition("+$("#idQuestions").val()+")\">\n" +
+                         "                                                 <option value=1 selected>1</option>\n" +
+                         "                                                 <option value=2>2</option>\n" +
+                         "                                                 <option value=3>3</option>\n" +
+                         "                                                 <option value=4>4</option>\n" +
+                         "                                                 <option value=5>5</option>\n" +
+                         "                                                 <option value=6>6</option>\n" +
+                         "                                                 <option value=7>7</option>\n" +
+                         "                                                 <option value=8>8</option>\n" +
+                         "                                                 <option value=9>9</option>\n" +
+                         "                                                 <option value=10 selected>10</option>\n" +
+                         "                                            </select>\n" +
+                         "                                        </label>\n" +
+                         "                                    </section>");
                      $("#q"+id).append("<p>Question "+$("#idQuestions").val()+": <textarea name=\"question"+$("#idQuestions").val()+"\" rows=\"1\"\n" +
-                         "                                                             cols=\"80\"></textarea><span id=\"deleteq"+$("#idQuestions").val()+"\" class=\"button red delete-box\" >Delete question </span></p></p>");
+                         "                                                             cols=\"80\"></textarea><span id=\"deleteq"+$("#idQuestions").val()+"\" class=\"button red delete-box\">Delete question</span></p></p>");
                      $("#q"+id).append("<p>Choices "+$("#idQuestions").val()+" (write the possible answers and select the correct one):</p>\n");
-
                      $("#q"+id).append("  {% for c in "   " %}\n"+
                          "                    <p>\n"+
-                         "                        <input class=\"choice\" type=\"radio\" name=\"answer"+$("#idQuestions").val()+"\"\n"
+                         "                        <input class=\"choice\"  type=\"radio\" name=\"answer"+$("#idQuestions").val()+"\"\n"
                          +
                          "                               value=\"choice"+$("#idQuestions").val()+"_{{ forloop.counter }}\"\n"
                          +
@@ -62,7 +75,12 @@
                         $("#q"+id).append("<p>Explanation "+$("#idQuestions").val()+": <textarea name=\"explanation"+$("#idQuestions").val()+"\" rows=\"1\"\n" +
                                  "                                                                cols=\"100\"></textarea></p></div><br><br>");
                      document.getElementById("deleteq"+id).addEventListener("click", deleteQuestion, false);
-         }
+            }
+
+             function applyPosition(numberQuestion) {
+                order = document.getElementById("order"+numberQuestion).value;
+                $("#q"+numberQuestion).css("order", order);
+        }
        </script>
 
     <div class="body">
@@ -113,12 +131,25 @@
                                 <br><br><br><br>
 
 
-                            <div id="questions-container">
+                            <div id="questions-container" style="display: flex; flex-direction: column;">
                                 {% for q in content.questions.all %}
-
-
-                                    <div id="q{{ forloop.counter }}">
-
+                                    <div id="q{{ forloop.counter }}" style="order: {{ forloop.counter }};">
+                                    <section>
+                                        <label><strong>Position in the Quiz: </strong>
+                                            <select name="order{{ forloop.counter }}" id="order{{ forloop.counter }}" onchange="applyPosition({{ forloop.counter }})">
+                                                 <option {% if forloop.counter == 1 %} selected {% endif %} value=1>1</option>
+                                                 <option {% if forloop.counter == 2 %} selected {% endif %}value=2>2</option>
+                                                 <option {% if forloop.counter == 3 %} selected {% endif %} value=3>3</option>
+                                                 <option {% if forloop.counter == 4 %} selected {% endif %} value=4>4</option>
+                                                 <option {% if forloop.counter == 5 %} selected {% endif %}  value=5>5</option>
+                                                 <option {% if forloop.counter == 6 %} selected {% endif %} value=6>6</option>
+                                                 <option {% if forloop.counter == 7 %} selected {% endif %} value=7>7</option>
+                                                 <option {% if forloop.counter == 8 %} selected {% endif %} value=8>8</option>
+                                                 <option {% if forloop.counter == 9 %} selected {% endif %} value=9>9</option>
+                                                 <option {% if forloop.counter == 10 %} selected {% endif %} value=10>10</option>
+                                            </select>
+                                        </label>
+                                    </section>
 
                                         <p>Question {{ forloop.counter }}: <textarea name="question{{ forloop.counter }}" rows="1"
                                                                                      cols="100">{{ q.question }}</textarea><span id="deleteq{{ forloop.counter }}" class="button red delete-box">Delete question</span></p>
@@ -141,8 +172,7 @@
                                 {% endfor %}
                             </div>
                                 <input type="hidden" id="idQuestions" name="idQuestions" value={{ content.questions.count }}>
-                                <div id="newQuestions-container">
-                                </div>
+
                         <input class="button" type="submit" value="Save changes" style="background-color: green; margin: 0px 300px 100px 0px;">
 
                     </fieldset>

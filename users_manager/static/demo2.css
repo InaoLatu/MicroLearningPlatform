@@ -40,6 +40,11 @@ html, body {
 }
 
 
+#questions-container{
+    display: flex;
+
+}
+
 #createButton{
     margin: 0 100px 500px 0 !important;
     font-size: 20px!important;

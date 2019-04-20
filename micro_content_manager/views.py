@@ -213,6 +213,7 @@ class StoreView(generic.TemplateView):
                 content.mc_tags.add(MicroContentTag.objects.create(name=tag))
 
         i = 0
+
         for n in ' ' * int(request.POST['idQuestions']):
                 try:
                     i += 1
