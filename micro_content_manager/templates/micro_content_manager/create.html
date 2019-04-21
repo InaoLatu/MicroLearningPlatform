@@ -21,9 +21,8 @@
     <script>
          $(document).ready(function() {    //llamamos la a funcion ready() porque vamos a hacer referencia a etiquetas que estan declaradas posteriormente en el documento
                     document.getElementById("addQuestion").addEventListener("click", addQuestion, false);
-                    document.getElementById("sortQuestions").addEventListener("click", sortQuestions, false);
 
-                    var del = document.querySelectorAll("#questions-container span");
+                    var del = document.querySelectorAll(".delete-box");
                       for (var i=0;i<del.length;i++) {
                           del[i].addEventListener("click",deleteQuestion, false);
                       }
@@ -148,7 +147,7 @@
                                         <label><strong>Position in the Quiz: </strong>
                                             <select name="order{{ forloop.counter }}" id="order{{ forloop.counter }}" onchange="applyPosition({{ forloop.counter }})">
                                                  <option {% if forloop.counter == 1 %} selected {% endif %} value=1>1</option>
-                                                 <option {% if forloop.counter == 2 %} selected {% endif %}value=2>2</option>
+                                                 <option {% if forloop.counter == 2 %} selected {% endif %} value=2>2</option>
                                                  <option {% if forloop.counter == 3 %} selected {% endif %} value=3>3</option>
                                                  <option {% if forloop.counter == 4 %} selected {% endif %} value=4>4</option>
                                                  <option {% if forloop.counter == 5 %} selected {% endif %}  value=5>5</option>

@@ -11,6 +11,7 @@ from micro_content_manager.models import MicroLearningContent, Question, Choice
 from micro_content_manager.models import Tag as MicroContentTag
 from django.http import Http404, JsonResponse, HttpResponseBadRequest, HttpResponse, HttpResponseRedirect
 from django.utils.datastructures import MultiValueDictKeyError
+import operator
 
 NUMBER_PARAGRAPHS = 1
 NUMBER_QUESTIONS = 3
@@ -212,19 +213,29 @@ class StoreView(generic.TemplateView):
             else:
                 content.mc_tags.add(MicroContentTag.objects.create(name=tag))
 
-        i = 0
+        list = {}
+        q = 0
+        for order in ' ' * int(request.POST['idQuestions']):
+            try:
+                q += 1
+                qs = str(q)
+                list.update({"question"+qs: str(request.POST['order'+qs])})
+            except MultiValueDictKeyError:
+                pass
 
-        for n in ' ' * int(request.POST['idQuestions']):
+        sorted_list = sorted(list.items(), key=operator.itemgetter(1))
+
+        for qu in sorted_list:
                 try:
-                    i += 1
-                    question = request.POST['question' + str(i)]
-                    choices_text = Question.getChoices(request, i)
-                    answer = request.POST[request.POST['answer' + str(i)]]
-                    explanation = request.POST['explanation' + str(i)]
+                    index = int(qu[0][8])
+                    question = request.POST[qu[0]]
+                    choices_text = Question.getChoices(request, index)
+                    answer = request.POST[request.POST['answer' + str(index)]]
+                    explanation = request.POST['explanation' + str(index)]
                     question = Question.objects.create(question=question, choices_text=choices_text, answer=answer, explanation=explanation)
                     question.save()
                     for c in [1, 2, 3]:
-                        question.choices.add(Choice.objects.create(choice_text=request.POST['choice'+str(i)+'_'+str(c)], votes=0))
+                        question.choices.add(Choice.objects.create(choice_text=request.POST['choice'+str(index)+'_'+str(c)], votes=0))
                     content.questions.add(question)
                 except MultiValueDictKeyError:
                     pass
@@ -279,18 +290,37 @@ def update(request, **kwargs):
             }})
 
         q = 0
-        for question in content.questions.all():
-            q += 1
-            question.question = request.POST['question' + str(q)]
-            question.choices_text = Question.getChoices(request, q)
-            question.answer = request.POST[request.POST['answer' + str(q)]]
-            question.explanation = request.POST['explanation' + str(q)]
-            c = 0
-            for choice in question.choices.all():
-                c += 1
-                choice.choice_text = request.POST['choice'+str(q)+'_'+str(c)]
-                choice.save()
-            question.save()
+
+        content.questions.all().delete()
+
+        list = {}
+        q = 0
+        for order in ' ' * int(request.POST['idQuestions']):
+            try:
+                q += 1
+                qs = str(q)
+                list.update({"question" + qs: str(request.POST['order' + qs])})
+            except MultiValueDictKeyError:
+                pass
+
+        sorted_list = sorted(list.items(), key=operator.itemgetter(1))
+
+        for qu in sorted_list:
+            try:
+                index = int(qu[0][8])
+                question = request.POST[qu[0]]
+                choices_text = Question.getChoices(request, index)
+                answer = request.POST[request.POST['answer' + str(index)]]
+                explanation = request.POST['explanation' + str(index)]
+                question = Question.objects.create(question=question, choices_text=choices_text, answer=answer,
+                                                   explanation=explanation)
+                question.save()
+                for c in [1, 2, 3]:
+                    question.choices.add(
+                        Choice.objects.create(choice_text=request.POST['choice' + str(index) + '_' + str(c)], votes=0))
+                content.questions.add(question)
+            except MultiValueDictKeyError:
+                pass
 
 
         return render(request, 'micro_content_manager/update.html', {"id": request.POST['id']})

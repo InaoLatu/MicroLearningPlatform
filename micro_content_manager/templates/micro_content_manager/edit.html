@@ -94,7 +94,7 @@
                     <input type="hidden" name="id" value="{{ id }}">
                     <fieldset>
                         <section> <p>Title: <input type="text" name="title" value="{{ content.title }}" required></p></section>
-                        <section> <p>Tags:<input type="text" name="mc_tags" value="{{mc_tags}}" required>
+                        <section> <p>Tags:<input type="text" name="mc_tags" value="{{mc_tags}}">
                           Tags must be inserted separated by blank spaces (e.g., Tag1 Tag2 Tag3)</p></section>
 
                          {% for p in content.text %}
@@ -116,7 +116,6 @@
                          <section>Upload form:<select name="video_upload_form{{ forloop.counter }}">
                             <option value="from_existing_file" {% if v.upload_form == 'from_existing_file' %} selected {% endif %}>From existing file</option>
                             <option value="link_from_youtube" {% if v.upload_form == 'link_from_youtube' %} selected {% endif %}>Link from YouTube</option>
-                            <option value="download_from_youtube" {% if v.upload_form == 'download_from_youtube' %} selected {% endif %}>Download from Youtube</option>
                             <option value="external_repository" {% if v.upload_form == 'external_repository' %} selected {% endif %}>From external repository</option>
                         </select></section>
                         {% endfor %}
