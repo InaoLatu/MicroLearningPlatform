@@ -170,11 +170,25 @@
                                     </div>
                                 {% endfor %}
                             </div>
-                                <input type="hidden" id="idQuestions" name="idQuestions" value={{ content.questions.count }}>
 
-                        <input class="button" type="submit" value="Save changes" style="background-color: green; margin: 0px 300px 100px 0px;">
 
                     </fieldset>
+                <fieldset>
+                        <section>Do you want your micro-content to be visible?
+                            <select name="visible">
+                                            <option value="yes" {% if content.visible == "yes" %} selected {% endif %}>Yes</option>
+                                            <option value="no" {% if content.visible == "no" %} selected {% endif %} > No</option>
+                            </select>
+                        </section>
+                        <section>Allow the rest of the users copying your micro-content?
+                            <select name="allow_copy">
+                                            <option value="yes" {% if content.allow_copy == "yes" %} selected {% endif %}>Yes</option>
+                                            <option value="no" {% if content.allow_copy == "no" %} selected {% endif %}>No</option>
+                            </select>
+                        </section>
+                        <input type="hidden" id="idQuestions" name="idQuestions" value={{ content.questions.count }}>
+                        <input class="button" type="submit" value="Save changes" style="background-color: green; margin: 0px 300px 100px 0px;">
+                 </fieldset>
                  </div>
             </form>
 

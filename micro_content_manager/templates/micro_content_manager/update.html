@@ -4,22 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Update</title>
-    	<link rel="icon" type="image/png" href="{% static 'images/icons/book.png' %}"/>
-
+    <link rel="icon" type="image/png" href="{% static 'images/icons/book.png' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'demo2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
 </head>
-<body>
 
-<h1>Micro-learning contents generator</h1>
 
-<h2>Your micro-learning content has been modified successfully!</h2>
-<p>Parameters:
-    <ul>
-        <li>{{ id }}</li>
-        <li>New Form</li>
-        <li> {{ video_format }}</li>
-    </ul>
-</p>
-<p><a class="button" href="{% url 'user_page' %}">Go home</a></p>
+<body class="bg-study">
 
+	<div class="body">
+        <div class="sky-form">
+            <div class="white">
+                <fieldset>
+                    <div class="wrapper">
+                        <div class="row">
+                            <section>
+                                <p style="font-size: 18px!important;">The micro-content <strong>'{{ title }}'</strong> has been modified successfully.</p>
+                            </section>
+                        </div>
+                        <div class="row">
+                            <div class="col span4">
+                                <section>
+                                    <a href="{% url 'micro_content_manager:micro_content_search' 1 %}" class="button" style="margin-left: 0px!important; color: white!important;">Back to search page</a>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
 </body>
+
+
+
+
+
+
+
+
+
+
+
 </html>

@@ -1,5 +1,11 @@
 {% load static %}
 <style>
+
+    #guideline-container{
+      -webkit-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.45);
+-moz-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.45);
+box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.45);
+    }
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,36 +85,24 @@
                     <fieldset>
                         <div class="wrapper">
                           <div class="row">
-                            <div class="col">1</div>
-                            <div class="col">2</div>
-                            <div class="col">3</div>
-                            <div class="col">4</div>
-                            <div class="col">5</div>
-                            <div class="col">6</div>
-                            <div class="col">7</div>
-                            <div class="col">8</div>
-                            <div class="col">9</div>
-                            <div class="col">10</div>
-                            <div class="col">11</div>
-                            <div class="col">12</div>
-                            <div class="col">13</div>
-                              <div class="col">14</div>
-                              <div class="col">15</div>
-                              <div class="col">16</div>
-                          </div>
-                          <div class="row">
-                            <div class="col span3">
+                            <div class="col span4">
                                 <div id="guideline-container">
                                     <h2>Choose one out of the four options below. </h2>
                                 </div>
-                                <div id="options-container">
-                                                    <h5 id="option1" class="button option" style="background-color: #2da5da!important;">1 Video 3 Questions</h5>
-                                                    <h5 id="option2" class="button option" style="background-color: #2da5da!important;">1 Video 5 Questions</h5>
+                                <br>
+                                <div id="options-container" >
+                                                    <h5 id="option1" class="button option" style="background-color: #2da5da!important; margin-right: 8px!important;">1 Video 3 Questions</h5>
+                                                    <h5 id="option2" class="button option" style="background-color: #2da5da!important; margin-right: 8px!important;">1 Video 5 Questions</h5>
                                                     <h5 id="option3" class="button option" style="background-color: #2da5da!important;">2 Videos 5 Questions</h5>
                                                     <h5 id="option4" class="button " style="background-color: #2da5da!important;">2 Videos 7 Questions</h5>
                                 </div>
                             </div>
-                            <div id="div2" class="col span10">
+                            <div id="div2" class="col span9">
+                                <section>
+                                    <h2>Preview of the choosen micro-content <hr style="margin-left: 20px;" width="385"></h2>
+
+                                </section>
+
                                         <div id="microContentImage-container">
                                             <img id="microContentImage" src="{% static 'images/1_1.png'%}" class="adjust">
                                         </div>

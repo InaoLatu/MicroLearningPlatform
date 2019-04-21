@@ -93,6 +93,7 @@ class MicroContentInfoView(generic.DetailView):
                                                                                  'mc_text': mc_text,
                                                                                  })
 
+
 class MicroContentSearchView(generic.DetailView):
     template_name = 'micro_content_manager/mc_search.html'
 
@@ -100,8 +101,7 @@ class MicroContentSearchView(generic.DetailView):
         list = MicroLearningContent.objects.all()
         list_result = {}
         for mc in list:
-            list_result.update({mc.id: [mc.title, mc.meta_data.author]})
-
+            list_result.update({mc.id: [mc.title, mc.meta_data.author, mc.allow_copy, mc.visible]})
         return render(request, 'micro_content_manager/mc_search.html', {"list_result": list_result, "tab": kwargs['tab']})
 
     def post(self, request, tab):
@@ -117,8 +117,14 @@ class MicroContentSearchView(generic.DetailView):
             mc_queryset = mc.mc_tags.all()
             for tag in mc_queryset:
                 mc_tags.append(str(tag))
-            if bool(set(micro_contents_search) & set(mc_tags)):
-                    list_result.update({mc.id: [mc.title, mc.meta_data.author]})
+                if bool(set(micro_contents_search) & set(mc_tags)):
+                    list_result.update({mc.id: [mc.title, mc.meta_data.author, mc.allow_copy]})
+
+        list = MicroLearningContent.objects.all()
+        for mc2 in list:
+            if self.request.POST['search'] == mc2.title:
+                    list_result.update({mc2.id: [mc2.title, mc2.meta_data.author, mc2.allow_copy]})
+
         return render(self.request, 'micro_content_manager/mc_search.html', {"list_result": list_result, "tab": searchIn, "search": micro_contents_search})
 
 
@@ -164,7 +170,6 @@ class MicroContentEditView(generic.FormView):
                                                                             "video_format": self.request.POST['videoFormat']})
 
 
-
 class MicroContentCopyView(generic.TemplateView):
     template_name = 'micro_content_manager/copy.html'
 
@@ -173,6 +178,7 @@ class MicroContentCopyView(generic.TemplateView):
         micro_content = MicroLearningContent.objects.get(pk=kwargs['id'])
         micro_content.id = None
         micro_content.meta_data.author = request.user
+        micro_content.meta_data.creation_type = "copy"
         micro_content.save()
         return render(request, 'micro_content_manager/copy.html', {"micro_content": micro_content})
 
@@ -267,6 +273,8 @@ def update(request, **kwargs):
         collection = connection[DB_NAME][COLLECTION_NAME]
         collection.update_one({"id": id}, {"$set": {"title": request.POST['title'],
                                                     "text":  MicroLearningContent.getText(request),
+                                                    "visible": request.POST['visible'],
+                                                    "allow_copy": request.POST['allow_copy'],
                                                     "meta_data.title": request.POST['title'],
                                                     "meta_data.last_modification": timezone.now()
                                                     }})
@@ -323,10 +331,7 @@ def update(request, **kwargs):
                 pass
 
 
-        return render(request, 'micro_content_manager/update.html', {"id": request.POST['id']})
-
-
-
+        return render(request, 'micro_content_manager/update.html', {"id": request.POST['id'], "title": request.POST['title']})
 
 
 def test(request):

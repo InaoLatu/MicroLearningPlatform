@@ -16,17 +16,9 @@ UPLOAD_FORM = (
     ('EXTERNAL_REPOSITORY', 'EXTERNAL REPOSITORY'),
 )
 
-VIDEO_FORMAT = (
-    ('mp4', 'mp4'),
-    ('ogg', 'ogg'),
-)
 
 class Video(models.Model):
     url = models.URLField()
-    video_format = models.CharField(
-        choices=VIDEO_FORMAT,
-        default='mp4'
-        )
     video_upload_form = models.CharField(
         choices=UPLOAD_FORM,
         default='FROM EXISTING FILE'
@@ -34,17 +26,16 @@ class Video(models.Model):
 
     @staticmethod
     def create(request, number):
-        return Video(Video.buildURL(request, number), request.POST['videoFormat'+str(number)], request.POST['video_upload_form'+str(number)])
+        return Video(Video.buildURL(request, number), request.POST['video_upload_form'+str(number)])
 
 
     def __init__(self, url, video_format, video_upload_form):
         super(Video, self).__init__()
         self.url = url
-        self.video_format = video_format
         self.video_upload_form = video_upload_form
 
     def toDict(self):
-        return model_to_dict(self, fields=['url', 'video_format', 'video_upload_form'])
+        return model_to_dict(self, fields=['url', 'video_upload_form'])
 
     @staticmethod
     def buildURL(request, number):
@@ -125,6 +116,10 @@ class MetaData(models.Model):
         self.last_modification = last_modification
         self.creation_type = creation_type
 
+
+    def toDict(self):
+        return model_to_dict(self, fields=['title', 'author', 'pub_date', 'last_modification', 'creation_type'])
+
     class Meta:
         abstract = True
 
@@ -135,9 +130,7 @@ class MicroLearningContent(models.Model):
     questions = models.ManyToManyField(Question)
     title = models.CharField(max_length=100)
     text = models.ListField()
-   # video = models.EmbeddedModelField(
-   #     model_container=Video
-   # )
+
     videos = models.ArrayModelField(
         model_container=Video
     )
@@ -145,19 +138,24 @@ class MicroLearningContent(models.Model):
     meta_data = models.EmbeddedModelField(
         model_container=MetaData
     )
+    visible = models.CharField(max_length=4)
+    allow_copy = models.CharField(max_length=4)
 
-    def __init__(self, id, title, text, videos, meta_data):
+    def __init__(self, id, title, text, videos, meta_data, visible, allow_copy):
         super(MicroLearningContent, self).__init__()
         self.id = id
         self.title = title
         self.text = text
         self.videos = videos
         self.meta_data = meta_data
+        self.visible = visible
+        self.allow_copy = allow_copy
+
 
     @staticmethod
     def create(request):
         return MicroLearningContent(None, request.POST['title'], MicroLearningContent.getText(request),
-                                    MicroLearningContent.getVideos(request), MetaData.create(request))
+                                    MicroLearningContent.getVideos(request), MetaData.create(request), request.POST['visible'], request.POST['allow_copy'])
 
     @staticmethod
     def getText(request):
@@ -186,6 +184,8 @@ class MicroLearningContent(models.Model):
     def toDict(self):
         dict = model_to_dict(self, fields=['title', 'text'])
         dict['video'] = self.videos.toDict()
+        dict['metadata'] = self.meta_data.toDict()
+
         return dict
 
     def get_mc_tags(self):

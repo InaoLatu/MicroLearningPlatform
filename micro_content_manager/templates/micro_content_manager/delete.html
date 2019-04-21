@@ -4,14 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <title>You deleted the Micro content</title>
-    	<link rel="icon" type="image/png" href="{% static 'images/icons/book.png' %}"/>
-
+    <link rel="icon" type="image/png" href="{% static 'images/icons/book.png' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'demo2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
 </head>
-<body>
-    <h4>You just deleted the Micro content! </h4>
+<body class="bg-study">
 
-    <p>You deleted the <strong>'{{ micro_content.title }}'</strong> micro content.</p>
-
-    <p><a href="{% url 'micro_content_manager:micro_content_search' 1 %}">Back to search page</a></p>
+	<div class="body">
+        <div class="sky-form">
+            <div class="white">
+                <fieldset>
+                    <div class="wrapper">
+                        <div class="row">
+                            <section>
+                                <p style="font-size: 18px!important;">You deleted the <strong>'{{ micro_content.title }}'</strong> micro content.</p>
+                            </section>
+                        </div>
+                        <div class="row">
+                            <div class="col span4">
+                                <section>
+                                    <a href="{% url 'micro_content_manager:micro_content_search' 1 %}" class="button" style="margin-left: 0px!important; color: white!important;">Back to search page</a>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

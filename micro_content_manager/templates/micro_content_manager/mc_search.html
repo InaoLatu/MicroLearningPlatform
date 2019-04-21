@@ -64,21 +64,17 @@
                                      {% endif %}
                                       {% csrf_token %}
                                       <input type="hidden" name="tab" value="{{ tab }}">
-                                      <input type="text" name="search" class="searchTerm" placeholder="Search by tags">
+                                      <input type="text" name="search" class="searchTerm" placeholder="Search by title or tags...">
                                       <button type="submit" class="searchButton">
                                         <i class="fa fa-search"><img src='{% static 'images/search.png' %}' width="20px" height="17px" style="color: white;"></i>
                                      </button>
-
-
                                   </form>
-
                               </div>
                           </div>
                     </div>
                     <br><br><br>
                 </fieldset>
                 <fieldset>
-
                                   <div class="limiter">
                                       {% if tab == 1 %}
                                             <h2><strong>My micro contents</strong></h2>
@@ -116,25 +112,28 @@
                                                             {% for id, info in list_result.items %}
                                                                  {% if tab == 1 and user.username != info.1 %}
                                                                  {% else  %}
-                                                                    <tr class="row100 body">
+                                                                         {% if tab == 2 and info.3 == "no" %}
+                                                                         {% else %}
+                                                                                <tr class="row100 body">
+                                                                                <td class="cell100 column1"><a href="{% url 'micro_content_manager:micro_content_data' id%}"> {{ info.0}}</a></td>
+                                                                                <td class="cell100 column2">{{ info.1 }}</td>
 
+                                                                                {% if user.username == info.1 %}
+                                                                                     <td class="cell100 column3" style="margin-right: 30px;">
+                                                                                         <a class="button" href="{% url 'micro_content_manager:edit' id %}" style="margin-right:30px;">Edit</a>
+                                                                                         <a class="button" href="{% url 'micro_content_manager:delete' id %}" style=" background-color: red;">Delete</a>
+                                                                                         <a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}" style=" background-color: green;">Try it!</a>
 
-                                                                    <td class="cell100 column1"><a href="{% url 'micro_content_manager:micro_content_data' id%}"> {{ info.0}}</a></td>
-                                                                    <td class="cell100 column2">{{ info.1 }}</td>
-
-                                                                    {% if user.username == info.1 %}
-                                                                         <td class="cell100 column3" style="margin-right: 30px;">
-                                                                             <a class="button" href="{% url 'micro_content_manager:edit' id %}" style="margin-right:30px;">Edit</a>
-                                                                             <a class="button" href="{% url 'micro_content_manager:delete' id %}" style=" background-color: red;">Delete</a>
-                                                                             <a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}" style=" background-color: green;">Try it!</a>
-
-                                                                         </td>
-                                                                    {% else %}
-                                                                         <td class="cell100 column3">
-                                                                             <a class="button" href="{% url 'micro_content_manager:copy' id %}" style="margin-right: 50px;">Copy</a>
-                                                                             <a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}" style="margin-right: 50px; background-color: green;">Try it!</a>
-                                                                         </td>
-                                                                    {% endif %}
+                                                                                     </td>
+                                                                                {% else %}
+                                                                                     <td class="cell100 column3">
+                                                                                         {% if info.2 == "yes" %}
+                                                                                             <a class="button" href="{% url 'micro_content_manager:copy' id %}" style="margin-right: 50px;">Copy</a>
+                                                                                         {% endif %}
+                                                                                         <a class="button" href="{% url 'micro_content_manager:do_the_micro_content' id%}" style="margin-right: 50px; background-color: green;">Try it!</a>
+                                                                                     </td>
+                                                                                {% endif %}
+                                                                            {% endif %}
                                                                  {% endif %}
                                                                 </tr>
                                                                 {% empty %}
