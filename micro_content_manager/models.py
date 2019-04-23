@@ -18,21 +18,30 @@ UPLOAD_FORM = (
 
 
 class Video(models.Model):
+    name = models.CharField(max_length=500)
     url = models.URLField()
     video_upload_form = models.CharField(
         choices=UPLOAD_FORM,
-        default='FROM EXISTING FILE'
+        default='FROM EXISTING FILE',
+        max_length=50,
     )
+    videoFile = models.FileField()
+
+
+    def __str__(self):
+        return self.name + ": " + str(self.videoFile)
 
     @staticmethod
     def create(request, number):
-        return Video(Video.buildURL(request, number), request.POST['video_upload_form'+str(number)])
+        return Video(request.POST['videoName1'], Video.buildURL(request, number), request.POST['video_upload_form'+str(number)], request.FILES['videoFile1'])
 
 
-    def __init__(self, url, video_format, video_upload_form):
+    def __init__(self, name, url, video_upload_form, videoFile):
         super(Video, self).__init__()
+        self.name = name
         self.url = url
         self.video_upload_form = video_upload_form
+        self.videoFile = videoFile
 
     def toDict(self):
         return model_to_dict(self, fields=['url', 'video_upload_form'])
@@ -44,11 +53,12 @@ class Video(models.Model):
             idYoutubeVideo = videoURL.split("v=", 1)[1]
             videoURL = "http://www.youtube.com/embed/"+idYoutubeVideo
 
+        if request.POST['video_upload_form' + str(number)] == "from_existing_file":
+            videoURL = request.POST['url1']
+
 
         return videoURL
 
-    class Meta:
-        abstract = True
 
 
 class Choice(models.Model):
@@ -175,7 +185,9 @@ class MicroLearningContent(models.Model):
         i = 1
         while True:
             if 'videoURL' + str(i) in request.POST:
-                videos.append(Video.create(request, i))
+                video = Video.create(request, i)
+                video.save()
+                videos.append(video)
                 i += 1
             else:
                 break

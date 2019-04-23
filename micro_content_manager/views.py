@@ -7,7 +7,7 @@ from pymongo import MongoClient
 from tagging.models import Tag
 
 from micro_content_manager.forms import MicroContentEditForm
-from micro_content_manager.models import MicroLearningContent, Question, Choice
+from micro_content_manager.models import MicroLearningContent, Question, Choice, Video
 from micro_content_manager.models import Tag as MicroContentTag
 from django.http import Http404, JsonResponse, HttpResponseBadRequest, HttpResponse, HttpResponseRedirect
 from django.utils.datastructures import MultiValueDictKeyError
@@ -166,8 +166,7 @@ class MicroContentEditView(generic.FormView):
         Tag.objects.update_tags(content, None)
         Tag.objects.update_tags(content, tags)
 
-        return render(self.request, 'micro_content_manager/update.html', {"id": self.request.POST['id'],
-                                                                            "video_format": self.request.POST['videoFormat']})
+        return render(self.request, 'micro_content_manager/update.html', {"id": self.request.POST['id']})
 
 
 class MicroContentCopyView(generic.TemplateView):
@@ -205,10 +204,8 @@ class StoreView(generic.TemplateView):
     template_name = 'micro_content_manager/store.html'
 
     def post(self, request, *args, **kwargs):
-        try:
-            content = MicroLearningContent.create(request)
-        except MultiValueDictKeyError:
-            return HttpResponseBadRequest("Error 400. Bad request.")
+
+        content = MicroLearningContent.create(request)
 
         content.save()
         tags = request.POST['mc_tags']
@@ -248,8 +245,7 @@ class StoreView(generic.TemplateView):
 
         Tag.objects.update_tags(content, tags)
 
-        url = 'http://' + request.META['SERVER_NAME'] + '/micro_content_manager/json?content=' + str(content.id)
-        return render(request, 'micro_content_manager/store.html', {'id': content.id, 'url': url})
+        return render(request, 'micro_content_manager/store.html')
 
 
 def update(request, **kwargs):
@@ -282,18 +278,15 @@ def update(request, **kwargs):
 
             collection.update_one({"id": id}, {"$set": {
                 "videos.0.url": request.POST['videoURL1'],
-                "videos.0.video_format": request.POST['videoFormat1'],
                 "videos.0.video_upload_form": request.POST['video_upload_form1'],
 
                 "videos.1.url": request.POST['videoURL2'],
-                "videos.1.video_format": request.POST['videoFormat2'],
                 "videos.1.video_upload_form": request.POST['video_upload_form2']
                 }
             })
         else:
             collection.update_one({"id": id}, {"$set": {
                 "videos.0.url": request.POST['videoURL1'],
-                "videos.0.video_format": request.POST['videoFormat1'],
                 "videos.0.video_upload_form": request.POST['video_upload_form1']
             }})
 
@@ -334,8 +327,20 @@ def update(request, **kwargs):
         return render(request, 'micro_content_manager/update.html', {"id": request.POST['id'], "title": request.POST['title']})
 
 
-def test(request):
-    return render(request, 'micro_content_manager/test.html')
+class TestView(generic.TemplateView):
+
+
+    def get(self, request, *args, **kwargs):
+         return render(request, 'micro_content_manager/test.html', {"videoFile": "videos/chest.webm"})
+
+    def post(self, ab):
+        video = Video.create(self.request, 1)
+        video.save()
+
+        return render(self.request, 'micro_content_manager/test.html', {"url": self.request.POST['url1']})
+
+
+
 
 
 

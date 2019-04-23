@@ -5,10 +5,34 @@
     <title>Test</title>
 </head>
 <body>
-    <h1>Testing</h1>
-    {{ arr }}
-    {% for l in arr %}
-        {{ l.0 }}
-    {% endfor %}
+
+
+<h1>Video Uploader</h1>
+<form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+         Select a file: <input id="videoFile1" type="file" name="videoFile1">
+        <section>Name:&nbsp;<input name="videoName1"></section>
+        <section>
+                            <p>Upload form:
+                                <select name="video_upload_form1">
+                                    <option value="from_existing_file" selected>From existing file</option>
+                                    <option value="link_from_youtube">Link from YouTube</option>
+                                    <option value="external_repository">From external repository</option>
+                                </select>
+                            </p>
+                        </section>
+                         <section><span>URL:&nbsp;<input name="videoURL1" type="url"></span></section>
+
+        <input type="hidden" name="url1" id="url1">
+        <input type="submit" value="Upload"/>
+</form>
+
+<br><br>
+<video width='400' controls>
+    <source src='{{ url }}' type='video/webm'>
+    Your browser does not support the video tag.
+</video>
+<br><br>
+</p>
 </body>
 </html>

@@ -84,8 +84,9 @@
                      document.getElementById("deleteq"+id).addEventListener("click", deleteQuestion, false);
             }
 
-         function storeURL() {
-             document.getElementById("stURL").value = document.getElementById("chooseFile").value;
+
+         function applyURL(numberVideo) {
+                var upload = document.getElementById("video_upload_form"+numberVideo).value
          }
 
         function applyPosition(numberQuestion) {
@@ -98,10 +99,10 @@
 
     <div class="body">
         <h1>Micro-learning contents generator</h1>
-      <form action="{% url 'micro_content_manager:store' nQuestions %}" method="post" class="sky-form">
+      <form action="{% url 'micro_content_manager:store' nQuestions %}" method="post" class="sky-form" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="white">
-                <h2>Content</h2>
+                <h2>Micro-content</h2>
                 <fieldset>
                     <section><p><label for="title">Title: <input type="text" placeholder="Title" name="title"></label></p></section>
                     <section><p>Tags: <input type="text" name="mc_tags">
@@ -114,15 +115,18 @@
                     <h2>Videos</h2>
                     {% for v in videos %}
                         <section><h4>Video {{ forloop.counter }}</h4></section>
-                        <section><span>URL:&nbsp;<input name="videoURL{{ forloop.counter }}" type="url"></span></section>
+                        <section>Name: <input type="text" name="videoName{{ forloop.counter }}"></section>
                         <section>
-                        <p>Upload form:
-                            <select name="video_upload_form{{ forloop.counter }}">
-                                <option value="from_existing_file" selected>From existing file</option>
-                                <option value="link_from_youtube">Link from YouTube</option>
-                                <option value="external_repository">From external repository</option>
-                            </select>
-                        </p></section>
+                            <p>Upload form:
+                                <select name="video_upload_form{{ forloop.counter }}" id="video_upload_form{{ forloop }}" onchange="applyURL({{ forloop.counter }})">
+                                    <option value="from_existing_file" selected>From existing file</option>
+                                    <option value="link_from_youtube">Link from YouTube</option>
+                                </select>
+                            </p>
+                        </section>
+                        <section><input required name="videoFile{{ forloop.counter }}" id="videoFile{{ forloop.counter }}" type="file" accept="video/*"/></section>
+                        <section><span>YouTube URL:&nbsp;<input name="videoURL{{ forloop.counter }}" type="url"></span></section>
+                        <input type="hidden" name="url{{ forloop.counter }}" id="url{{ forloop.counter }}">
                     {% endfor %}
                 </fieldset>
 
@@ -206,6 +210,16 @@
 
 
 <script>
+    (function localFileVideoPlayerInit(win) {
+    var URL = win.URL || win.webkitURL,
+        playSelectedFile = function playSelectedFileInit(event) {
+            var file = this.files[0];
+            var url = document.querySelector('#url1');
+            url.value = URL.createObjectURL(file);
+        },
+        inputNode = document.querySelector('#videoFile1');
+        inputNode.addEventListener('change', playSelectedFile, false);
+}(window));
 
 
 </script>

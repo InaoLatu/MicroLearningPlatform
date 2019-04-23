@@ -51,6 +51,9 @@
 
 
 
+
+
+
 </script>
     <div class="body" style="max-width: 1000px!important;">
         <h2>{{ micro_content.title }}</h2>
@@ -68,7 +71,7 @@
             <fieldset>
                 <div>
                     {% for v in micro_content.videos %}
-                      <video width="300" height="160" src="{{ v.url }}"></video>
+                      <video width="700" height="440" id="video{{ forloop.counter }}" src="{{ MEDIA_URL }}{{ v.videoFile }}" controls></video>
                     {% endfor%}
                 </div>
 
