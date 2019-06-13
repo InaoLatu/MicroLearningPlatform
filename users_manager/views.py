@@ -19,7 +19,6 @@ from django.contrib.auth import (
     authenticate)
 
 from pymongo import MongoClient
-from tagging.models import TaggedItem
 from MicroLearningPlatform import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
@@ -49,10 +48,7 @@ class HomeView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, 'users_manager/user_page.html')
 
-    def post(self, request):
-        tags = self.request.POST['search']
-        micro_contents_searched = TaggedItem.objects.get_by_model(MicroLearningContent, tags)
-        return render(self.request, 'users_manager/user_page.html', {"micro_contents_searched": micro_contents_searched})
+
 
 
 class UserDataView(TemplateView):
@@ -303,8 +299,6 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        # return redirect('home')
-
         current_site = get_current_site(request)
         mail_subject = 'Account in MicroLearning Platform already activated'
         message = render_to_string('users_manager/user_link_confirmation.html', {

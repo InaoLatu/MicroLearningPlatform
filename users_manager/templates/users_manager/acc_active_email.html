@@ -5,5 +5,6 @@ Please click on the link to confirm the registration of the new user:
         First name: {{ user.first_name }}
         Last name: {{ user.last_name }}
         Email: {{ user.email }}
-http://{{ domain }}{% url 'users_manager:activate' uidb64=uid token=token %}
+
+You can activate the account by clicking on this link: http://{{ domain }}{% url 'users_manager:activate' uidb64=uid token=token %}
 {% endautoescape %}

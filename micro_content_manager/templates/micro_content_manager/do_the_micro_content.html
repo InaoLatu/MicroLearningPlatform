@@ -33,10 +33,7 @@
         var sel = document.querySelectorAll(".sel");
         var rad = document.querySelectorAll(".rad");
         var text = document.querySelectorAll(".option");
-
-
         for (var i=0; i<{{ micro_content.questions.count }}; i++) {
-
             for (var z=0; z<3; z++) {
                if(text[z+3*i].innerHTML == sel[i].innerHTML) {
                    rad[z+3*i].checked = true;
@@ -47,12 +44,6 @@
                 sel[u].remove();
         }
     }
-
-
-
-
-
-
 
 </script>
     <div class="body" style="max-width: 1000px!important;">

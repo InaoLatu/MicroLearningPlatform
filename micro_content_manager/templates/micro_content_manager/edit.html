@@ -22,12 +22,10 @@
                       }
          });
          function deleteQuestion(num) {
-
               var id = num.target.id;
               id = id.toString();
               i =  id[7];
               $("#q"+i).replaceWith("<span> </span>");
-
          }
           function addQuestion() {
                      $("#addQuestion-container h5").removeClass("animated bounce");

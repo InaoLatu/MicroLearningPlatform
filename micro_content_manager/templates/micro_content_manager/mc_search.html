@@ -17,40 +17,49 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}" >
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="{% static 'util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'searchBar.css' %}">
+
+
+    <style>
+        .button {
+            font-weight: bold!important;
+        }
+        th {
+            font-weight: bold!important;
+        }
+    </style>
 
 </head>
 <body class="bg-study">
 
     <div class="body">
-     <h1>Micro contents search </h1>
+     <h1>Micro content search </h1>
 
         <div class="sky-form">
             <div class="white">
                 <fieldset>
                     <div class="wrapper">
                         <div class="row">
-                            <p><strong>Search in: </strong> </p>
+                            <p style="font-weight: bold;font-size: 20px;"><strong>Search in: </strong> </p>
                         </div>
                           <div class="row">
                               <div>
                                          <div class="col span4" >
-                                            <a  href="{% url 'micro_content_manager:micro_content_search' 1 %}" class="button" style="margin-left: 0px!important; color: white!important;">My Micro Contents</a>
+                                            <a  href="{% url 'micro_content_manager:micro_content_search' 1 %}" class="button" style="margin-left: 0px!important; color: white!important;">My Micro Content</a>
                                         </div>
                                         <div class="col span4">
-                                            <a href="{% url 'micro_content_manager:micro_content_search' 2 %}" class="button"  style="margin-left: 0px!important; color: white!important;">All Micro Contents</a>
+                                            <a href="{% url 'micro_content_manager:micro_content_search' 2 %}" class="button"  style="margin-left: 0px!important; color: white!important;">All Micro Content</a>
                                         </div>
                           </div>
                           </div>
                             <br><br>
                             <div class="row">
                                 <section>
-                                        <p><strong>Search parameters: </strong></p>
+                                        <p style="font-weight: bold;font-size: 20px;"><strong>Search parameters: </strong></p>
                                 </section>
                             </div>
                           <div class="row">
@@ -64,7 +73,7 @@
                                      {% endif %}
                                       {% csrf_token %}
                                       <input type="hidden" name="tab" value="{{ tab }}">
-                                      <input type="text" name="search" class="searchTerm" placeholder="Search by title or tags...">
+                                      <input style="font-size: 20px;" type="text" name="search" class="searchTerm" placeholder="Search by title or tags...">
                                       <button type="submit" class="searchButton">
                                         <i class="fa fa-search"><img src='{% static 'images/search.png' %}' width="20px" height="17px" style="color: white;"></i>
                                      </button>
@@ -77,9 +86,9 @@
                 <fieldset>
                                   <div class="limiter">
                                       {% if tab == 1 %}
-                                            <h2><strong>My micro contents</strong></h2>
+                                            <h2><strong>My micro content</strong></h2>
                                       {% else %}
-                                            <h2><strong>All micro contents</strong></h2>
+                                            <h2><strong>All micro content</strong></h2>
                                       {% endif %}
                                         <br>
                                       {% if search %}
@@ -103,20 +112,17 @@
                                                             </thead>
                                                         </table>
                                                     </div>
-
                                                     <div class="table100-body js-pscroll">
                                                         <table>
                                                             <tbody>
-
-
                                                             {% for id, info in list_result.items %}
                                                                  {% if tab == 1 and user.username != info.1 %}
                                                                  {% else  %}
                                                                          {% if tab == 2 and info.3 == "no" %}
                                                                          {% else %}
                                                                                 <tr class="row100 body">
-                                                                                <td class="cell100 column1"><a href="{% url 'micro_content_manager:micro_content_data' id%}"> {{ info.0}}</a></td>
-                                                                                <td class="cell100 column2">{{ info.1 }}</td>
+                                                                                <td class="cell100 column1"><a style="font-weight: bold;font-size: 20px;" href="{% url 'micro_content_manager:micro_content_data' id%}"> {{ info.0}}</a></td>
+                                                                                <td class="cell100 column2" style="font-weight: bold;font-size: 20px;">{{ info.1 }}</td>
 
                                                                                 {% if user.username == info.1 %}
                                                                                      <td class="cell100 column3" style="margin-right: 30px;">
@@ -141,10 +147,6 @@
                                                                         <td>There is no micro-learning content with those search parameters</td>
                                                                     </tr>
                                                                 {% endfor %}
-
-
-
-
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -153,12 +155,6 @@
                                             </div>
                                         </div>
                                   </div>
-
-
-
-
-
-
                 </fieldset>
             </div>
         </div>

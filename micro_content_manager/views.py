@@ -51,6 +51,14 @@ class DoTheMicroContentView(generic.DetailView):
         return render(request, 'micro_content_manager/do_the_micro_content.html', {"micro_content": micro_content})
 
 
+def json(request):
+    try:
+        content = MicroLearningContent.objects.get(pk=request.GET['content'])
+        return JsonResponse(content.toDict())
+    except (MicroLearningContent.DoesNotExist, MultiValueDictKeyError):
+        raise Http404()
+
+
 def vote(request):
     micro_content = get_object_or_404(MicroLearningContent, pk=int(request.POST['mc_id']))
     correct_answers = 0
@@ -182,7 +190,6 @@ class MicroContentCopyView(generic.TemplateView):
         return render(request, 'micro_content_manager/copy.html', {"micro_content": micro_content})
 
 
-
 class MicroContentDeleteView(generic.TemplateView):
     template_name = 'micro_content_manager/delete.html'
 
@@ -197,7 +204,7 @@ class MicroContentDeleteView(generic.TemplateView):
 
 class RecordVideoView(generic.TemplateView):
     def get(self, request, *args, **kwargs):
-        return render(request, 'micro_content_manager/rec.html')
+        return render(request, 'micro_content_manager/rtc.html')
 
 
 class StoreView(generic.TemplateView):
@@ -328,8 +335,6 @@ def update(request, **kwargs):
 
 
 class TestView(generic.TemplateView):
-
-
     def get(self, request, *args, **kwargs):
          return render(request, 'micro_content_manager/test.html', {"videoFile": "videos/chest.webm"})
 

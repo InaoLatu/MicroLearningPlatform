@@ -1,7 +1,6 @@
 from django.utils import timezone
 from djongo import models
 from django.forms.models import model_to_dict
-from tagging.registry import register
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
@@ -15,7 +14,6 @@ UPLOAD_FORM = (
     ('DOWNLOAD_FROM_YOUTUBE', 'DOWNLOAD FROM YOUTUBE'),
     ('EXTERNAL_REPOSITORY', 'EXTERNAL REPOSITORY'),
 )
-
 
 class Video(models.Model):
     name = models.CharField(max_length=500)
@@ -56,10 +54,7 @@ class Video(models.Model):
         if request.POST['video_upload_form' + str(number)] == "from_existing_file":
             videoURL = request.POST['url1']
 
-
         return videoURL
-
-
 
 class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
@@ -134,13 +129,52 @@ class MetaData(models.Model):
         abstract = True
 
 
+class Quest(models.Model):
+    question = models.TextField()
+    choices = models.ListField()
+    answer = models.TextField()
+    explanation = models.TextField()
+
+    def __init__(self, question, choices, answer, explanation):
+        super(Quest, self).__init__()
+        self.question = question
+        self.choices = choices
+        self.answer = answer
+        self.explanation = explanation
+
+    @staticmethod
+    def create(request, number):
+        return Quest(request.POST['question' + str(number)], Quest.getChoices(request, number),
+                        request.POST[request.POST['answer' + str(number)]], request.POST['explanation' + str(number)])
+
+    @staticmethod
+    def getChoices(request, number):
+        choices = []
+        j = 1
+        while True:
+            if 'choice' + str(number) + "_" + str(j) in request.POST:
+                choices.append(request.POST['choice' + str(number) + "_" + str(j)])
+                j += 1
+            else:
+                break
+        return choices
+
+    def toDict(self):
+        return model_to_dict(self, fields=['question', 'choices', 'answer', 'explanation'])
+
+    class Meta:
+        abstract = True
+
 
 class MicroLearningContent(models.Model):
     mc_tags = models.ManyToManyField(Tag)
     questions = models.ManyToManyField(Question)
     title = models.CharField(max_length=100)
+    tags = models.CharField(max_length=100)
     text = models.ListField()
-
+    quiz = models.ArrayModelField(
+        model_container=Quest
+    )
     videos = models.ArrayModelField(
         model_container=Video
     )
@@ -151,11 +185,13 @@ class MicroLearningContent(models.Model):
     visible = models.CharField(max_length=4)
     allow_copy = models.CharField(max_length=4)
 
-    def __init__(self, id, title, text, videos, meta_data, visible, allow_copy):
+    def __init__(self, id, title, tags, text, quiz, videos, meta_data, visible, allow_copy):
         super(MicroLearningContent, self).__init__()
         self.id = id
         self.title = title
+        self.tags = tags
         self.text = text
+        self.quiz = quiz
         self.videos = videos
         self.meta_data = meta_data
         self.visible = visible
@@ -164,7 +200,7 @@ class MicroLearningContent(models.Model):
 
     @staticmethod
     def create(request):
-        return MicroLearningContent(None, request.POST['title'], MicroLearningContent.getText(request),
+        return MicroLearningContent(None, request.POST['title'],  request.POST['mc_tags'],  MicroLearningContent.getText(request), MicroLearningContent.getQuiz(request),
                                     MicroLearningContent.getVideos(request), MetaData.create(request), request.POST['visible'], request.POST['allow_copy'])
 
     @staticmethod
@@ -193,15 +229,27 @@ class MicroLearningContent(models.Model):
                 break
         return videos
 
+    @staticmethod
+    def getQuiz(request):
+        quiz = []
+        i = 1
+        while True:
+            if 'question' + str(i) in request.POST:
+                quiz.append(Quest.create(request, i))
+                i += 1
+            else:
+                break
+        return quiz
+
     def toDict(self):
         dict = model_to_dict(self, fields=['title', 'text'])
         dict['video'] = self.videos.toDict()
         dict['metadata'] = self.meta_data.toDict()
-
+        dict['quiz'] = []
+        for q in self.quiz:
+            dict['quiz'].append(q.toDict())
         return dict
 
     def get_mc_tags(self):
         return self.mc_tags
 
-
-register(MicroLearningContent)

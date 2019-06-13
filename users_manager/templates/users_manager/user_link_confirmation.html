@@ -1,9 +1,9 @@
 {% autoescape off %}
-Hi administrator,
+Hi {{ user.first_name }},
 Your account in the MicroLearning Platform is already activated:
         Username: {{ user.username }}
         First name: {{ user.first_name }}
         Last name: {{ user.last_name }}
 
-You can now login in: http://{{ domain }}{% url 'users_manager:logIn'%}
+You can now login at: http://{{ domain }}{% url 'users_manager:logIn'%}
 {% endautoescape %}
