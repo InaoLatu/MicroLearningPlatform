@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f7406ea-5c76-44f9-b058-ab529d3762a2" name="Default Changelist" comment="In production configurations.">
-      <change afterPath="$PROJECT_DIR$/MicroLearningPlatform/settings_production.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/rtc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="2f7406ea-5c76-44f9-b058-ab529d3762a2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroLearningPlatform/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/MicroLearningPlatform/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MicroLearningPlatform/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/MicroLearningPlatform/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/do_the_micro_content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/rec.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/rec.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MicroLearningPlatform/settings_production.py" beforeDir="false" afterPath="$PROJECT_DIR$/MicroLearningPlatform/settings_production.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/edit_mc.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/edit_mc.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/1_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/2_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/3_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/desk-notebook-writing-work-table-pen-812199-pxhere.com (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/icons/book.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/icons/books.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/images/icons/home.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/micro_content_manager/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/micro_content_manager/js/micro_learning.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/searchBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/searchBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/static/util.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/util.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/micro_content_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/acc_active_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/acc_active_email.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/user_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/user_data.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/user_link_confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/user_link_confirmation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/static/demo.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/demo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/static/demo2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/demo2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/static/images/background_base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/static/images/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/static/sky-forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/sky-forms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/static/user_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/user_page.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,18 +40,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2925">
-              <caret line="197" column="36" selection-start-line="197" selection-start-column="36" selection-end-line="197" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MicroLearningPlatform/settings.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -67,7 +58,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manage.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -79,61 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MicroLearningPlatform/wsgi.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="13" column="90" selection-start-line="13" selection-start-column="90" selection-end-line="13" selection-end-column="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MicroLearningPlatform/settings_production.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-304">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/conf/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3015">
-              <caret line="214" column="39" selection-start-line="214" selection-end-line="215" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1605">
-              <caret line="107" column="70" selection-start-line="107" selection-start-column="63" selection-end-line="107" selection-end-column="70" />
+            <state relative-caret-position="330">
+              <caret line="22" column="15" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -153,8 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>h1</find>
-      <find>chk-timeSlice</find>
       <find>chk-fix</find>
       <find>record</find>
       <find>upload</find>
@@ -183,6 +122,8 @@
       <find>settings</find>
       <find>SE</find>
       <find>X_FRAME_OPTIONS</find>
+      <find>staticfiles</find>
+      <find>MONGODB</find>
     </findStrings>
     <replaceStrings>
       <replace>micro_conteçnt_manager</replace>
@@ -234,18 +175,18 @@
         <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_data.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/rec.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/rtc.html" />
-        <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/mc_search.html" />
         <option value="$PROJECT_DIR$/users_manager/views.py" />
         <option value="$PROJECT_DIR$/users_manager/urls.py" />
-        <option value="$PROJECT_DIR$/micro_content_manager/views.py" />
         <option value="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" />
         <option value="$PROJECT_DIR$/micro_content_manager/models.py" />
-        <option value="$PROJECT_DIR$/MicroLearningPlatform/settings.py" />
         <option value="$PROJECT_DIR$/MicroLearningPlatform/settingsProduction.py" />
-        <option value="$PROJECT_DIR$/MicroLearningPlatform/settings_production.py" />
         <option value="$PROJECT_DIR$/MicroLearningPlatform/wsgi.py" />
         <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/MicroLearningPlatform/settings.py" />
+        <option value="$PROJECT_DIR$/micro_content_manager/views.py" />
+        <option value="$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html" />
+        <option value="$PROJECT_DIR$/MicroLearningPlatform/settings_production.py" />
       </list>
     </option>
   </component>
@@ -277,7 +218,7 @@
             <path>
               <item name="MicroLearningPlatform" type="b2602c69:ProjectViewProjectNode" />
               <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="MicroLearningPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -356,10 +297,10 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Django server.MicroLearningPlatform" />
       <item itemvalue="JavaScript Debug.ideas.html" />
       <item itemvalue="JavaScript Debug.login.html" />
       <item itemvalue="JavaScript Debug.rec.html" />
-      <item itemvalue="Django server.MicroLearningPlatform" />
     </list>
     <recent_temporary>
       <list>
@@ -433,7 +374,7 @@
       <workItem from="1560267593705" duration="6970000" />
       <workItem from="1560308564756" duration="1747000" />
       <workItem from="1560353227061" duration="5306000" />
-      <workItem from="1560378288069" duration="5099000" />
+      <workItem from="1560378288069" duration="9312000" />
     </task>
     <task id="LOCAL-00001" summary="First.">
       <created>1552258613764</created>
@@ -603,11 +544,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555988499178</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="In production configurations.">
+      <created>1560385990096</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1560385990096</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="632917000" />
+    <option name="totallyTimeSpent" value="637130000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -629,15 +577,15 @@
       <window_info anchor="bottom" id="Database Changes" order="2" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.33333334" />
       <window_info anchor="bottom" id="Python Console" order="4" sideWeight="0.4997236" weight="0.25496343" />
-      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.498618" visible="true" weight="0.44200626" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5002764" side_tool="true" weight="0.36259145" />
+      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49861956" weight="0.44200626" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50138044" side_tool="true" weight="0.42319748" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3291536" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.3991276" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.33019853" />
-      <window_info anchor="bottom" id="Run" order="13" sideWeight="0.498618" weight="0.24451411" />
+      <window_info anchor="bottom" id="Run" order="13" sideWeight="0.498618" visible="true" weight="0.24451411" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -645,23 +593,23 @@
       <window_info anchor="right" id="SciView" order="4" weight="0.32946378" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49876544" visible="true" weight="0.18774158" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49876544" visible="true" weight="0.19436775" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5012346" side_tool="true" weight="0.16030957" />
       <window_info anchor="bottom" id="Docker" order="0" />
-      <window_info active="true" anchor="bottom" id="manage.py@MicroLearningPlatform" order="1" visible="true" weight="0.5161964" />
+      <window_info anchor="bottom" id="manage.py@MicroLearningPlatform" order="1" weight="0.5151515" />
       <window_info anchor="bottom" id="Database Changes" order="2" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.33333334" />
       <window_info anchor="bottom" id="Python Console" order="4" sideWeight="0.4997236" weight="0.25496343" />
-      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.498618" weight="0.38662487" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5002764" side_tool="true" weight="0.36259145" />
+      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49861956" weight="0.44200626" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50138044" side_tool="true" weight="0.42319748" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3291536" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.3991276" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" weight="0.10449321" />
-      <window_info anchor="bottom" id="Run" order="13" sideWeight="0.498618" weight="0.24451411" />
+      <window_info anchor="bottom" id="TODO" order="12" weight="0.33019853" />
+      <window_info anchor="bottom" id="Run" order="13" sideWeight="0.498618" visible="true" weight="0.24451411" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -877,13 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="83" selection-start-line="9" selection-start-column="83" selection-end-line="9" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/rec.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="603">
@@ -969,17 +910,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MicroLearningPlatform/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/micro_content_manager/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/conf/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -992,34 +933,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/views.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/conf/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3015">
-          <caret line="214" column="39" selection-start-line="214" selection-end-line="215" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="107" column="70" selection-start-line="107" selection-start-column="63" selection-end-line="107" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MicroLearningPlatform/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="641">
+          <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MicroLearningPlatform/settings_production.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-304">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="431">
+          <caret line="155" column="56" selection-start-line="155" selection-start-column="56" selection-end-line="155" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -1030,6 +954,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1200">
+          <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/micro_content_manager/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3985">
+          <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1037,6 +978,13 @@
           <folding>
             <element signature="e#22#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_manager/templates/users_manager/user_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="15" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="15" />
         </state>
       </provider>
     </entry>

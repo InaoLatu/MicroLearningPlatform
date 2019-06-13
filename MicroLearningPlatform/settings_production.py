@@ -23,7 +23,7 @@ with open('/home/inao/MicroLearningPlatform/secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -59,8 +59,7 @@ INSTALLED_APPS = [
 LOGIN_REDIRECT_URL = 'user_page'
 LOGOUT_REDIRECT_URL = 'login'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'micro_content_manager/static/videos')
-MEDIA_URL = "/static/videos/"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -156,7 +155,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, '/micro_content_manager/media')
+MEDIA_URL = "/media/"
 
 CORS_ORIGIN_ALLOW_ALL = True
