@@ -124,7 +124,7 @@
                                 </select>
                             </p>
                         </section>
-                        <section><input required name="videoFile{{ forloop.counter }}" id="videoFile{{ forloop.counter }}" type="file" accept="video/*"/></section>
+                        <section><input name="videoFile{{ forloop.counter }}" id="videoFile{{ forloop.counter }}" type="file" accept="video/*"/></section>
                         <section><span>YouTube URL:&nbsp;<input name="videoURL{{ forloop.counter }}" type="url"></span></section>
                         <input type="hidden" name="url{{ forloop.counter }}" id="url{{ forloop.counter }}">
                     {% endfor %}

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 import users_manager.views as users_manager_views
+import  micro_content_manager.views as mc_views
 
 urlpatterns = [
     path('micro_content_manager/', include('micro_content_manager.urls')),
@@ -9,4 +10,6 @@ urlpatterns = [
     path('', users_manager_views.LogInView.as_view(), name='login'),
     path('accounts/', include('users_manager.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('json', mc_views.json, name='json'),
+
 ]

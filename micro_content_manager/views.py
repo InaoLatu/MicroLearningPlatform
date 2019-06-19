@@ -20,7 +20,7 @@ NUMBER_VIDEOS = 1
 
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
-DB_NAME = 'authoring_tool'
+DB_NAME = 'tfg'
 COLLECTION_NAME = 'micro_content_manager_microlearningcontent'
 
 

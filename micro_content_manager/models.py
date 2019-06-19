@@ -31,8 +31,11 @@ class Video(models.Model):
 
     @staticmethod
     def create(request, number):
-        return Video(request.POST['videoName1'], Video.buildURL(request, number), request.POST['video_upload_form'+str(number)], request.FILES['videoFile1'])
-
+        if request.POST['video_upload_form' + str(number)] == "from_existing_file":
+         return Video(request.POST['videoName1'], Video.buildURL(request, number), request.POST['video_upload_form'+str(number)], request.FILES['videoFile1'])
+        else:
+            return Video(request.POST['videoName1'], Video.buildURL(request, number),
+                         request.POST['video_upload_form' + str(number)], None)
 
     def __init__(self, name, url, video_upload_form, videoFile):
         super(Video, self).__init__()
@@ -243,12 +246,15 @@ class MicroLearningContent(models.Model):
 
     def toDict(self):
         dict = model_to_dict(self, fields=['title', 'text'])
-        dict['video'] = self.videos.toDict()
-        dict['metadata'] = self.meta_data.toDict()
+        dict['meta_data'] = self.meta_data.toDict()
+        dict['videos'] = []
+        for v in self.quiz:
+            dict['videos'].append(v.toDict())
         dict['quiz'] = []
         for q in self.quiz:
             dict['quiz'].append(q.toDict())
         return dict
+
 
     def get_mc_tags(self):
         return self.mc_tags
