@@ -108,12 +108,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'ENFORCE_SCHEMA': True,
-        'NAME': 'tfg',
+        'NAME': '',
         'HOST': '127.0.0.1',
         'PORT': 27017,
-        'USER': 'inaoAdmin',
-        'PASSWORD': 'inao3555',
-        'AUTH_SOURCE': 'admin',
+        'USER': '',
+        'PASSWORD': '',
+        'AUTH_SOURCE': '',
         'AUTH_MECHANISM': 'SCRAM-SHA-1',
     }
 }
