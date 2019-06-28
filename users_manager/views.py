@@ -40,7 +40,7 @@ UserModel = get_user_model()
 
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
-DB_NAME = 'tfg'
+DB_NAME = 'authoring_tool'
 COLLECTION_NAME = 'auth_user'
 
 class HomeView(TemplateView):
