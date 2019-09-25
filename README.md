@@ -1,5 +1,5 @@
 # Repository and Web authoring tool for micro learning content
-Once the basis are defined, the aim of this project is to build a Repository and Web authoring
+The aim of this project is to build a Repository and Web authoring
 tool for micro learning content which allows the instructors to have an overall control over the
 micro learning content they create. That includes all the stages from the registration of the
 instructor in the platform to the creation and edition of every micro content of his own. In
