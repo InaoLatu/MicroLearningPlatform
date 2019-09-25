@@ -108,12 +108,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'ENFORCE_SCHEMA': True,
-        'NAME': '',
+        'NAME': 'AT',
         'HOST': '127.0.0.1',
         'PORT': 27017,
-        'USER': '',
-        'PASSWORD': '',
-        'AUTH_SOURCE': '',
+        'USER': 'inao',
+        'PASSWORD': 'microlearning',
+        'AUTH_SOURCE': 'admin',
         'AUTH_MECHANISM': 'SCRAM-SHA-1',
     }
 }

@@ -5,7 +5,6 @@
         margin-left: 500px;
     }
 
-   
 </style>
 <html lang="en">
 <head>
@@ -62,7 +61,11 @@
             <fieldset>
                 <div>
                     {% for v in micro_content.videos %}
-                      <video width="700" height="440" id="video{{ forloop.counter }}" src="{{ MEDIA_URL }}{{ v.videoFile }}" controls></video>
+                        {% if v.video_upload_form == "from_existing_file"%}
+                             <video width="700" height="440" id="video{{ forloop.counter }}" src="{{ MEDIA_URL }}{{ v.videoFile }}" controls></video>
+                        {% elif v.video_upload_form == "link_from_youtube" %}
+                            <iframe width="700" height="440" id="video{{ forloop.counter }}" src="{{ v.url }}"></iframe>
+                        {% endif %}
                     {% endfor%}
                 </div>
 
