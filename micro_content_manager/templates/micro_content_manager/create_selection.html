@@ -1,10 +1,9 @@
 {% load static %}
 <style>
-
     #guideline-container{
       -webkit-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.45);
--moz-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.45);
-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.45);
+        -moz-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.45);
+        box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.45);
     }
 </style>
 <!DOCTYPE html>
@@ -22,7 +21,7 @@ box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.45);
 <body class="bg-study">
  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script>
-         $(document).ready(function() {    //llamamos la a funcion ready() porque vamos a hacer referencia a etiquetas que estan declaradas posteriormente en el documento
+         $(document).ready(function() {    // Ready() is called because we are going to refer to tags which are declared later in the code.
              var options=document.querySelectorAll("#options-container h5");
                for (var i=0;i<options.length;i++) {
                     options[i].addEventListener("click",showMicroLearningContent,false);
@@ -74,7 +73,7 @@ box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.45);
                    break;
              }
            }
-           window.onload=init; //cuando carga la ventaja ejecutara la funcion indicada
+           window.onload=init; //Once the whole screens, init is called
         </script>
     <div class="body" style="max-width: 1800px!important;">
         <h1>Create Selection</h1>

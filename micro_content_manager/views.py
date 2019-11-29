@@ -20,7 +20,7 @@ NUMBER_VIDEOS = 1
 
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
-DB_NAME = 'tfg'
+DB_NAME = 'AT'
 COLLECTION_NAME = 'micro_content_manager_microlearningcontent'
 
 
@@ -94,10 +94,11 @@ class MicroContentInfoView(generic.DetailView):
         for tag in mc_t:
             mc_tags.append(str(tag))
         mc_text = micro_content.getText(self.request)
-        connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-        collection = connection[DB_NAME][COLLECTION_NAME]
+        # connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+        # collection = connection[DB_NAME][COLLECTION_NAME]
 
         return render(request, 'micro_content_manager/micro_content_info.html', {'micro_content': micro_content,
+                                                                                 'quiz': micro_content.quiz,
                                                                                  'mc_tags': mc_tags,
                                                                                  'number_tags': len(mc_tags),
                                                                                  'mc_text': mc_text,
@@ -108,10 +109,14 @@ class MicroContentSearchView(generic.DetailView):
     template_name = 'micro_content_manager/mc_search.html'
 
     def get(self, request, *args, **kwargs):
-        list = MicroLearningContent.objects.all()
+
+        connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+        collection = connection[DB_NAME][COLLECTION_NAME]
+        # list = MicroLearningContent.objects.all()
         list_result = {}
-        for mc in list:
-            list_result.update({mc.id: [mc.title, mc.meta_data.author, mc.allow_copy, mc.visible]})
+
+        for mc in collection.find():
+            list_result.update({mc["id"]: [mc["title"], mc["meta_data"]["author"], mc["allow_copy"], mc["visible"]]})
         return render(request, 'micro_content_manager/mc_search.html',
                       {"list_result": list_result, "tab": kwargs['tab']})
 
@@ -153,32 +158,35 @@ class MicroContentEditView(generic.FormView):
         mc_tags = ""
         for tag in mc_t:
             mc_tags = mc_tags + " " + str(tag)
+
         return render(request, 'micro_content_manager/edit.html', {"content": content,
+                                                                   "number_questions": len(content.quiz),
+                                                                   "quiz": content.quiz,
                                                                    "id": kwargs['pk'],
                                                                    "mc_tags": mc_tags})
 
-    def form_valid(self, form):
-        form = MicroContentEditForm(self.request.POST)
-        try:
-            MicroLearningContent.objects.get(pk=self.request.POST['id'])
-        except MicroLearningContent.DoesNotExist:
-            raise Http404
-        content = MicroLearningContent.objects.get(pk=self.request.POST['id'])
+    # def form_valid(self, form):
+    #     form = MicroContentEditForm(self.request.POST)
+    #     try:
+    #         MicroLearningContent.objects.get(pk=self.request.POST['id'])
+    #     except MicroLearningContent.DoesNotExist:
+    #         raise Http404
+    #     content = MicroLearningContent.objects.get(pk=self.request.POST['id'])
+    #
+    #     tags = self.request.POST['mc_tags']
+    #     tag_args = tags.split()
+    #     content.mc_tags.clear()
+    #     for tag in tag_args:
+    #         if MicroContentTag.objects.filter(name=tag).count() > 0:
+    #             content.mc_tags.add(MicroContentTag.objects.get(name=tag))
+    #         else:
+    #             content.mc_tags.add(MicroContentTag.objects.create(name=tag))
+    #
+    #     MicroLearningContent.objects.filter(id=self.request.POST['id']).update(title=self.request.POST['title'])
+    #     Tag.objects.update_tags(content, None)
+    #     Tag.objects.update_tags(content, tags)
 
-        tags = self.request.POST['mc_tags']
-        tag_args = tags.split()
-        content.mc_tags.clear()
-        for tag in tag_args:
-            if MicroContentTag.objects.filter(name=tag).count() > 0:
-                content.mc_tags.add(MicroContentTag.objects.get(name=tag))
-            else:
-                content.mc_tags.add(MicroContentTag.objects.create(name=tag))
-
-        MicroLearningContent.objects.filter(id=self.request.POST['id']).update(title=self.request.POST['title'])
-        Tag.objects.update_tags(content, None)
-        Tag.objects.update_tags(content, tags)
-
-        return render(self.request, 'micro_content_manager/update.html', {"id": self.request.POST['id']})
+        # return render(self.request, 'micro_content_manager/update.html', {"id": self.request.POST['id']})
 
 
 class MicroContentCopyView(generic.TemplateView):
@@ -279,13 +287,14 @@ def update(request, **kwargs):
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
     collection = connection[DB_NAME][COLLECTION_NAME]
     collection.update_one({"id": id}, {"$set": {"title": request.POST['title'],
+                                                "tags": tags,
                                                 "text": MicroLearningContent.getText(request),
                                                 "visible": request.POST['visible'],
                                                 "allow_copy": request.POST['allow_copy'],
                                                 "meta_data.title": request.POST['title'],
                                                 "meta_data.last_modification": timezone.now()
                                                 }})
-    if 'videoURL' + str(2) in request.POST:
+    if 'videoURL' + str(2) in request.POST:  # If two videos have been entered, they are both updated.
 
         collection.update_one({"id": id}, {"$set": {
             "videos.0.url": request.POST['videoURL1'],
@@ -295,7 +304,7 @@ def update(request, **kwargs):
             "videos.1.video_upload_form": request.POST['video_upload_form2']
         }
         })
-    else:
+    else:  # Just one video updated
         collection.update_one({"id": id}, {"$set": {
             "videos.0.url": request.POST['videoURL1'],
             "videos.0.video_upload_form": request.POST['video_upload_form1']
@@ -315,22 +324,32 @@ def update(request, **kwargs):
         except MultiValueDictKeyError:
             pass
 
-    sorted_list = sorted(list.items(), key=operator.itemgetter(1))
+    sorted_list = sorted(list.items(), key=operator.itemgetter(1))  # We sort the questions with the new order specified by the instructor
 
+    number_question = 0
     for qu in sorted_list:
         try:
-            index = int(qu[0][8])
+            index = int(qu[0][8])  # Get the index of each question to access to its fields
             question = request.POST[qu[0]]
             choices_text = Question.getChoices(request, index)
             answer = request.POST[request.POST['answer' + str(index)]]
             explanation = request.POST['explanation' + str(index)]
-            question = Question.objects.create(question=question, choices_text=choices_text, answer=answer,
-                                               explanation=explanation)
-            question.save()
-            for c in [1, 2, 3]:
-                question.choices.add(
-                    Choice.objects.create(choice_text=request.POST['choice' + str(index) + '_' + str(c)], votes=0))
-            content.questions.add(question)
+
+            collection.update_one({"id": id}, {"$set": {
+                "quiz." + str(number_question) + ".question": question,
+                "quiz." + str(number_question) + ".choices": choices_text,
+                "quiz." + str(number_question) + ".answer": answer,
+                "quiz." + str(number_question) + ".explanation": explanation,
+            }})
+            # question = Question.objects.create(question=question, choices_text=choices_text, answer=answer,
+            #                                    explanation=explanation)
+            # question.save()
+            # for c in [1, 2, 3]:
+            #     question.choices.add(
+            #         Choice.objects.create(choice_text=request.POST['choice' + str(index) + '_' + str(c)], votes=0))
+            # content.questions.add(question)
+
+            number_question += 1
         except MultiValueDictKeyError:
             pass
 

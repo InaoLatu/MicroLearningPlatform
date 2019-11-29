@@ -120,14 +120,11 @@
 	}
 
 	function correctQuiz(){
-
 		var questions = 5;
 		var mark = 0;
-
 		for(var i=0; i<questions; i++){
 			mark += correctQuestion(i);
 		}
-
 		if(isNaN(mark)){
 			document.getElementById("result").innerHTML = "You have to answer all the questions";
 		}else{
@@ -135,16 +132,13 @@
 			document.getElementById("result").innerHTML = "Your mark is: "+mark+"/"+questions;
 			//document.getElementById("submit").removeAttribute("hidden");
 		}
-
 	}
 
 	function correctQuestion(number){
 		var choices = document.getElementsByName("choice"+number);
 		var answer = document.getElementById("answer"+number).value;
 		var solution = document.getElementById("solution"+number);
-
 		for(var i=0; i<choices.length; i++){
-
 			if(choices[i].checked){
 				document.getElementById("explanation"+number).removeAttribute("hidden");
 				if(choices[i].value == answer){

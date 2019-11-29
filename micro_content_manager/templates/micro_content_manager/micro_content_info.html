@@ -16,9 +16,6 @@
 
 	</head>
 	<body class="bg-study">
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-			<script src="js/jquery.placeholder.min.js"></script>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
 		<div class="body body-s">
 			<form method="post" class="sky-form">
@@ -26,18 +23,18 @@
 				<header>Micro-content info<a id="id_back_button" class="button" onclick="window.history.back()" >Back</a></header>
 				    <fieldset>
                         <section>
-                            <span class="blue"> - Title: </span>{{ micro_content.title}}
+                            <span class="blue">Title: </span>{{ micro_content.title}}
                         </section>
 
                         <section>
-                            <span class="blue"> - Tags: </span>
+                            <span class="blue">Tags: </span>
                             {% for t in micro_content.mc_tags.all %}
                                <span > {{ t }} &nbsp; </span>
                             {% endfor %}
                         </section>
 
                         <section>
-                            <span class="blue"> - Text: </span>
+                            <span class="blue">Text: </span>
                             {% for text in micro_content.text %}
                                <span > {{ text }} </span> <br>
                             {% endfor %}
@@ -46,7 +43,7 @@
                     </fieldset>
                     <fieldset>
                         <section>
-                            <span class="blue"> - Videos: </span>
+                            <span class="blue">Videos: </span>
                               {% for v in micro_content.videos %}
                                    <li>Video {{ forloop.counter }}</li>
                                     <span class="blue"> - Url: </span> {{ v.url }} <br>
@@ -57,11 +54,11 @@
 
                     <fieldset>
                         <section>
-                               <span class="blue"> - Metadata: </span> <br>
-                               <span class="blue"> Author: </span>{{ micro_content.meta_data.author }} <br>
-                               <span class="blue">Publication date: </span>{{ micro_content.meta_data.pub_date }} <br>
-                               <span class="blue">Last modification: </span>{{ micro_content.meta_data.last_modification }} <br>
-                               <span class="blue">Creation type: </span>{{ micro_content.meta_data.creation_type }}
+                               <span class="blue">Metadata: </span> <br>
+                               <span class="blue"> - Author: </span>{{ micro_content.meta_data.author }} <br>
+                               <span class="blue"> - Publication date: </span>{{ micro_content.meta_data.pub_date }} <br>
+                               <span class="blue"> - Last modification: </span>{{ micro_content.meta_data.last_modification }} <br>
+                               <span class="blue"> - Creation type: </span>{{ micro_content.meta_data.creation_type }}
                         </section>
                     </fieldset>
 
@@ -72,14 +69,14 @@
                      <fieldset>
                         <section>
                             <span class="blue"> - Quiz: </span><br>
-                              {% for q in micro_content.questions.all %}
+                              {% for q in quiz%}
                                    <li>Question {{ forloop.counter }}:  {{ q.question}}</li>
-                                  <span class="blue"> Choices:</span>
-                                       {% for c in q.choices.all %}
-                                        <span>'{{ c.choice_text.strip }}' &nbsp;</span>
+                                  <span class="blue"> - Choices:</span>
+                                       {% for c in q.choices %}
+                                        <span>'{{ c }}' &nbsp;</span>
                                        {% endfor %} <br>
-                                        <span class="blue"> Answer: </span>  '{{ q.answer }}'  <br>
-                                        <span class="blue">  Explanation:  </span> {{ q.explanation }}
+                                        <span class="blue"> - Answer: </span>  '{{ q.answer }}'  <br>
+                                        <span class="blue"> - Explanation:  </span> {{ q.explanation }}
                               {% endfor%}
                         </section>
                     </fieldset>

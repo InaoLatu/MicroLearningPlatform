@@ -40,15 +40,14 @@ UserModel = get_user_model()
 
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
-DB_NAME = 'authoring_tool'
+DB_NAME = 'AT'
 COLLECTION_NAME = 'auth_user'
+
 
 class HomeView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'users_manager/user_page.html')
-
-
 
 
 class UserDataView(TemplateView):
@@ -63,70 +62,70 @@ class LogInView(LoginView):
 
 
 class LoginView(SuccessURLAllowedHostsMixin, FormView):
-        """
+    """
         Display the login form and handle the login action.
         """
-        form_class = AuthenticationForm
-        authentication_form = None
-        redirect_field_name = REDIRECT_FIELD_NAME
-        template_name = 'registration/login.html'
-        redirect_authenticated_user = False
-        extra_context = None
+    form_class = AuthenticationForm
+    authentication_form = None
+    redirect_field_name = REDIRECT_FIELD_NAME
+    template_name = 'registration/login.html'
+    redirect_authenticated_user = False
+    extra_context = None
 
-        @method_decorator(sensitive_post_parameters())
-        @method_decorator(csrf_protect)
-        @method_decorator(never_cache)
-        def dispatch(self, request, *args, **kwargs):
-            if self.redirect_authenticated_user and self.request.user.is_authenticated:
-                redirect_to = self.get_success_url()
-                if redirect_to == self.request.path:
-                    raise ValueError(
-                        "Redirection loop for authenticated user detected. Check that "
-                        "your LOGIN_REDIRECT_URL doesn't point to a login page."
-                    )
-                return HttpResponseRedirect(redirect_to)
-            return super().dispatch(request, *args, **kwargs)
+    @method_decorator(sensitive_post_parameters())
+    @method_decorator(csrf_protect)
+    @method_decorator(never_cache)
+    def dispatch(self, request, *args, **kwargs):
+        if self.redirect_authenticated_user and self.request.user.is_authenticated:
+            redirect_to = self.get_success_url()
+            if redirect_to == self.request.path:
+                raise ValueError(
+                    "Redirection loop for authenticated user detected. Check that "
+                    "your LOGIN_REDIRECT_URL doesn't point to a login page."
+                )
+            return HttpResponseRedirect(redirect_to)
+        return super().dispatch(request, *args, **kwargs)
 
-        def get_success_url(self):
-            url = self.get_redirect_url()
-            return url or resolve_url(settings.LOGIN_REDIRECT_URL)
+    def get_success_url(self):
+        url = self.get_redirect_url()
+        return url or resolve_url(settings.LOGIN_REDIRECT_URL)
 
-        def get_redirect_url(self):
-            """Return the user-originating redirect URL if it's safe."""
-            redirect_to = self.request.POST.get(
-                self.redirect_field_name,
-                self.request.GET.get(self.redirect_field_name, '')
-            )
-            url_is_safe = is_safe_url(
-                url=redirect_to,
-                allowed_hosts=self.get_success_url_allowed_hosts(),
-                require_https=self.request.is_secure(),
-            )
-            return redirect_to if url_is_safe else ''
+    def get_redirect_url(self):
+        """Return the user-originating redirect URL if it's safe."""
+        redirect_to = self.request.POST.get(
+            self.redirect_field_name,
+            self.request.GET.get(self.redirect_field_name, '')
+        )
+        url_is_safe = is_safe_url(
+            url=redirect_to,
+            allowed_hosts=self.get_success_url_allowed_hosts(),
+            require_https=self.request.is_secure(),
+        )
+        return redirect_to if url_is_safe else ''
 
-        def get_form_class(self):
-            return self.authentication_form or self.form_class
+    def get_form_class(self):
+        return self.authentication_form or self.form_class
 
-        def get_form_kwargs(self):
-            kwargs = super().get_form_kwargs()
-            kwargs['request'] = self.request
-            return kwargs
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
 
-        def form_valid(self, form):
-            """Security check complete. Log the user in."""
-            auth_login(self.request, form.get_user())
-            return HttpResponseRedirect(self.get_success_url())
+    def form_valid(self, form):
+        """Security check complete. Log the user in."""
+        auth_login(self.request, form.get_user())
+        return HttpResponseRedirect(self.get_success_url())
 
-        def get_context_data(self, **kwargs):
-            context = super().get_context_data(**kwargs)
-            current_site = get_current_site(self.request)
-            context.update({
-                self.redirect_field_name: self.get_redirect_url(),
-                'site': current_site,
-                'site_name': current_site.name,
-                **(self.extra_context or {})
-            })
-            return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        current_site = get_current_site(self.request)
+        context.update({
+            self.redirect_field_name: self.get_redirect_url(),
+            'site': current_site,
+            'site_name': current_site.name,
+            **(self.extra_context or {})
+        })
+        return context
 
 
 class PasswordResetView(PasswordContextMixin, FormView):
@@ -255,8 +254,7 @@ def change_password(request):
     })
 
 
-
-# ACCOUNTS VIEWS FROM NOW ON#
+# The following are the accounts views #
 
 class SignUp(generic.CreateView):
     form_class = UserCreateForm
@@ -279,8 +277,8 @@ class SignUp(generic.CreateView):
                 'token': account_activation_token.make_token(user),
             })
             email = EmailMessage(
-               mail_subject, message, to=['inao.latourrette@gmail.com'] #admin email
-             )
+                mail_subject, message, to=['inao.latourrette@gmail.com']  # admin email
+            )
             email.send()
             return render(self.request, 'users_manager/confirm_registration.html')
 
@@ -295,7 +293,7 @@ def activate(request, uidb64, token):
         user = User.objects.get(pk=uid)
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
-    if user is not None and account_activation_token.check_token(user, token): #Check if the token is correct
+    if user is not None and account_activation_token.check_token(user, token):  # Check if the token is correct
         user.is_active = True
         user.save()
         login(request, user)
@@ -318,20 +316,15 @@ def activate(request, uidb64, token):
 class EditUserDataView(generic.TemplateView):
     template_name = "users_manager/edit_user_info.html"
 
-
     def get(self, request, *args, **kwargs):
         return render(request, template_name="users_manager/edit_user_info.html")
-
 
     def post(self, request, *args, **kwargs):
         connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
         collection = connection[DB_NAME][COLLECTION_NAME]
         collection.update_one({"id": kwargs['id']}, {"$set": {"username": request.POST['userName'],
-                                                    "first_name": request.POST['firstName'],
-                                                    "last_name": request.POST['lastName'],
-                                                    "email": request.POST['email']
-                                                    }})
+                                                              "first_name": request.POST['firstName'],
+                                                              "last_name": request.POST['lastName'],
+                                                              "email": request.POST['email']
+                                                              }})
         return render(request, template_name="users_manager/user_data.html")
-
-
-

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 import users_manager.views as users_manager_views
-import  micro_content_manager.views as mc_views
+import micro_content_manager.views as mc_views
 
 urlpatterns = [
     path('micro_content_manager/', include('micro_content_manager.urls')),

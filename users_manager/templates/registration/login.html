@@ -7,20 +7,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{% static 'demo.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'sky-forms.css' %}">
-        	<link rel="icon" type="image/png" href="{% static 'images/icons/home.ico' %}"/>
-
-
+        <link rel="icon" type="image/png" href="{% static 'images/icons/home.ico' %}"/>
 	</head>
+
 	<body class="bg-study">
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-
 		<div class="body body-s">
-
 			 <form class="sky-form" method="post" action="{% url 'login' %}">
                 {% csrf_token %}
 				<header>MicroLearning Platform</header>
-
 				<fieldset>
                     {% if form.errors %}
                     {% for field in form %}
@@ -45,7 +39,6 @@
 							</div>
 						</div>
 					</section>
-
 					<section>
 						<div class="row">
 							<div class="col col-8">
@@ -56,21 +49,18 @@
 							</div>
 						</div>
 					</section>
-
 					<section>
 						<div class="row">
 							<div class="col col-4"></div>
 						</div>
 					</section>
                     <input type="hidden" name="next" value="{{ next }}">
-
 				</fieldset>
 				<footer>
 					<button type="submit" class="button" style="background-color: green;">Log in</button>
                     <a class="button button-secondary" href="{% url 'users_manager:signup' %}">Register</a>
 				</footer>
 			</form>
-
 		</div>
 	</body>
 </html>
