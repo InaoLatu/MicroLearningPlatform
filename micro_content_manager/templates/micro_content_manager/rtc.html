@@ -66,6 +66,16 @@
         .recordrtc select {
             font-size: 17px;
         }
+         #rtc_back_button {
+            text-align: center;
+            font-size: 18px;
+            height: 40px;
+            width: 30px;
+            background-color: #2da5da;
+             border-radius: 10%;
+              color: white;
+             padding: 10px 15px 10px 15px;
+        }
     </style>
 
     <script src="https://www.webrtc-experiment.com/RecordRTC.js"></script>
@@ -90,6 +100,7 @@
 <body class="bg-study">
     <article>
         <div class="body">
+            <a id="rtc_back_button" href="{% url 'micro_content_manager:menu' %}" >Home</a>
         <header style="text-align: center;">
              <h1>
                 <span>Audio+Video+Screen recorder</span>

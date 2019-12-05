@@ -88,7 +88,9 @@
 
             {% csrf_token %}
             <div class="white">
-                <h2>Content</h2>
+                <header>
+                <h2>Micro-content <a id="" class="button" href="{% url 'micro_content_manager:menu' %}" style="margin-right: 300px!important; font-size: 20px">Home</a></h2>
+            </header>
                     <input type="hidden" name="id" value="{{ id }}">
                     <fieldset>
                         <section> <p>Title: <input type="text" name="title" value="{{ content.title }}" required></p></section>

@@ -102,8 +102,11 @@
       <form action="{% url 'micro_content_manager:store' nQuestions %}" method="post" class="sky-form" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="white">
-                <h2>Micro-content</h2>
+            <header>
+                <h2>Micro-content <a id="" class="button" href="{% url 'micro_content_manager:menu' %}" style="margin-right: 300px!important; font-size: 20px">Home</a></h2>
+            </header>
                 <fieldset>
+                    <section><p><label for="title">Unit: <input type="text" placeholder="Unit" name="unit"></label></p></section>
                     <section><p><label for="title">Title: <input type="text" placeholder="Title" name="title"></label></p></section>
                     <section><p>Tags: <input type="text" name="mc_tags">
                      (Tags must be inserted separated by blank spaces (e.g., Tag1 Tag2 Tag3))</p></section>

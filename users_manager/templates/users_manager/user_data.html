@@ -17,7 +17,7 @@
 
 			<form method="post" class="sky-form">
                 {% csrf_token %}
-				<header>User data<a id="id_back_button" class="button" onclick="window.history.back();">Back</a></header>
+				<header>User data<a id="id_back_button" class="button" href="{% url 'micro_content_manager:menu' %}">Home</a></header>
 				<fieldset>
                     {{ form.errors }}
 					<section>

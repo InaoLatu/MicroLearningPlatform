@@ -27,10 +27,8 @@
                         </section>
 
                         <section>
-                            <span class="blue">Tags: </span>
-                            {% for t in micro_content.mc_tags.all %}
-                               <span > {{ t }} &nbsp; </span>
-                            {% endfor %}
+                            <span class="blue">Tags: </span> {{ mc_text }}
+
                         </section>
 
                         <section>
@@ -72,9 +70,10 @@
                               {% for q in quiz%}
                                    <li>Question {{ forloop.counter }}:  {{ q.question}}</li>
                                   <span class="blue"> - Choices:</span>
-                                       {% for c in q.choices %}
-                                        <span>'{{ c }}' &nbsp;</span>
-                                       {% endfor %} <br>
+                                  {% for choice in q.choices %}
+                                            <span>'{{ choice }}'</span>
+                                  {% endfor %}
+                                        <br>
                                         <span class="blue"> - Answer: </span>  '{{ q.answer }}'  <br>
                                         <span class="blue"> - Explanation:  </span> {{ q.explanation }}
                               {% endfor%}

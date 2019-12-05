@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 
 app_name = 'micro_content_manager'
 urlpatterns = [
-    path('', user_views.HomeView.as_view()),
+    path('', user_views.HomeView.as_view(), name='menu'),
     path('newMicroContent/<int:v>/<int:q>', views.MicroContentCreationView.as_view(), name='micro_content_creation'),
     path('micro_content_data/<int:id>/', views.MicroContentInfoView.as_view(), name='micro_content_data'),
     path('mc_search/<int:tab>', views.MicroContentSearchView.as_view(), name='micro_content_search'),

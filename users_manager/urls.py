@@ -6,7 +6,6 @@ from . import views
 app_name = 'users_manager'
 urlpatterns = [
     path('user_data/', views.UserDataView.as_view(), name='user_data'),
-
     path('edit_user_data/<int:id>', views.EditUserDataView.as_view(), name='edit_user_data'),
     path('password_change/', views.change_password, name='password_change'),
     path('login', views.LogInView.as_view(), name='logIn'),

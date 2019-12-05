@@ -51,10 +51,9 @@
         <div class="white">
             {{ error_message }}
             <fieldset>
+                <a id="" class="button" href="{% url 'micro_content_manager:menu' %}" style="margin-right: 160px!important; font-size: 20px; background-color:#2da5da">Home</a>
                 <p>Tags:
-                    {% for tag in micro_content.mc_tags.all %}
-                               <span style="display:inline-block; width: 30px;"> {{ tag.name }}  </span>
-                    {% endfor %}
+                    {{ micro_content.tags }}
                 </p>
                 <p> {{ micro_content.text.0 }}</p>
             </fieldset>
@@ -73,22 +72,29 @@
 
             <fieldset id="quiz-container">
                     <h4>Quiz: </h4>
-                        {% if sol_messages  %}
+                    {# In case of having finished the micro content, the solutions messages will be displayed #}
+                    {% if sol_messages  %}
+                        <p>You got <strong>{{ correct_answers }}</strong> correct answers out of <strong>{{ quiz_size }}</strong> questions at <strong>{{ micro_content.title }}</strong></p>
+                        <p>Your answers:</p>
                         {% for sel in selections.values %}
-                            <p class="sel" id="sel{{ forloop.counter }}">{{ sel }}</p>
+                            <p class="sel" id="sel{{ forloop.counter }}">{{ forloop.counter }}. {{ sel }}</p>
                         {% endfor %}
+                        <p>Solutions:</p>
+                        {% for sol in sol_messages.values %}
+                                    <p class="aux" id="aux{{ forloop.counter }}">{{ forloop.counter }}.  {{ sol }}</p>
+                               {% endfor %}
 
                         <form action="{% url 'micro_content_manager:micro_content_vote' %}" method="post">
-                        <p>You got <strong>{{ correct_answers }}</strong> correct answers out of <strong>{{ micro_content.questions.count }}</strong> questions at <strong>{{ micro_content.title }}</strong></p>
+
                             {% csrf_token %}
                                 <input type="hidden" id="mc_id" name="mc_id" value={{ micro_content.id }}>
 
-                                {% for question in  micro_content.questions.all %}
+                                {% for question in  micro_content.quiz %}
                                     <section>{{ forloop.counter }}: {{ question.question }}</section>
-                                        {% for choice in question.choices.all %}
+                                        {% for choice in question.choices %}
                                             <label class="choice">
                                                 <input class="rad"  id="radio{{ forloop.parentloop.counter }}{{ forloop.counter }}" type="radio" name="choice{{forloop.parentloop.counter}}" value="{{ choice.id }}" disabled>
-                                                <label class="option" for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                                                <label class="option" for="choice{{ forloop.counter }}">{{ choice }}</label><br>
                                             </label>
                                         {% endfor %}
                                     <section class="solution" id="sol{{ forloop.counter }}" style="font-weight: bold;"></section>
@@ -96,25 +102,21 @@
                                     <br>
                                 {% endfor %}
 
-                               {% for sol in sol_messages.values %}
-                                    <p class="aux" id="aux{{ forloop.counter }}"> {{ sol }}</p>
-                               {% endfor %}
-
                                 <script>solution();</script>
                                 <script>testing();</script>
                                 <br>
                         </form>
 
-                     {% else %}
+                    {% else %}
                             <form action="{% url 'micro_content_manager:micro_content_vote' %}" method="post">
                                 {% csrf_token %}
                                     <input type="hidden" id="mc_id" name="mc_id" value={{ micro_content.id }}>
-                                    {% for question in micro_content.questions.all %}
+                                    {% for question in micro_content.quiz %}
                                         <section>{{ forloop.counter }}: {{ question.question }}</section>
-                                            {% for choice in question.choices.all %}
+                                            {% for choice in question.choices %}
                                                 <label class="choice">
-                                                    <input type="radio" name="choice{{forloop.parentloop.counter}}" value="{{ choice.id }}" required>
-                                                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                                                    <input type="radio" name="selection{{forloop.parentloop.counter}}" value="{{ forloop.counter }}" required>
+                                                    <label for="choice{{ forloop.counter }}">{{ choice }}</label><br><br>
                                                 </label>
                                             {% endfor %}
                                         <br>

@@ -2,8 +2,10 @@ from django.utils import timezone
 from djongo import models
 from django.forms.models import model_to_dict
 
+
 class Tag(models.Model):
     name = models.CharField(max_length=50)
+
     def __str__(self):
         return self.name
 
@@ -15,6 +17,7 @@ UPLOAD_FORM = (
     ('EXTERNAL_REPOSITORY', 'EXTERNAL REPOSITORY'),
 )
 
+
 class Video(models.Model):
     name = models.CharField(max_length=500)
     url = models.URLField()
@@ -25,14 +28,14 @@ class Video(models.Model):
     )
     videoFile = models.FileField()
 
-
     def __str__(self):
         return self.name + ": " + str(self.videoFile)
 
     @staticmethod
     def create(request, number):
         if request.POST['video_upload_form' + str(number)] == "from_existing_file":
-         return Video(request.POST['videoName1'], Video.buildURL(request, number), request.POST['video_upload_form'+str(number)], request.FILES['videoFile1'])
+            return Video(request.POST['videoName1'], Video.buildURL(request, number),
+                         request.POST['video_upload_form' + str(number)], request.FILES['videoFile1'])
         else:
             return Video(request.POST['videoName1'], Video.buildURL(request, number),
                          request.POST['video_upload_form' + str(number)], None)
@@ -49,15 +52,16 @@ class Video(models.Model):
 
     @staticmethod
     def buildURL(request, number):
-        videoURL = request.POST['videoURL'+str(number)]
-        if request.POST['video_upload_form'+str(number)] == "link_from_youtube":
+        videoURL = request.POST['videoURL' + str(number)]
+        if request.POST['video_upload_form' + str(number)] == "link_from_youtube":
             idYoutubeVideo = videoURL.split("v=", 1)[1]
-            videoURL = "http://www.youtube.com/embed/"+idYoutubeVideo
+            videoURL = "http://www.youtube.com/embed/" + idYoutubeVideo
 
         if request.POST['video_upload_form' + str(number)] == "from_existing_file":
             videoURL = request.POST['url1']
 
         return videoURL
+
 
 class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
@@ -77,12 +81,12 @@ class Question(models.Model):
     def __str__(self):
         return self.question
 
-#    def __init__(self, question, choices_text, answer, explanation):
- #       super(Question, self).__init__()
-  #      self.question = question
-  #      self.choices_text = choices_text
-  #      self.answer = answer
-   #     self.explanation = explanation
+    #    def __init__(self, question, choices_text, answer, explanation):
+    #       super(Question, self).__init__()
+    #      self.question = question
+    #      self.choices_text = choices_text
+    #      self.answer = answer
+    #     self.explanation = explanation
 
     @staticmethod
     def create(request, number):
@@ -114,7 +118,8 @@ class MetaData(models.Model):
 
     @staticmethod
     def create(request):
-        return MetaData(request.POST['title'], request.POST['author'], timezone.now(), timezone.now(), request.POST['creation_type'])
+        return MetaData(request.POST['title'], request.POST['author'], timezone.now(), timezone.now(),
+                        request.POST['creation_type'])
 
     def __init__(self, title, author, pub_date, last_modification, creation_type):
         super(MetaData, self).__init__()
@@ -123,7 +128,6 @@ class MetaData(models.Model):
         self.pub_date = pub_date
         self.last_modification = last_modification
         self.creation_type = creation_type
-
 
     def toDict(self):
         return model_to_dict(self, fields=['title', 'author', 'pub_date', 'last_modification', 'creation_type'])
@@ -148,7 +152,7 @@ class Quest(models.Model):
     @staticmethod
     def create(request, number):
         return Quest(request.POST['question' + str(number)], Quest.getChoices(request, number),
-                        request.POST[request.POST['answer' + str(number)]], request.POST['explanation' + str(number)])
+                     request.POST[request.POST['answer' + str(number)]], request.POST['explanation' + str(number)])
 
     @staticmethod
     def getChoices(request, number):
@@ -200,11 +204,12 @@ class MicroLearningContent(models.Model):
         self.visible = visible
         self.allow_copy = allow_copy
 
-
     @staticmethod
     def create(request):
-        return MicroLearningContent(None, request.POST['title'],  request.POST['mc_tags'],  MicroLearningContent.getText(request), MicroLearningContent.getQuiz(request),
-                                    MicroLearningContent.getVideos(request), MetaData.create(request), request.POST['visible'], request.POST['allow_copy'])
+        return MicroLearningContent(None, request.POST['title'], request.POST['mc_tags'],
+                                    MicroLearningContent.getText(request), MicroLearningContent.getQuiz(request),
+                                    MicroLearningContent.getVideos(request), MetaData.create(request),
+                                    request.POST['visible'], request.POST['allow_copy'])
 
     @staticmethod
     def getText(request):
@@ -245,16 +250,28 @@ class MicroLearningContent(models.Model):
         return quiz
 
     def toDict(self):
-        dict = model_to_dict(self, fields=['title', 'text'])
+        dict = model_to_dict(self, fields=['title', 'text', 'tags'])
         dict['meta_data'] = self.meta_data.toDict()
         dict['videos'] = []
-        for v in self.quiz:
+        for v in self.videos:
             dict['videos'].append(v.toDict())
         dict['quiz'] = []
         for q in self.quiz:
             dict['quiz'].append(q.toDict())
         return dict
 
-
     def get_mc_tags(self):
         return self.mc_tags
+
+
+class Unit(models.Model):
+    name = models.CharField(max_length=100)
+    micro_content = models.ManyToManyField(MicroLearningContent)
+
+    def __init__(self, id, name):
+        super(Unit, self).__init__()
+        self.name = name
+
+    @staticmethod
+    def create(request):
+        return Unit(None, request.POST['unit'])

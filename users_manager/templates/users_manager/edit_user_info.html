@@ -16,7 +16,7 @@
 		<div class="body body-s">
 			<form  action="{% url 'users_manager:edit_user_data' user.id %}" method="post" class="sky-form">
                 {% csrf_token %}
-				<header>Edit user data<a id="id_back_button" class="button" onclick="window.history.back();" >Back</a></header>
+				<header>Edit user data</header>
 				<fieldset>
                     {{ form.errors }}
 					<section>
@@ -47,8 +47,9 @@
 					</section>
 				</fieldset>
 
-				<footer>
+                <footer>
 					<button type="submit" class="button" style="background-color: green">Save changes</button>
+                    <a id="id_back_button" class="button" onclick="window.history.back();" >Back</a>
 				</footer>
 			</form>
 
