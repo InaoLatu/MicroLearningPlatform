@@ -19,11 +19,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('/home/inao/MicroLearningPlatform/secret_key.txt') as f:
+with open('/home/inao/Trabajo/AT/secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -85,6 +85,15 @@ ROOT_URLCONF = 'MicroLearningPlatform.urls'
 
 SESSION_SAVE_EVERY_REQUEST = True
 
+# Added following the guideline in python manage.py check --deploy
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+X_FRAME_OPTIONS = 'DENY'
+#####
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -111,11 +120,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'ENFORCE_SCHEMA': True,
-        'NAME': 'authoring_tool',
+        'NAME': 'AT',
         'HOST': '127.0.0.1',
         'PORT': 27017,
-        'USER': 'inaolatu',
-        'PASSWORD': 'microcontent',
+        'USER': 'inao',
+        'PASSWORD': 'microlearning',
         'AUTH_SOURCE': 'admin',
         'AUTH_MECHANISM': 'SCRAM-SHA-1',
     }
