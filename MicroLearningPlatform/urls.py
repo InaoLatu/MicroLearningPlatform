@@ -11,5 +11,4 @@ urlpatterns = [
     path('accounts/', include('users_manager.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('json', mc_views.json, name='json'),
-
 ]
