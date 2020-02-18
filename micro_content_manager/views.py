@@ -1,3 +1,5 @@
+from bson import json_util
+import json
 from bson.json_util import loads, dumps, CANONICAL_JSON_OPTIONS
 from typing import List
 from django.shortcuts import render, get_object_or_404
@@ -5,6 +7,8 @@ from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views import generic
 from pymongo import MongoClient
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from tagging.models import Tag
 
 from micro_content_manager.forms import MicroContentEditForm
@@ -21,9 +25,70 @@ NUMBER_VIDEOS = 1
 
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
-DB_NAME = 'AT'
+DB_NAME = 'authoring_tool'
 COLLECTION_NAME = 'micro_content_manager_microlearningcontent'
 
+# API
+from rest_framework import viewsets
+from micro_content_manager.serializers import UnitSerializer, MicroContentSerializer
+from rest_framework.decorators import api_view
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from micro_content_manager.models import Unit
+
+
+# API classes
+class UnitViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Unit.objects.all()
+    serializer_class = UnitSerializer
+
+
+class UnitList(APIView):
+    def get(self, request, format=None):
+        units = Unit.objects.all()
+        serializer = UnitSerializer(units, many=True)
+        return Response(serializer.data)  # POSIBLE CAMBIO A JSONRESPONSE
+
+
+class UnitDetail(APIView):
+    def get_object(self, unit):
+        try:
+            return Unit.objects.get(name=unit)
+        except Unit.DoesNotExist:
+            raise Http404
+
+    def get(self, request, unit, format=None):
+        unit_selected = self.get_object(unit)
+        micro_content = unit_selected.micro_content
+        serializer = MicroContentSerializer(micro_content, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def unit_list(request, format=None):  # Format to choose the json format or any other
+    if request.method == 'GET':
+        units = Unit.objects.all()
+        serializer = UnitSerializer(units, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+
+@api_view(['GET'])
+def unit_detail(request, unit, format=None):
+    try:
+        unit = Unit.objects.get(name=unit)
+    except Unit.DoesNotExist:
+        return HttpResponse(status=404)
+
+    if request.method == 'GET':
+        serializer = UnitSerializer(unit)
+        return JsonResponse(serializer.data)
+
+
+#
 
 class CreateSelectionView(generic.TemplateView):
     template_name = 'micro_content_manager/create_selection.html'
@@ -56,16 +121,19 @@ class DoTheMicroContentView(generic.DetailView):
         return render(request, 'micro_content_manager/do_the_micro_content.html', {"micro_content": micro_content})
 
 
-def json(request):
+def microcontent(request):
     try:
-
         connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
         collection = connection[DB_NAME][COLLECTION_NAME]
 
-        micro_content = collection.find_one({"id": request.GET['content']})
-        content = MicroLearningContent.objects.get(pk=request.GET['content'])
+        micro_content = collection.find_one({"id": request.GET['id']})
+        # content = MicroLearningContent.objects.get(pk=request.GET['content'])
+        return JsonResponse(MicroLearningContent.objects.get(pk=request.GET['id']).toDict())
+        # return json.dumps(micro_content)
 
-        return JsonResponse(content.toDict())
+        #return JsonResponse(micro_content, safe=False)
+
+
     except (MicroLearningContent.DoesNotExist, MultiValueDictKeyError):
         raise Http404()
 
@@ -86,7 +154,7 @@ def vote(request):
         # Computing the votes. IMPLEMENT AGAIN IN A FUTURE DEVELOPMENT (4/dic/19)
         # 'selection1', 'selection2'... have as a value the index of the selected choice in the question 1, question 2 respectively...
         # selected_choice = question.choices.get(pk=int(request.POST['selection' + str(i)]))
-        selected_choice_index = int(request.POST['selection' + str(i)])-1
+        selected_choice_index = int(request.POST['selection' + str(i)]) - 1
         # selected_choice.votes += 1
         # selected_choice.save()
         selections[i] = question['choices'][selected_choice_index]
@@ -282,15 +350,20 @@ class StoreView(generic.TemplateView):
                 question.save()
                 for c in [1, 2, 3]:
                     question.choices.add(
-                        Choice.objects.create(choice_text=request.POST['choice' + str(index) + '_' + str(c)], votes=0))
+                        Choice.objects.create(choice_text=request.POST['choice' + str(index) + '_' + str(c)]))
                 content.questions.add(question)
             except MultiValueDictKeyError:
                 pass
 
         Tag.objects.update_tags(content, tags)
 
-        unit = Unit.create(request)
-        unit.save()
+        unit_selected = request.POST['unit'].lower()
+
+        if Unit.objects.filter(name=unit_selected).count() > 0:
+            unit = Unit.objects.get(name=unit_selected)
+        elif Unit.objects.filter(name=unit_selected).count() == 0:
+            unit = Unit.create(request)
+            unit.save()
 
         unit.micro_content.add(content)  # Adding the Micro content to its Unit.
 
@@ -377,10 +450,12 @@ def update(request, **kwargs):
             # Editing choices
             choice_index = 0
             while choice_index < 3:
-                choice_value = request.POST['choice' + str(question_index+1) + '_' + str(choice_index+1)]  # Adding 1
+                choice_value = request.POST[
+                    'choice' + str(question_index + 1) + '_' + str(choice_index + 1)]  # Adding 1
                 # to get the value of the input field whose numeration starts in 1, not in 0
                 collection.update_one({"id": id},
-                                      {"$set": {"quiz." + str(question_index) + ".choices." + str(choice_index): choice_value, }})
+                                      {"$set": {"quiz." + str(question_index) + ".choices." + str(
+                                          choice_index): choice_value, }})
                 choice_index += 1
 
             question_index += 1

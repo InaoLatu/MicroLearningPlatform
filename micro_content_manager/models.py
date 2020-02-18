@@ -48,7 +48,7 @@ class Video(models.Model):
         self.videoFile = videoFile
 
     def toDict(self):
-        return model_to_dict(self, fields=['url', 'video_upload_form'])
+        return model_to_dict(self, fields=['name', 'url', 'video_upload_form'])
 
     @staticmethod
     def buildURL(request, number):
@@ -65,10 +65,21 @@ class Video(models.Model):
 
 class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
+    # votes = models.IntegerField(default=0)
 
     def __str__(self):
         return self.choice_text
+
+    @staticmethod
+    def create(request, number, j):
+        return Choice(request.POST['choice' + str(number) + "_" + str(j)])
+
+    def __init__(self, choice_text):
+        super(Choice, self).__init__()
+        self.choice_text = choice_text
+
+    def toDict(self):
+        return model_to_dict(self, fields=['choice_text'])
 
 
 class Question(models.Model):
@@ -138,7 +149,10 @@ class MetaData(models.Model):
 
 class Quest(models.Model):
     question = models.TextField()
-    choices = models.ListField()
+    choices = models.ArrayModelField(
+        model_container=Choice
+    )
+   # choices = models.ListField()
     answer = models.TextField()
     explanation = models.TextField()
 
@@ -160,14 +174,21 @@ class Quest(models.Model):
         j = 1
         while True:
             if 'choice' + str(number) + "_" + str(j) in request.POST:
-                choices.append(request.POST['choice' + str(number) + "_" + str(j)])
+                choice = Choice.create(request, number, j)
+                choice.save()
+                choices.append(choice)
                 j += 1
             else:
                 break
         return choices
 
     def toDict(self):
-        return model_to_dict(self, fields=['question', 'choices', 'answer', 'explanation'])
+        # return model_to_dict(self, fields=['question', 'choices', 'answer', 'explanation'])
+        dict = model_to_dict(self, fields=['question', 'answer', 'explanation'])
+        dict['choices'] = []
+        for c in self.choices:
+            dict['choices'].append(c.toDict())
+        return dict
 
     class Meta:
         abstract = True
@@ -270,6 +291,7 @@ class Unit(models.Model):
 
     def __init__(self, id, name):
         super(Unit, self).__init__()
+        self.id = id
         self.name = name
 
     @staticmethod

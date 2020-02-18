@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 LOGIN_REDIRECT_URL = 'user_page'
@@ -107,14 +108,14 @@ WSGI_APPLICATION = 'MicroLearningPlatform.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'ENFORCE_SCHEMA': True,
-        'NAME': 'AT',
-        'HOST': '127.0.0.1',
-        'PORT': 27017,
-        'USER': 'inao',
-        'PASSWORD': 'microlearning',
-        'AUTH_SOURCE': 'admin',
-        'AUTH_MECHANISM': 'SCRAM-SHA-1',
+        # 'ENFORCE_SCHEMA': True,
+        'NAME': 'authoring_tool',
+        # 'HOST': '127.0.0.1',
+        # 'PORT': 27017,
+        # 'USER': 'inao',
+        # 'PASSWORD': 'microlearning',
+        # 'AUTH_SOURCE': 'admin',
+        # 'AUTH_MECHANISM': 'SCRAM-SHA-1',
     }
 }
 

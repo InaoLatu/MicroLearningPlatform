@@ -19,6 +19,8 @@ from django.contrib.auth import (
     authenticate)
 
 from pymongo import MongoClient
+from rest_framework import viewsets
+
 from MicroLearningPlatform import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
@@ -34,6 +36,7 @@ from django.views import generic
 
 from micro_content_manager.models import MicroLearningContent
 from users_manager.forms import UserCreateForm
+from users_manager.serializers import UserSerializer
 from users_manager.tokens import account_activation_token
 
 UserModel = get_user_model()
@@ -43,6 +46,15 @@ MONGODB_PORT = 27017
 DB_NAME = 'AT'
 COLLECTION_NAME = 'auth_user'
 
+# API classes
+# API classes
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+#
 
 class HomeView(TemplateView):
 

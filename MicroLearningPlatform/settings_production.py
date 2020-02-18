@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-#Production flags
+# Production flags
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -29,11 +29,11 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-#DEBUGGING (DEBUG=TRUE)
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+# DEBUGGING (DEBUG=TRUE)
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
-#PRODUCTION (DEBUG=FALSE)
+# PRODUCTION (DEBUG=FALSE)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -59,8 +59,6 @@ INSTALLED_APPS = [
 LOGIN_REDIRECT_URL = 'user_page'
 LOGOUT_REDIRECT_URL = 'login'
 
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,7 +70,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware'
 ]
 
-
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
@@ -80,18 +77,16 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 ]
 
-
 ROOT_URLCONF = 'MicroLearningPlatform.urls'
 
-SESSION_SAVE_EVERY_REQUEST = True
 
 # Added following the guideline in python manage.py check --deploy
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-X_FRAME_OPTIONS = 'DENY'
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# X_FRAME_OPTIONS = 'DENY'
 #####
 
 TEMPLATES = [
@@ -119,14 +114,14 @@ WSGI_APPLICATION = 'MicroLearningPlatform.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'ENFORCE_SCHEMA': True,
-        'NAME': 'AT',
-        'HOST': '127.0.0.1',
-        'PORT': 27017,
-        'USER': 'inao',
-        'PASSWORD': 'microlearning',
-        'AUTH_SOURCE': 'admin',
-        'AUTH_MECHANISM': 'SCRAM-SHA-1',
+        # 'ENFORCE_SCHEMA': True,
+        'NAME': 'authoring_tool',
+        # 'HOST': '127.0.0.1',
+        # 'PORT': 27017,
+        # 'USER': 'inao',
+        # 'PASSWORD': 'microlearning',
+        # 'AUTH_SOURCE': 'admin',
+        # 'AUTH_MECHANISM': 'SCRAM-SHA-1',
     }
 }
 
