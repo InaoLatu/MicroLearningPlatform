@@ -1,10 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 
-<style>
-
-
-</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,6 +14,7 @@
 <body class="bg-study">
 
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
          $(document).ready(function() {    //llamamos la a funcion ready() porque vamos a hacer referencia a etiquetas que estan declaradas posteriormente en el documento
                     document.getElementById("addQuestion").addEventListener("click", addQuestion, false);
@@ -84,15 +81,25 @@
                      document.getElementById("deleteq"+id).addEventListener("click", deleteQuestion, false);
             }
 
-
          function applyURL(numberVideo) {
                 var upload = document.getElementById("video_upload_form"+numberVideo).value
          }
 
-        function applyPosition(numberQuestion) {
+         function applyPosition(numberQuestion) {
                 order = document.getElementById("order"+numberQuestion).value;
                 $("#q"+numberQuestion).css("order", order);
         }
+
+
+        function get_name_from_file(id){
+             //alert("yes");
+             alert(document.getElementById("VideoFile"+id.toString()).value.toString());
+             alert("no");
+             document.getElementById("url_file"+id).value = document.getElementById("VideoFile" + id).value;
+        }
+
+
+
 
        </script>
 
@@ -127,9 +134,9 @@
                                 </select>
                             </p>
                         </section>
-                        <section><input name="videoFile{{ forloop.counter }}" id="videoFile{{ forloop.counter }}" type="file" accept="video/*"/></section>
+                        <section><input name="videoFile{{ forloop.counter }}" id="videoFile{{ forloop.counter }}" type="file" accept="video/*" onchange="get_name_from_file({{ forloop.counter }})"/></section>
                         <section><span>YouTube URL:&nbsp;<input name="videoURL{{ forloop.counter }}" type="url"></span></section>
-                        <input type="hidden" name="url{{ forloop.counter }}" id="url{{ forloop.counter }}">
+                        <input type="hidden" name="url_file{{ forloop.counter }}" id="url_file{{ forloop.counter }}" value="">
                     {% endfor %}
                 </fieldset>
 
@@ -150,7 +157,7 @@
                                                  <option {% if forloop.counter == 2 %} selected {% endif %} value=2>2</option>
                                                  <option {% if forloop.counter == 3 %} selected {% endif %} value=3>3</option>
                                                  <option {% if forloop.counter == 4 %} selected {% endif %} value=4>4</option>
-                                                 <option {% if forloop.counter == 5 %} selected {% endif %}  value=5>5</option>
+                                                 <option {% if forloop.counter == 5 %} selected {% endif %} value=5>5</option>
                                                  <option {% if forloop.counter == 6 %} selected {% endif %} value=6>6</option>
                                                  <option {% if forloop.counter == 7 %} selected {% endif %} value=7>7</option>
                                                  <option {% if forloop.counter == 8 %} selected {% endif %} value=8>8</option>

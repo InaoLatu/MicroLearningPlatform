@@ -1,3 +1,4 @@
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.utils import timezone
 from djongo import models
 from django.forms.models import model_to_dict
@@ -34,10 +35,10 @@ class Video(models.Model):
     @staticmethod
     def create(request, number):
         if request.POST['video_upload_form' + str(number)] == "from_existing_file":
-            return Video(request.POST['videoName1'], Video.buildURL(request, number),
-                         request.POST['video_upload_form' + str(number)], request.FILES['videoFile1'])
+            return Video(request.POST['videoName'+str(number)], Video.buildURL(request, number),
+                         request.POST['video_upload_form' + str(number)], request.FILES['videoFile'+str(number)])
         else:
-            return Video(request.POST['videoName1'], Video.buildURL(request, number),
+            return Video(request.POST['videoName'+str(number)], Video.buildURL(request, number),
                          request.POST['video_upload_form' + str(number)], None)
 
     def __init__(self, name, url, video_upload_form, videoFile):
@@ -58,7 +59,9 @@ class Video(models.Model):
             videoURL = "http://www.youtube.com/embed/" + idYoutubeVideo
 
         if request.POST['video_upload_form' + str(number)] == "from_existing_file":
-            videoURL = request.POST['url1']
+            print("from existing")
+            video_file = request.FILES['videoFile'+str(number)]
+            videoURL = video_file.name  # Get the name of the file to access to it when the micro-content is requested from external tool
 
         return videoURL
 
