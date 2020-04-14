@@ -12,7 +12,7 @@ from rest_framework.views import APIView
 from tagging.models import Tag
 
 from micro_content_manager.forms import MicroContentEditForm
-from micro_content_manager.models import MicroLearningContent, Question, Choice, Video, Unit
+from micro_content_manager.models import MicroLearningContent, Question, Choice, Media, Unit
 from micro_content_manager.models import Tag as MicroContentTag
 from django.http import Http404, JsonResponse, HttpResponseBadRequest, HttpResponse, HttpResponseRedirect
 from django.utils.datastructures import MultiValueDictKeyError
@@ -86,9 +86,8 @@ def unit_detail(request, unit, format=None):
     if request.method == 'GET':
         serializer = UnitSerializer(unit)
         return JsonResponse(serializer.data)
+#  end API classes
 
-
-#
 
 class CreateSelectionView(generic.TemplateView):
     template_name = 'micro_content_manager/create_selection.html'
@@ -103,7 +102,7 @@ class MicroContentCreationView(generic.CreateView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'micro_content_manager/create.html', {'paragraphs': ' ' * NUMBER_PARAGRAPHS,
-                                                                     'videos': ' ' * kwargs['v'],
+                                                                     'medias': ' ' * kwargs['m'],
                                                                      'questions': ' ' * kwargs['q'],
                                                                      'nQuestions': kwargs['q'],
                                                                      'choices': ' ' * NUMBER_CHOICES})
@@ -131,7 +130,7 @@ def microcontent(request):
         return JsonResponse(MicroLearningContent.objects.get(pk=request.GET['id']).toDict())
         # return json.dumps(micro_content)
 
-        #return JsonResponse(micro_content, safe=False)
+        # return JsonResponse(micro_content, safe=False)
 
 
     except (MicroLearningContent.DoesNotExist, MultiValueDictKeyError):

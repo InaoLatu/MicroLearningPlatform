@@ -122,20 +122,31 @@
                     {% endfor %}
                 </fieldset>
                 <fieldset>
-                    <h2>Videos</h2>
-                    {% for v in videos %}
-                        <section><h4>Video {{ forloop.counter }}</h4></section>
-                        <section>Name: <input type="text" name="videoName{{ forloop.counter }}"></section>
+                    <h2>Multimedia</h2>
+                    {% for m in medias %}
+                        <section><h4>Media {{ forloop.counter }}</h4></section>
+                        <section>
+                            <p>Type:
+                                <select  name="type{{ forloop.counter }}" id="type{{ forloop.counter }}" >
+                                    <option value="video" selected>Video</option>
+                                    <option value="audio">Audio</option>
+                                    <option value="text">Text</option>
+                                </select>
+                            </p>
+                        </section>
                         <section>
                             <p>Upload form:
-                                <select name="video_upload_form{{ forloop.counter }}" id="video_upload_form{{ forloop }}" onchange="applyURL({{ forloop.counter }})">
+                                <select name="upload_form{{ forloop.counter }}" id="upload_form{{ forloop.counter }}" >
                                     <option value="from_existing_file" selected>From existing file</option>
                                     <option value="link_from_youtube">Link from YouTube</option>
                                 </select>
                             </p>
                         </section>
-                        <section><input name="videoFile{{ forloop.counter }}" id="videoFile{{ forloop.counter }}" type="file" accept="video/*" onchange="get_name_from_file({{ forloop.counter }})"/></section>
+                        <section>Video file: <input name="videoFile{{ forloop.counter }}" id="videoFile{{ forloop.counter }}" type="file" accept="video/*" onchange="get_name_from_file({{ forloop.counter }})"/></section>
+                        <section>Audio file: <input name="videoFile{{ forloop.counter }}" id="videoFile{{ forloop.counter }}" type="file" accept="aac, .mp4, .mp3, .pls, .m3u, m3u8, .hls" onchange="get_name_from_file({{ forloop.counter }})"/>
+                            (Valid formats: AAC/MP4, MP3, PLS, M3U/M3U8 and HLS with bitrate from 16kbps to 384kbps)</section>
                         <section><span>YouTube URL:&nbsp;<input name="videoURL{{ forloop.counter }}" type="url"></span></section>
+                        <section>Text:  <textarea  name="text{{ forloop.counter }}" rows="2" cols="100"></textarea></section>
                         <input type="hidden" name="url_file{{ forloop.counter }}" id="url_file{{ forloop.counter }}" value="">
                     {% endfor %}
                 </fieldset>

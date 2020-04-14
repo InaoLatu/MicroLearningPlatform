@@ -19,47 +19,66 @@ UPLOAD_FORM = (
 )
 
 
-class Video(models.Model):
-    name = models.CharField(max_length=500)
-    url = models.URLField()
-    video_upload_form = models.CharField(
+class Media(models.Model):
+    type = models.CharField(max_length=50)
+    upload_form = models.CharField(
         choices=UPLOAD_FORM,
-        default='FROM EXISTING FILE',
+        default='',
         max_length=50,
     )
-    videoFile = models.FileField()
+    url = models.CharField(max_length=1000)
+    mediaFile = models.FileField()
+    text = models.CharField(max_length=3000)
 
     def __str__(self):
-        return self.name + ": " + str(self.videoFile)
+        return self.url + ": " + str(self.mediaFile)
 
     @staticmethod
     def create(request, number):
-        if request.POST['video_upload_form' + str(number)] == "from_existing_file":
-            return Video(request.POST['videoName'+str(number)], Video.buildURL(request, number),
-                         request.POST['video_upload_form' + str(number)], request.FILES['videoFile'+str(number)])
-        else:
-            return Video(request.POST['videoName'+str(number)], Video.buildURL(request, number),
-                         request.POST['video_upload_form' + str(number)], None)
 
-    def __init__(self, name, url, video_upload_form, videoFile):
-        super(Video, self).__init__()
-        self.name = name
+            if request.POST['type'+str(number)] == "video":
+                if request.POST['upload_form' + str(number)] == "from_existing_file":
+                    return Media(request.POST['type'+str(number)], Media.buildURL(request, number),
+                                 request.POST['upload_form' + str(number)], request.FILES['videoFile'+str(number)], request.POST['text'+str(number)])
+                else:
+                    return Media(request.POST['type'+str(number)], Media.buildURL(request, number),
+                                 request.POST['upload_form' + str(number)], None, request.POST['text'+str(number)])
+
+            if request.POST['type'+str(number)] == "audio":
+                return Media(request.POST['type'+str(number)], Media.buildURL(request, number),
+                             request.POST['upload_form' + str(number)], request.FILES['videoFile'+str(number)], request.POST['text'+str(number)])
+
+            if request.POST['type'+str(number)] == "text":
+                return Media(request.POST['type'+str(number)], None, None, None, request.POST['text'+str(number)])
+
+
+    def __init__(self, type, url, upload_form, mediaFile, text):
+        super(Media, self).__init__()
+        self.type = type
         self.url = url
-        self.video_upload_form = video_upload_form
-        self.videoFile = videoFile
+        self.upload_form = upload_form
+        self.mediaFile = mediaFile
+        self.text = text
 
     def toDict(self):
-        return model_to_dict(self, fields=['name', 'url', 'video_upload_form'])
+        return model_to_dict(self, fields=['type', 'url', 'upload_form', 'text'])
 
     @staticmethod
     def buildURL(request, number):
-        videoURL = request.POST['videoURL' + str(number)]
-        if request.POST['video_upload_form' + str(number)] == "link_from_youtube":
-            idYoutubeVideo = videoURL.split("v=", 1)[1]
-            videoURL = "http://www.youtube.com/embed/" + idYoutubeVideo
 
-        if request.POST['video_upload_form' + str(number)] == "from_existing_file":
-            print("from existing")
+        videoURL = ""
+        print(request.POST['type'+str(number)])
+        if request.POST['type'+str(number)] == "video":
+            videoURL = request.POST['videoURL' + str(number)]
+            if request.POST['upload_form' + str(number)] == "link_from_youtube":
+                idYoutubeVideo = videoURL.split("v=", 1)[1]
+                videoURL = "http://www.youtube.com/embed/" + idYoutubeVideo
+
+            if request.POST['upload_form' + str(number)] == "from_existing_file":
+                video_file = request.FILES['videoFile'+str(number)]
+                videoURL = video_file.name  # Get the name of the file to access to it when the micro-content is requested from external tool
+
+        if request.POST['type'+str(number)] == "audio":
             video_file = request.FILES['videoFile'+str(number)]
             videoURL = video_file.name  # Get the name of the file to access to it when the micro-content is requested from external tool
 
@@ -206,8 +225,8 @@ class MicroLearningContent(models.Model):
     quiz = models.ArrayModelField(
         model_container=Quest
     )
-    videos = models.ArrayModelField(
-        model_container=Video
+    media = models.ArrayModelField(
+        model_container=Media
     )
 
     meta_data = models.EmbeddedModelField(
@@ -216,14 +235,14 @@ class MicroLearningContent(models.Model):
     visible = models.CharField(max_length=4)
     allow_copy = models.CharField(max_length=4)
 
-    def __init__(self, id, title, tags, text, quiz, videos, meta_data, visible, allow_copy):
+    def __init__(self, id, title, tags, text, quiz, media, meta_data, visible, allow_copy):
         super(MicroLearningContent, self).__init__()
         self.id = id
         self.title = title
         self.tags = tags
         self.text = text
         self.quiz = quiz
-        self.videos = videos
+        self.media = media
         self.meta_data = meta_data
         self.visible = visible
         self.allow_copy = allow_copy
@@ -232,7 +251,7 @@ class MicroLearningContent(models.Model):
     def create(request):
         return MicroLearningContent(None, request.POST['title'], request.POST['mc_tags'],
                                     MicroLearningContent.getText(request), MicroLearningContent.getQuiz(request),
-                                    MicroLearningContent.getVideos(request), MetaData.create(request),
+                                    MicroLearningContent.getMedia(request), MetaData.create(request),
                                     request.POST['visible'], request.POST['allow_copy'])
 
     @staticmethod
@@ -248,12 +267,12 @@ class MicroLearningContent(models.Model):
         return text
 
     @staticmethod
-    def getVideos(request):
+    def getMedia(request):
         videos = []
         i = 1
         while True:
-            if 'videoURL' + str(i) in request.POST:
-                video = Video.create(request, i)
+            if 'type' + str(i) in request.POST:
+                video = Media.create(request, i)
                 video.save()
                 videos.append(video)
                 i += 1
@@ -276,9 +295,9 @@ class MicroLearningContent(models.Model):
     def toDict(self):
         dict = model_to_dict(self, fields=['title', 'text', 'tags'])
         dict['meta_data'] = self.meta_data.toDict()
-        dict['videos'] = []
-        for v in self.videos:
-            dict['videos'].append(v.toDict())
+        dict['media'] = []
+        for v in self.media:
+            dict['media'].append(v.toDict())
         dict['quiz'] = []
         for q in self.quiz:
             dict['quiz'].append(q.toDict())

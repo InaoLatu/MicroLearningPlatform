@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from djongo import models
 
-from micro_content_manager.models import Video, Question
+from micro_content_manager.models import Media, Question
 import os
 
 
@@ -181,11 +181,11 @@ def test_assing_tag(self):
 
 def test_video_constructor(self):
     video = models.EmbeddedModelField(
-        model_container=Video
+        model_container=Media
     )
 
     def __init__(self, url, format):
-        super(Video, self).__init__()
+        super(Media, self).__init__()
         self.url = url
         self.format = format
 

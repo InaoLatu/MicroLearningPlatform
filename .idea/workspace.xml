@@ -2,10 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f7406ea-5c76-44f9-b058-ab529d3762a2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/micro_content_manager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/templates/micro_content_manager/create_selection.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_content_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/micro_content_manager/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/edit_user_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/templates/users_manager/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/templates/users_manager/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_manager/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/bin/activate" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/bin/activate.csh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/bin/activate.fish" beforeDir="false" />
@@ -4468,7 +4479,17 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="authoring_tool: schema" type="f0f64354:MongoImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
@@ -4500,9 +4521,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mongo" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Code" />
+    <property name="last_opened_file_path" value="$USER_HOME$/aux/AuthServer" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -4512,21 +4535,24 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="Push.Settings">
+    <option name="SHOW_DETAILS_PANEL" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/shortcuts" />
+      <recent name="$PROJECT_DIR$/micro_content_manager/static/images" />
+      <recent name="$PROJECT_DIR$/micro_content_manager/static" />
+      <recent name="$PROJECT_DIR$/micro_content_manager/static/images/icons" />
+      <recent name="$PROJECT_DIR$/micro_content_manager/static/micro_content_manager/js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/micro_content_manager/static/micro_content_manager/js" />
       <recent name="$PROJECT_DIR$/micro_content_manager/static" />
       <recent name="$PROJECT_DIR$/micro_content_manager/static/images/icons" />
       <recent name="$PROJECT_DIR$/micro_content_manager/static/images" />
-      <recent name="$PROJECT_DIR$/users_manager/static" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/micro_content_manager/static/images" />
-      <recent name="$PROJECT_DIR$/micro_content_manager/static" />
-      <recent name="$PROJECT_DIR$/micro_content_manager/static/images/icons" />
-      <recent name="$PROJECT_DIR$/micro_content_manager/static/micro_content_manager/js" />
       <recent name="$PROJECT_DIR$/users_manager/static" />
     </key>
   </component>
@@ -4604,13 +4630,32 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@21bc877c" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@3cb93481" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@51948b0" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
       </list>
     </option>
-    <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -4726,7 +4771,19 @@
       <workItem from="1581066987563" duration="6777000" />
       <workItem from="1581412954444" duration="43858000" />
       <workItem from="1582796365035" duration="1289000" />
-      <workItem from="1583172222249" duration="11216000" />
+      <workItem from="1583172222249" duration="18239000" />
+      <workItem from="1583862090731" duration="9153000" />
+      <workItem from="1584354976086" duration="8160000" />
+      <workItem from="1584625453902" duration="9527000" />
+      <workItem from="1584999005706" duration="7641000" />
+      <workItem from="1585232315647" duration="870000" />
+      <workItem from="1585338435504" duration="6292000" />
+      <workItem from="1585395757395" duration="904000" />
+      <workItem from="1585431417354" duration="868000" />
+      <workItem from="1585731102282" duration="35000" />
+      <workItem from="1586725989468" duration="616000" />
+      <workItem from="1586781351214" duration="5144000" />
+      <workItem from="1586859930228" duration="3325000" />
     </task>
     <task id="LOCAL-00001" summary="First.">
       <created>1552258613764</created>
@@ -4959,7 +5016,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582041529303</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="fix: get the name of the video uploaded by the instructor correctly&#10;&#10;This is obtained to access the file in the media directory when needed.">
+      <created>1583409910909</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1583409910909</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -4969,7 +5033,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First part of Create Options completed." />
     <MESSAGE value="Create Selection and Storage completed." />
     <MESSAGE value="Search by tags in all and own micro contents completed." />
     <MESSAGE value="Copy and Delete functionality completed." />
@@ -4994,60 +5057,81 @@
     <MESSAGE value="Before deployment in Castor." />
     <MESSAGE value="Include only files outside gitignore" />
     <MESSAGE value="Implement REST API with units/, units/selected_unit and microcontent/" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement REST API with units/, units/selected_unit and microcontent/" />
+    <MESSAGE value="fix: get the name of the video uploaded by the instructor correctly&#10;&#10;This is obtained to access the file in the media directory when needed." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: get the name of the video uploaded by the instructor correctly&#10;&#10;This is obtained to access the file in the media directory when needed." />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="453" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581417426145">
+    <state x="588" y="200" key="#Web_Browsers" timestamp="1584444938803">
       <screen x="57" y="24" width="1863" height="1056" />
     </state>
-    <state x="453" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1581417426145" />
+    <state x="588" y="200" key="#Web_Browsers/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1584444938803" />
+    <state x="2328" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586863237939">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2328" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/57.24.1863.1056/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586863237939" />
+    <state x="453" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1584446482279" />
     <state x="849" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog/57.24.3783.1056@57.24.3783.1056" timestamp="1579517967222" />
-    <state x="444" y="135" key="CommitChangelistDialog2" timestamp="1582041527144">
-      <screen x="57" y="24" width="1863" height="1056" />
+    <state x="2319" y="114" key="CommitChangelistDialog2" timestamp="1586864836978">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="444" y="135" key="CommitChangelistDialog2/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1582041527144" />
+    <state x="2319" y="114" key="CommitChangelistDialog2/57.24.1863.1056/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586864836978" />
+    <state x="444" y="135" key="CommitChangelistDialog2/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1583409909273" />
     <state x="731" y="303" key="EnvironmentVariablesDialog" timestamp="1581417402540">
       <screen x="57" y="24" width="1863" height="1056" />
     </state>
     <state x="731" y="303" key="EnvironmentVariablesDialog/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1581417402540" />
-    <state x="411" y="297" key="FileChooserDialogImpl" timestamp="1581415588902">
-      <screen x="57" y="24" width="1863" height="1056" />
+    <state x="2285" y="279" key="FileChooserDialogImpl" timestamp="1585338471406">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="411" y="297" key="FileChooserDialogImpl/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1581415588902" />
+    <state x="2285" y="279" key="FileChooserDialogImpl/57.24.1863.1056/1920.0.1920.1080@1920.0.1920.1080" timestamp="1585338471406" />
+    <state x="411" y="297" key="FileChooserDialogImpl/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1584362864291" />
     <state x="776" y="297" key="FileChooserDialogImpl/57.24.3783.1056@57.24.3783.1056" timestamp="1579522959629" />
-    <state width="1817" height="270" key="GridCell.Tab.0.bottom" timestamp="1583405587022">
-      <screen x="57" y="24" width="1863" height="1056" />
+    <state width="1817" height="301" key="GridCell.Tab.0.bottom" timestamp="1586864666404">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1817" height="270" key="GridCell.Tab.0.bottom/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1583405587022" />
+    <state width="1817" height="301" key="GridCell.Tab.0.bottom/57.24.1863.1056/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586864666404" />
+    <state width="1817" height="178" key="GridCell.Tab.0.bottom/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1584821977939" />
+    <state width="1817" height="608" key="GridCell.Tab.0.bottom/57.24.1863.1056/57.24.1863.1056@57.24.1863.1056" timestamp="1584009718405" />
+    <state width="1817" height="301" key="GridCell.Tab.0.bottom/57.24.1863.1056@57.24.1863.1056" timestamp="1585791487380" />
     <state width="1817" height="518" key="GridCell.Tab.0.bottom/57.24.3783.1056@57.24.3783.1056" timestamp="1579515324882" />
-    <state width="1817" height="270" key="GridCell.Tab.0.center" timestamp="1583405587021">
-      <screen x="57" y="24" width="1863" height="1056" />
+    <state width="1817" height="301" key="GridCell.Tab.0.center" timestamp="1586864666404">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1817" height="270" key="GridCell.Tab.0.center/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1583405587021" />
+    <state width="1817" height="301" key="GridCell.Tab.0.center/57.24.1863.1056/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586864666404" />
+    <state width="1817" height="178" key="GridCell.Tab.0.center/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1584821977939" />
+    <state width="1817" height="608" key="GridCell.Tab.0.center/57.24.1863.1056/57.24.1863.1056@57.24.1863.1056" timestamp="1584009718405" />
+    <state width="1817" height="301" key="GridCell.Tab.0.center/57.24.1863.1056@57.24.1863.1056" timestamp="1585791487379" />
     <state width="1817" height="518" key="GridCell.Tab.0.center/57.24.3783.1056@57.24.3783.1056" timestamp="1579515324882" />
-    <state width="1817" height="270" key="GridCell.Tab.0.left" timestamp="1583405587021">
-      <screen x="57" y="24" width="1863" height="1056" />
+    <state width="1817" height="301" key="GridCell.Tab.0.left" timestamp="1586864666404">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1817" height="270" key="GridCell.Tab.0.left/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1583405587021" />
+    <state width="1817" height="301" key="GridCell.Tab.0.left/57.24.1863.1056/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586864666404" />
+    <state width="1817" height="178" key="GridCell.Tab.0.left/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1584821977939" />
+    <state width="1817" height="608" key="GridCell.Tab.0.left/57.24.1863.1056/57.24.1863.1056@57.24.1863.1056" timestamp="1584009718405" />
+    <state width="1817" height="301" key="GridCell.Tab.0.left/57.24.1863.1056@57.24.1863.1056" timestamp="1585791487379" />
     <state width="1817" height="518" key="GridCell.Tab.0.left/57.24.3783.1056@57.24.3783.1056" timestamp="1579515324881" />
-    <state width="1817" height="270" key="GridCell.Tab.0.right" timestamp="1583405587021">
-      <screen x="57" y="24" width="1863" height="1056" />
+    <state width="1817" height="301" key="GridCell.Tab.0.right" timestamp="1586864666404">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1817" height="270" key="GridCell.Tab.0.right/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1583405587021" />
+    <state width="1817" height="301" key="GridCell.Tab.0.right/57.24.1863.1056/1920.0.1920.1080@1920.0.1920.1080" timestamp="1586864666404" />
+    <state width="1817" height="178" key="GridCell.Tab.0.right/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1584821977939" />
+    <state width="1817" height="608" key="GridCell.Tab.0.right/57.24.1863.1056/57.24.1863.1056@57.24.1863.1056" timestamp="1584009718405" />
+    <state width="1817" height="301" key="GridCell.Tab.0.right/57.24.1863.1056@57.24.1863.1056" timestamp="1585791487379" />
     <state width="1817" height="518" key="GridCell.Tab.0.right/57.24.3783.1056@57.24.3783.1056" timestamp="1579515324882" />
-    <state x="831" y="252" key="RollbackChangesDialog" timestamp="1582041453305">
+    <state x="831" y="252" key="RollbackChangesDialog" timestamp="1583409482685">
       <screen x="57" y="24" width="1863" height="1056" />
     </state>
-    <state x="831" y="252" key="RollbackChangesDialog/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1582041453305" />
-    <state x="482" y="188" key="SettingsEditor" timestamp="1583320231285">
-      <screen x="57" y="24" width="1863" height="1056" />
+    <state x="831" y="252" key="RollbackChangesDialog/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1583409482685" />
+    <state x="2358" y="168" key="SettingsEditor" timestamp="1585341386278">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2358" y="168" key="SettingsEditor/57.24.1863.1056/1920.0.1920.1080@1920.0.1920.1080" timestamp="1585341386278" />
     <state x="482" y="188" key="SettingsEditor/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1583320231285" />
-    <state x="588" y="263" key="Vcs.Push.Dialog.v2" timestamp="1582041542202">
+    <state x="588" y="263" key="Vcs.Push.Dialog.v2" timestamp="1583409967354">
       <screen x="57" y="24" width="1863" height="1056" />
     </state>
-    <state x="588" y="263" key="Vcs.Push.Dialog.v2/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1582041542202" />
+    <state x="588" y="263" key="Vcs.Push.Dialog.v2/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1583409967354" />
     <state x="650" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1581412955819">
       <screen x="57" y="24" width="1863" height="1056" />
     </state>
@@ -5057,10 +5141,11 @@
       <screen x="57" y="24" width="1863" height="1056" />
     </state>
     <state x="761" y="459" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1579282120369" />
-    <state x="1977" y="132" width="1759" height="909" key="find.popup" timestamp="1579515842555">
-      <screen x="57" y="24" width="3783" height="1056" />
+    <state x="1003" y="132" width="867" height="909" key="find.popup" timestamp="1583863199604">
+      <screen x="57" y="24" width="1863" height="1056" />
     </state>
     <state x="555" y="83" width="866" height="909" key="find.popup/57.24.1863.1056/1920.0.1920.1080@57.24.1863.1056" timestamp="1579101892811" />
+    <state x="1003" y="132" width="867" height="909" key="find.popup/57.24.1863.1056/57.24.1863.1056@57.24.1863.1056" timestamp="1583863199604" />
     <state x="1977" y="132" width="1759" height="909" key="find.popup/57.24.3783.1056@57.24.3783.1056" timestamp="1579515842555" />
     <state x="651" y="236" width="672" height="678" key="search.everywhere.popup" timestamp="1581607970784">
       <screen x="57" y="24" width="1863" height="1056" />

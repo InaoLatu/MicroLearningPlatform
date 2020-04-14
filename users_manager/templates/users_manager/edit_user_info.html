@@ -21,7 +21,7 @@
                     {{ form.errors }}
 					<section>
 						<label class="input">Username:
-                            <input name="userName" type="text" value="{{ user.username }}">
+                            <input name="userName" type="text" value="{{ user.username }}">  {% comment %} It takes user values from the current authenticated user {% endcomment %}
 							<b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
 						</label>
 					</section>
