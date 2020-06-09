@@ -41,11 +41,11 @@
                     </fieldset>
                     <fieldset>
                         <section>
-                            <span class="blue">Videos: </span>
-                              {% for v in micro_content.videos %}
-                                   <li>Video {{ forloop.counter }}</li>
-                                    <span class="blue"> - Url: </span> {{ v.url }} <br>
-                                    <span class="blue"> - Upload_form:</span> {{ v.video_upload_form }}
+                            <span class="blue">Media: </span>
+                              {% for m in micro_content.media %}
+                                   <li>Media {{ forloop.counter }}</li>
+                                    <span class="blue"> - Url: </span> {{ m.url }} <br>
+                                    <span class="blue"> - Type:</span> {{ m.type }}
                               {% endfor%}
                         </section>
                     </fieldset>
@@ -71,7 +71,7 @@
                                    <li>Question {{ forloop.counter }}:  {{ q.question}}</li>
                                   <span class="blue"> - Choices:</span>
                                   {% for choice in q.choices %}
-                                            <span>'{{ choice }}'</span>
+                                            <span>'{{ choice.choice_text }}'</span>
                                   {% endfor %}
                                         <br>
                                         <span class="blue"> - Answer: </span>  '{{ q.answer }}'  <br>

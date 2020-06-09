@@ -28,7 +28,7 @@ MONGODB_PORT = 27017
 DB_NAME = 'authoring_tool'
 COLLECTION_NAME = 'micro_content_manager_microlearningcontent'
 
-# API
+# API imports
 from rest_framework import viewsets
 from micro_content_manager.serializers import UnitSerializer, MicroContentSerializer
 from rest_framework.decorators import api_view
@@ -51,7 +51,7 @@ class UnitList(APIView):
     def get(self, request, format=None):
         units = Unit.objects.all()
         serializer = UnitSerializer(units, many=True)
-        return Response(serializer.data)  # POSIBLE CAMBIO A JSONRESPONSE
+        return Response(serializer.data)
 
 
 class UnitDetail(APIView):
@@ -124,13 +124,10 @@ def microcontent(request):
     try:
         connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
         collection = connection[DB_NAME][COLLECTION_NAME]
-
         micro_content = collection.find_one({"id": request.GET['id']})
-        # content = MicroLearningContent.objects.get(pk=request.GET['content'])
-        return JsonResponse(MicroLearningContent.objects.get(pk=request.GET['id']).toDict())
-        # return json.dumps(micro_content)
 
-        # return JsonResponse(micro_content, safe=False)
+        return JsonResponse(MicroLearningContent.objects.get(pk=request.GET['id']).toDict())
+
 
 
     except (MicroLearningContent.DoesNotExist, MultiValueDictKeyError):
@@ -156,8 +153,8 @@ def vote(request):
         selected_choice_index = int(request.POST['selection' + str(i)]) - 1
         # selected_choice.votes += 1
         # selected_choice.save()
-        selections[i] = question['choices'][selected_choice_index]
-        if question['answer'] == question['choices'][selected_choice_index]:
+        selections[i] = question['choices'][selected_choice_index]['choice_text']
+        if question['answer'] == question['choices'][selected_choice_index]['choice_text']:
             correct_answers += 1
             sol_messages[i] = "CORRECT!"
         else:
@@ -357,6 +354,7 @@ class StoreView(generic.TemplateView):
         Tag.objects.update_tags(content, tags)
 
         unit_selected = request.POST['unit'].lower()
+        print(unit_selected)
 
         if Unit.objects.filter(name=unit_selected).count() > 0:
             unit = Unit.objects.get(name=unit_selected)
@@ -391,7 +389,10 @@ def update(request, **kwargs):
 
     id = int(request.POST['id'])  # id of the micro content to edit
 
-    collection.update_one({"id": request.POST['id']}, {"$set": {"title": request.POST['title'],
+    print(request.POST['title'])
+    collection.update_one({"id": id}, {"$set": {"title": request.POST['title']}})
+
+    collection.update_one({"id": id}, {"$set": {"title": request.POST['title'],
                                                                 "tags": request.POST['mc_tags'],
                                                                 "text": MicroLearningContent.getText(request),
                                                                 "visible": request.POST['visible'],
@@ -399,22 +400,64 @@ def update(request, **kwargs):
                                                                 "meta_data.title": request.POST['title'],
                                                                 "meta_data.last_modification": timezone.now()
                                                                 }})
-    if 'videoURL' + str(2) in request.POST:  # If two videos have been entered, they are both updated.
+    if 'type' + str(2) in request.POST:  # If two media have been entered, they are both updated.
 
         collection.update_one({"id": id}, {"$set": {
-            "videos.0.url": request.POST['videoURL1'],
-            "videos.0.video_upload_form": request.POST['video_upload_form1'],
+            "media.0.type": request.POST['type1'],
+            "media.0.upload_form": request.POST['upload_form1'],
+            "media.0.url": request.POST['videoURL1'],
+            "media.0.text" : request.POST['text1'],
 
-            "videos.1.url": request.POST['videoURL2'],
-            "videos.1.video_upload_form": request.POST['video_upload_form2']
+            "media.1.type": request.POST['type2'],
+            "media.1.upload_form": request.POST['upload_form2'],
+            "media.1.url": request.POST['videoURL2'],
+            "media.1.text" : request.POST['text2'],
         }
         })
-    else:  # Just one video updated
+        # if request.POST['type1'] == 'video':
+        #     collection.update_one({"id": id}, {"$set": {
+        #         "media.0.mediaFile": request.FILES['videoFile1'],
+        #     }})
+        # elif request.POST['type1'] == 'audio':
+        #     collection.update_one({"id": id}, {"$set": {
+        #         "media.0.mediaFile": request.FILES['audioFile1'],
+        #     }})
+
+        if request.POST['type2'] == 'video':
+            collection.update_one({"id": id}, {"$set": {
+                "media.0.mediaFile": request.FILES.get('videoFile2'),
+            }})
+        elif request.POST['type2'] == 'audio':
+            collection.update_one({"id": id}, {"$set": {
+                "media.0.mediaFile": request.FILES.get('audioFile2'),
+            }})
+
+
+    else:  # Just one media updated
         collection.update_one({"id": id}, {"$set": {
-            "videos.0.url": request.POST['videoURL1'],
-            "videos.0.video_upload_form": request.POST['video_upload_form1']
+            "media.0.type": request.POST['type1'],
+            "media.0.upload_form": request.POST['upload_form1'],
+            "media.0.url": request.POST['videoURL1'],
+            "media.0.text" : request.POST['text1'],
         }})
 
+        # if request.POST['type1'] == 'video':
+        #     collection.update_one({"id": id}, {"$set": {
+        #         "media.0.mediaFile": request.FILES['videoFile1'],
+        #     }})
+        # elif request.POST['type1'] == 'audio':
+        #     collection.update_one({"id": id}, {"$set": {
+        #         "media.0.mediaFile": request.FILES['audioFile1'],
+        #     }})
+
+    if request.POST['type1'] == 'video':
+        collection.update_one({"id": id}, {"$set": {
+            "media.0.mediaFile": request.FILES.get('videoFile1')
+        }})
+    elif request.POST['type1'] == 'audio':
+        collection.update_one({"id": id}, {"$set": {
+            "media.0.mediaFile": request.FILES.get('audioFile1')
+        }})
     # content.questions.all().delete()
 
     list = {}
@@ -454,7 +497,7 @@ def update(request, **kwargs):
                 # to get the value of the input field whose numeration starts in 1, not in 0
                 collection.update_one({"id": id},
                                       {"$set": {"quiz." + str(question_index) + ".choices." + str(
-                                          choice_index): choice_value, }})
+                                          choice_index) + ".choice_text": choice_value, }})
                 choice_index += 1
 
             question_index += 1

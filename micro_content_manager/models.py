@@ -36,21 +36,22 @@ class Media(models.Model):
     @staticmethod
     def create(request, number):
 
-            if request.POST['type'+str(number)] == "video":
-                if request.POST['upload_form' + str(number)] == "from_existing_file":
-                    return Media(request.POST['type'+str(number)], Media.buildURL(request, number),
-                                 request.POST['upload_form' + str(number)], request.FILES['videoFile'+str(number)], request.POST['text'+str(number)])
-                else:
-                    return Media(request.POST['type'+str(number)], Media.buildURL(request, number),
-                                 request.POST['upload_form' + str(number)], None, request.POST['text'+str(number)])
+        if request.POST['type' + str(number)] == "video":
+            if request.POST['upload_form' + str(number)] == "from_existing_file":
+                return Media(request.POST['type' + str(number)], Media.buildURL(request, number),
+                             request.POST['upload_form' + str(number)], request.FILES['videoFile' + str(number)],
+                             request.POST['text' + str(number)])
+            else:
+                return Media(request.POST['type' + str(number)], Media.buildURL(request, number),
+                             request.POST['upload_form' + str(number)], None, request.POST['text' + str(number)])
 
-            if request.POST['type'+str(number)] == "audio":
-                return Media(request.POST['type'+str(number)], Media.buildURL(request, number),
-                             request.POST['upload_form' + str(number)], request.FILES['videoFile'+str(number)], request.POST['text'+str(number)])
+        if request.POST['type' + str(number)] == "audio":
+            return Media(request.POST['type' + str(number)], Media.buildURL(request, number),
+                         request.POST['upload_form' + str(number)], request.FILES['videoFile' + str(number)],
+                         request.POST['text' + str(number)])
 
-            if request.POST['type'+str(number)] == "text":
-                return Media(request.POST['type'+str(number)], None, None, None, request.POST['text'+str(number)])
-
+        if request.POST['type' + str(number)] == "text":
+            return Media(request.POST['type' + str(number)], None, None, None, request.POST['text' + str(number)])
 
     def __init__(self, type, url, upload_form, mediaFile, text):
         super(Media, self).__init__()
@@ -67,19 +68,19 @@ class Media(models.Model):
     def buildURL(request, number):
 
         videoURL = ""
-        print(request.POST['type'+str(number)])
-        if request.POST['type'+str(number)] == "video":
+        # print(request.POST['type'+str(number)])
+        if request.POST['type' + str(number)] == "video":
             videoURL = request.POST['videoURL' + str(number)]
             if request.POST['upload_form' + str(number)] == "link_from_youtube":
                 idYoutubeVideo = videoURL.split("v=", 1)[1]
                 videoURL = "http://www.youtube.com/embed/" + idYoutubeVideo
 
             if request.POST['upload_form' + str(number)] == "from_existing_file":
-                video_file = request.FILES['videoFile'+str(number)]
+                video_file = request.FILES['videoFile' + str(number)]
                 videoURL = video_file.name  # Get the name of the file to access to it when the micro-content is requested from external tool
 
-        if request.POST['type'+str(number)] == "audio":
-            video_file = request.FILES['videoFile'+str(number)]
+        if request.POST['type' + str(number)] == "audio":
+            video_file = request.FILES['videoFile' + str(number)]
             videoURL = video_file.name  # Get the name of the file to access to it when the micro-content is requested from external tool
 
         return videoURL
@@ -87,6 +88,7 @@ class Media(models.Model):
 
 class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
+
     # votes = models.IntegerField(default=0)
 
     def __str__(self):
@@ -174,7 +176,7 @@ class Quest(models.Model):
     choices = models.ArrayModelField(
         model_container=Choice
     )
-   # choices = models.ListField()
+    # choices = models.ListField()
     answer = models.TextField()
     explanation = models.TextField()
 
@@ -228,7 +230,6 @@ class MicroLearningContent(models.Model):
     media = models.ArrayModelField(
         model_container=Media
     )
-
     meta_data = models.EmbeddedModelField(
         model_container=MetaData
     )
@@ -318,4 +319,4 @@ class Unit(models.Model):
 
     @staticmethod
     def create(request):
-        return Unit(None, request.POST['unit'])
+        return Unit(None, request.POST['unit'].lower())

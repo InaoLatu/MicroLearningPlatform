@@ -103,21 +103,48 @@
                         {% endfor %}
                     </fieldset>
 
-                    <fieldset>
-                        <h2>Videos </h2>
-                        {% for v in content.videos %}
-                        <section>Video {{ forloop.counter }}</section>
-                        <section>URL:<input name="videoURL{{ forloop.counter }}" type="url" value="{{ v.url }}" style="width: 500px;"></section>
-                        <section>Format:<select name="videoFormat{{ forloop.counter }}">
-                            <option value="mp4" {% if v.format == 'mp4' %} selected {% endif %}>mp4</option>
-                            <option value="ogg" {% if v.format == 'ogg' %} selected {% endif %}>ogg</option>
-                        </select></section>
+{#                    <fieldset>#}
+{#                        <h2>Media </h2>#}
+{#                        {% for m in content.media %}#}
+{#                        <section>Media {{ forloop.counter }}</section>#}
+{#                        <section>URL:<input name="videoURL{{ forloop.counter }}" type="url" value="{{ m.url }}" style="width: 500px;"></section>#}
+{##}
+{##}
+{#                         <section>Upload form:<select name="video_upload_form{{ forloop.counter }}">#}
+{#                            <option value="from_existing_file" {% if v.upload_form == 'from_existing_file' %} selected {% endif %}>From existing file</option>#}
+{#                            <option value="link_from_youtube" {% if v.upload_form == 'link_from_youtube' %} selected {% endif %}>Link from YouTube</option>#}
+{#                            <option value="external_repository" {% if v.upload_form == 'external_repository' %} selected {% endif %}>From external repository</option>#}
+{#                        </select></section>#}
+{#                        {% endfor %}#}
+{#                    </fieldset>#}
 
-                         <section>Upload form:<select name="video_upload_form{{ forloop.counter }}">
-                            <option value="from_existing_file" {% if v.upload_form == 'from_existing_file' %} selected {% endif %}>From existing file</option>
-                            <option value="link_from_youtube" {% if v.upload_form == 'link_from_youtube' %} selected {% endif %}>Link from YouTube</option>
-                            <option value="external_repository" {% if v.upload_form == 'external_repository' %} selected {% endif %}>From external repository</option>
-                        </select></section>
+                    <fieldset>
+                        <h2>Multimedia</h2>
+                        {% for m in content.media %}
+                            <section><h4>Media {{ forloop.counter }}</h4></section>
+                            <section>
+                                <p>Type:
+                                    <select  name="type{{ forloop.counter }}" id="type{{ forloop.counter }}" >
+                                        <option value="video" {% if m.type == 'video' %} selected {% endif %}>Video</option>
+                                        <option value="audio" {% if m.type == 'audio' %} selected {% endif %}>Audio</option>
+                                        <option value="text" {% if m.type == 'text' %} selected {% endif %}>Text</option>
+                                    </select>
+                                </p>
+                            </section>
+                            <section>
+                                <p>Upload form:
+                                    <select name="upload_form{{ forloop.counter }}" id="upload_form{{ forloop.counter }}" >
+                                        <option value="from_existing_file" selected>From existing file</option>
+                                        <option value="link_from_youtube">Link from YouTube</option>
+                                    </select>
+                                </p>
+                            </section>
+                            <section>Video file: <input name="videoFile{{ forloop.counter }}" id="videoFile{{ forloop.counter }}" type="file" accept="video/*" onchange="get_name_from_file({{ forloop.counter }})"/></section>
+                            <section>Audio file: <input name="audioFile{{ forloop.counter }}" id="audioFile{{ forloop.counter }}" type="file" accept="aac, .mp4, .mp3, .pls, .m3u, m3u8, .hls" onchange="get_name_from_file({{ forloop.counter }})"/>
+                                (Valid formats: AAC/MP4, MP3, PLS, M3U/M3U8 and HLS with bitrate from 16kbps to 384kbps)</section>
+                            <section><span>YouTube URL:&nbsp;<input name="videoURL{{ forloop.counter }}" type="url" value="{{ m.url }}"></span></section>
+                            <section>Text:  <textarea  name="text{{ forloop.counter }}" rows="2" cols="100"></textarea></section>
+                            <input type="hidden" name="url_file{{ forloop.counter }}" id="url_file{{ forloop.counter }}" value="">
                         {% endfor %}
                     </fieldset>
 
@@ -158,8 +185,8 @@
                                            {% for choice in q.choices %}
                                                 <input type="radio" name="answer{{ forloop.parentloop.counter }}"
                                                        value="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}"
-                                                       {% if q.answer == choice %}checked {% endif %}>
-                                                <input type="text" name="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}" value={{ choice }}>    <br>
+                                                       {% if q.answer == choice.choice_text %}checked {% endif %}>
+                                                <input type="text" name="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}" value={{ choice.choice_text }}>    <br>
                                            {% endfor %}
                                         </div>
                                         <br>

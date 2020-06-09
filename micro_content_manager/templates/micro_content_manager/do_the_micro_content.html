@@ -59,11 +59,11 @@
             </fieldset>
             <fieldset>
                 <div>
-                    {% for v in micro_content.videos %}
-                        {% if v.video_upload_form == "from_existing_file"%}
-                             <video width="700" height="440" id="video{{ forloop.counter }}" src="{{ MEDIA_URL }}{{ v.videoFile }}" controls></video>
-                        {% elif v.video_upload_form == "link_from_youtube" %}
-                            <iframe width="700" height="440" id="video{{ forloop.counter }}" src="{{ v.url }}"></iframe>
+                    {% for m in micro_content.media %}
+                        {% if m.upload_form == "from_existing_file"%}
+                             <video width="700" height="440" id="video{{ forloop.counter }}" src="{{ MEDIA_URL }}{{ m.mediaFile }}" controls></video>
+                        {% elif m.upload_form == "link_from_youtube" %}
+                            <iframe width="700" height="440" id="video{{ forloop.counter }}" src="{{ m.url }}"></iframe>
                         {% endif %}
                     {% endfor%}
                 </div>
@@ -83,7 +83,8 @@
                         {% for sol in sol_messages.values %}
                                     <p class="aux" id="aux{{ forloop.counter }}">{{ forloop.counter }}.  {{ sol }}</p>
                                {% endfor %}
-
+                        <br>
+                        <br>
                         <form action="{% url 'micro_content_manager:micro_content_vote' %}" method="post">
 
                             {% csrf_token %}
@@ -94,7 +95,7 @@
                                         {% for choice in question.choices %}
                                             <label class="choice">
                                                 <input class="rad"  id="radio{{ forloop.parentloop.counter }}{{ forloop.counter }}" type="radio" name="choice{{forloop.parentloop.counter}}" value="{{ choice.id }}" disabled>
-                                                <label class="option" for="choice{{ forloop.counter }}">{{ choice }}</label><br>
+                                                <label class="option" for="choice{{ forloop.counter }}">{{ choice.choice_text  }}</label><br>
                                             </label>
                                         {% endfor %}
                                     <section class="solution" id="sol{{ forloop.counter }}" style="font-weight: bold;"></section>
@@ -116,7 +117,7 @@
                                             {% for choice in question.choices %}
                                                 <label class="choice">
                                                     <input type="radio" name="selection{{forloop.parentloop.counter}}" value="{{ forloop.counter }}" required>
-                                                    <label for="choice{{ forloop.counter }}">{{ choice }}</label><br><br>
+                                                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br><br>
                                                 </label>
                                             {% endfor %}
                                         <br>
