@@ -9,7 +9,7 @@ from django.views import generic
 from pymongo import MongoClient
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from tagging.models import Tag
+#from tagging.models import Tag
 
 from micro_content_manager.forms import MicroContentEditForm
 from micro_content_manager.models import MicroLearningContent, Question, Choice, Media, Unit

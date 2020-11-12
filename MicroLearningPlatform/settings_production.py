@@ -19,7 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('/home/inao/Trabajo/AT/secret_key.txt') as f:
+#with open('/home/inao/Trabajo/AT/secret_key.txt') as f:
+with open('/home/mario/dev/MLP/secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -46,7 +47,7 @@ MAX_TAG_LENGTH = 30
 
 INSTALLED_APPS = [
     'micro_content_manager',
-    'tagging',
+    #'tagging',                      #Da error. No encontrada.
     'users_manager',
     'django.contrib.admin',
     'django.contrib.auth',

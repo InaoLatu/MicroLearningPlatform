@@ -42,7 +42,7 @@ MAX_TAG_LENGTH = 30
 
 INSTALLED_APPS = [
     'micro_content_manager',
-    'tagging',
+    #'tagging',
     'users_manager',
     'django.contrib.admin',
     'django.contrib.auth',
