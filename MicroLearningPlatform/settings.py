@@ -33,8 +33,10 @@ ALLOWED_HOSTS = ['*']
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'microlearning.authoring.system@gmail.com'
+EMAIL_HOST_USER = 'microlearning.uvigo@gmail.com'
+#EMAIL_HOST_USER = 'microlearning.authoring.system@gmail.com'
 EMAIL_HOST_PASSWORD = 'microcontent'
+#EMAIL_HOST_PASSWORD = 'hmavjpctqcprlhdg'
 EMAIL_USE_TLS = True
 
 FORCE_LOWERCASE_TAGS = True

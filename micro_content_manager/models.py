@@ -219,10 +219,11 @@ class Quest(models.Model):
 
 
 class MicroLearningContent(models.Model):
+    #MOD posible problema de tags, duplicado con mc_tags (ver formulario en templates)
     mc_tags = models.ManyToManyField(Tag)
     questions = models.ManyToManyField(Question)
     title = models.CharField(max_length=100)
-    tags = models.CharField(max_length=100)
+    #tags = models.CharField(max_length=100)
     text = models.ListField()
     quiz = models.ArrayModelField(
         model_container=Quest
@@ -236,11 +237,12 @@ class MicroLearningContent(models.Model):
     visible = models.CharField(max_length=4)
     allow_copy = models.CharField(max_length=4)
 
-    def __init__(self, id, title, tags, text, quiz, media, meta_data, visible, allow_copy):
+    #def __init__(self, id, title, tags, text, quiz, media, meta_data, visible, allow_copy):
+    def __init__(self, id, title, text, quiz, media, meta_data, visible, allow_copy):
         super(MicroLearningContent, self).__init__()
         self.id = id
         self.title = title
-        self.tags = tags
+        #self.tags = tags
         self.text = text
         self.quiz = quiz
         self.media = media
@@ -250,7 +252,7 @@ class MicroLearningContent(models.Model):
 
     @staticmethod
     def create(request):
-        return MicroLearningContent(None, request.POST['title'], request.POST['mc_tags'],
+        return MicroLearningContent(None, request.POST['title'], #request.POST['mc_tags'],
                                     MicroLearningContent.getText(request), MicroLearningContent.getQuiz(request),
                                     MicroLearningContent.getMedia(request), MetaData.create(request),
                                     request.POST['visible'], request.POST['allow_copy'])

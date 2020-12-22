@@ -174,7 +174,7 @@ class MicroContentInfoView(generic.DetailView):
         collection = connection[DB_NAME][COLLECTION_NAME]
 
         micro_content = collection.find_one({"id": kwargs['id']})
-        mc_text = micro_content["tags"]
+        #mc_text = micro_content["tags"]
         # micro_content = MicroLearningContent.objects.get(pk=kwargs['id'])
 
         # mc_t = Tag.objects.get_for_object(micro_content).values_list('name', flat=True)
@@ -185,7 +185,7 @@ class MicroContentInfoView(generic.DetailView):
 
         return render(request, 'micro_content_manager/micro_content_info.html', {'micro_content': micro_content,
                                                                                  'quiz': micro_content['quiz'],
-                                                                                 'mc_text': mc_text,
+                                                                                 #'mc_text': mc_text,
                                                                                  })
 
 
@@ -200,7 +200,7 @@ class MicroContentSearchView(generic.DetailView):
         list_result = {}
 
         for mc in collection.find():
-            list_result.update({mc["id"]: [mc["title"], mc["meta_data"]["author"], mc["allow_copy"], mc["visible"]]})
+            list_result.update({mc["id"]: [mc["title"], mc["meta_data"]["author"], mc["visible"], mc["allow_copy"]]})#MOD cambiamos orden de visible y allow copy
         return render(request, 'micro_content_manager/mc_search.html',
                       {"list_result": list_result, "tab": kwargs['tab']})
 
@@ -217,12 +217,14 @@ class MicroContentSearchView(generic.DetailView):
             for tag in mc_queryset:
                 mc_tags.append(str(tag))
                 if bool(set(micro_contents_search) & set(mc_tags)):
-                    list_result.update({mc.id: [mc.title, mc.meta_data.author, mc.allow_copy]})
+                    #list_result.update({mc.id: [mc.title, mc.meta_data.author, mc.allow_copy]})
+                    list_result.update({mc.id: [mc.title, mc.meta_data.author, mc.visible, mc.allow_copy]})
 
         list = MicroLearningContent.objects.all()
         for mc2 in list:
             if self.request.POST['search'] == mc2.title:
-                list_result.update({mc2.id: [mc2.title, mc2.meta_data.author, mc2.allow_copy]})
+                #list_result.update({mc2.id: [mc2.title, mc2.meta_data.author, mc2.allow_copy]})
+                list_result.update({mc2.id: [mc2.title, mc2.meta_data.author, mc2.visible, mc2.allow_copy]})
 
         return render(self.request, 'micro_content_manager/mc_search.html',
                       {"list_result": list_result, "tab": searchIn, "search": micro_contents_search})
@@ -236,7 +238,7 @@ class MicroContentEditView(generic.FormView):
         connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
         collection = connection[DB_NAME][COLLECTION_NAME]
         micro_content = collection.find_one({"id": kwargs['pk']})
-        mc_text = micro_content["tags"]
+        #mc_text = micro_content["tags"]
 
         # try:
         #     content = MicroLearningContent.objects.get(pk=kwargs['pk'])
@@ -251,8 +253,9 @@ class MicroContentEditView(generic.FormView):
         return render(request, 'micro_content_manager/edit.html', {"content": micro_content,
                                                                    "number_questions": len(micro_content["quiz"]),
                                                                    "quiz": micro_content["quiz"],
-                                                                   "id": kwargs['pk'],
-                                                                   "mc_tags": mc_text})
+                                                                   "id": kwargs['pk']})
+                                                                   #"id": kwargs['pk'],
+                                                                   #"mc_tags": mc_text})
 
     # def form_valid(self, form):
     #     form = MicroContentEditForm(self.request.POST)
@@ -351,7 +354,7 @@ class StoreView(generic.TemplateView):
             except MultiValueDictKeyError:
                 pass
 
-        Tag.objects.update_tags(content, tags)
+        #Tag.objects.update_tags(content, tags)
 
         unit_selected = request.POST['unit'].lower()
         print(unit_selected)

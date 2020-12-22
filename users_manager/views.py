@@ -26,6 +26,8 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
+#añadida tras error en signup
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
@@ -289,7 +291,7 @@ class SignUp(generic.CreateView):
                 'token': account_activation_token.make_token(user),
             })
             email = EmailMessage(
-                mail_subject, message, to=['inao.latourrette@gmail.com']  # admin email
+                mail_subject, message, to=['mario.manso@gist.uvigo.es']  # admin email
             )
             email.send()
             return render(self.request, 'users_manager/confirm_registration.html')
