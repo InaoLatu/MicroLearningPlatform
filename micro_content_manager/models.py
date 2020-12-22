@@ -37,7 +37,7 @@ class Media(models.Model):
     def create(request, number):
 
         if request.POST['type' + str(number)] == "video":
-            if request.POST['upload_form' + str(number)] == "from_existing_file":
+            if request.POST['upload_form' + str(number)] == "FROM_FILE":
                 return Media(request.POST['type' + str(number)], Media.buildURL(request, number),
                              request.POST['upload_form' + str(number)], request.FILES['videoFile' + str(number)],
                              request.POST['text' + str(number)])
@@ -108,7 +108,8 @@ class Choice(models.Model):
 
 class Question(models.Model):
     question = models.TextField()
-    choices = models.ManyToManyField(Choice)
+    choices = models.ManyToManyField(Choice)#OJO a veces diccionario, a veces array. El bot funciona cuando es un diccionario.
+                                            #cambia al migrar
     choices_text = models.TextField()
     answer = models.TextField()
     explanation = models.TextField()

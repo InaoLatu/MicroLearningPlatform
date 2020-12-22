@@ -441,7 +441,7 @@ def update(request, **kwargs):
             "media.0.type": request.POST['type1'],
             "media.0.upload_form": request.POST['upload_form1'],
             "media.0.url": request.POST['videoURL1'],
-            "media.0.text" : request.POST['text1'],
+            "media.0.text": request.POST['text1'],
         }})
 
         # if request.POST['type1'] == 'video':

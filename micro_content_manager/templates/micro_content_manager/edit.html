@@ -134,8 +134,8 @@
                             <section>
                                 <p>Upload form:
                                     <select name="upload_form{{ forloop.counter }}" id="upload_form{{ forloop.counter }}" >
-                                        <option value="from_existing_file" selected>From existing file</option>
-                                        <option value="link_from_youtube">Link from YouTube</option>
+                                        <option value="FROM_FILE" {% if m.upload_form == 'FROM_FILE' %} selected {% endif %}>From existing file</option>
+                                        <option value="LINK_FROM_YOUTUBE" {% if m.upload_form == 'LINK_FROM_YOUTUBE' %} selected {% endif %}>Link from YouTube</option>
                                     </select>
                                 </p>
                             </section>
@@ -143,7 +143,7 @@
                             <section>Audio file: <input name="audioFile{{ forloop.counter }}" id="audioFile{{ forloop.counter }}" type="file" accept="aac, .mp4, .mp3, .pls, .m3u, m3u8, .hls" onchange="get_name_from_file({{ forloop.counter }})"/>
                                 (Valid formats: AAC/MP4, MP3, PLS, M3U/M3U8 and HLS with bitrate from 16kbps to 384kbps)</section>
                             <section><span>YouTube URL:&nbsp;<input name="videoURL{{ forloop.counter }}" type="url" value="{{ m.url }}"></span></section>
-                            <section>Text:  <textarea  name="text{{ forloop.counter }}" rows="2" cols="100"></textarea></section>
+                            <section>Text:  <textarea  name="text{{ forloop.counter }}" rows="2" cols="100">{{ m.text }}</textarea></section>
                             <input type="hidden" name="url_file{{ forloop.counter }}" id="url_file{{ forloop.counter }}" value="">
                         {% endfor %}
                     </fieldset>
@@ -183,10 +183,11 @@
                                         <div style="margin-left: 100px;">
                                             Choices {{ forloop.counter }} (write the possible answers and select the correct one):<br>
                                            {% for choice in q.choices %}
+                                         
                                                 <input type="radio" name="answer{{ forloop.parentloop.counter }}"
                                                        value="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}"
                                                        {% if q.answer == choice.choice_text %}checked {% endif %}>
-                                                <input type="text" name="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}" value={{ choice.choice_text }}>    <br>
+                                                <input type="text" name="choice{{ forloop.parentloop.counter }}_{{ forloop.counter }}" value="{{ choice.choice_text }}">    <br>
                                            {% endfor %}
                                         </div>
                                         <br>
