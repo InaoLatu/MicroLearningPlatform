@@ -20,7 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #with open('/home/inao/Trabajo/AT/secret_key.txt') as f:
-with open('/home/mario/dev/MLP/secret_key.txt') as f:
+# CAMBIADO POR MC. Puxen o BASE_DIR
+with open(BASE_DIR+'/secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
