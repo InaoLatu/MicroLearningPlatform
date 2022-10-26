@@ -7,10 +7,16 @@ instructor in the platform to the creation and edition of every micro content of
 
 To accomplish the mission of this project they have been created several modules to build the whole archicture. These modules are the following:
 
-[Microlearning Telegram bot](https://github.com/InaoLatu/MicroLearningBot). Bot built to allow the students to consume the micro-content within the different Units.
+[Microlearning Telegram bot](https://github.com/InaoLatu/MicroLearningBot). Telegram Bot built to allow the students to consume the micro-content within the different Units.
 
 [AuthServer](https://github.com/InaoLatu/AuthServer).
 
 [GeneralManager](https://github.com/InaoLatu/GeneralManager).
 
 [StudentManager](https://github.com/InaoLatu/StudentManager).
+
+An example of the flow that will be followed when a Student wants to consume 1 micro content would be the following: 
+
+![Flow of the different requests to get 1 micro-content](https://github.com/InaoLatu/MicroLearningPlatform/blob/tfg_inao/bot_requests_1_micro-content.png)
+
+(It goes from the moment that the Student requests the micro content in the Telegram bot until it is presented to himself in the screen)
