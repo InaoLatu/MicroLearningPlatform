@@ -9,11 +9,11 @@ To accomplish the mission of this project they have been created several modules
 
 - [Microlearning Telegram bot](https://github.com/InaoLatu/MicroLearningBot). Telegram Bot built to allow the students to consume the micro-content within the different Units.
 
-- [AuthServer](https://github.com/InaoLatu/AuthServer).
+- [AuthServer](https://github.com/InaoLatu/AuthServer). Tool to authenticate and authorize users to give them access to a third-party platform resources.
 
-- [GeneralManager](https://github.com/InaoLatu/GeneralManager).
+- [GeneralManager](https://github.com/InaoLatu/GeneralManager). Overall management system of the whole architecture.
 
-- [StudentManager](https://github.com/InaoLatu/StudentManager).
+- [StudentManager](https://github.com/InaoLatu/StudentManager). Server to manage the data and activity of the students. 
 
 An example of the flow that will be followed when a Student wants to consume 1 micro content would be the following: 
 
