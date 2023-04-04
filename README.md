@@ -7,7 +7,7 @@ instructor in the platform to the creation and edition of every micro content of
 
 To accomplish the mission of this project they have been created several modules to build the whole archicture. These modules are the following:
 
-- [Microlearning Telegram bot](https://github.com/InaoLatu/MicroLearningBot). Telegram Bot built to allow the students to consume the micro-content within the different Units.
+- [Microlearning Telegram bot](https://github.com/InaoLatu/MicroLearningBot). Telegram Bot built to allow the students to consume the micro-content within the different Units of knowledge (Maths, Science, etc).
 
 - [AuthServer](https://github.com/InaoLatu/AuthServer). Tool to authenticate and authorize users to give them access to a third-party platform resources.
 
