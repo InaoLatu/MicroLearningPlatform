@@ -20,3 +20,6 @@ An example of the flow that will be followed when a Student wants to consume 1 m
 ![Flow of the different requests to get 1 micro-content](https://github.com/InaoLatu/MicroLearningPlatform/blob/tfg_inao/bot_requests_1_micro-content.png)
 
 (It goes from the moment that the Student requests the micro content in the Telegram bot until it is presented to himself in the screen)
+
+# Documentation
+[PDF document](https://drive.google.com/file/d/1qCqRNUzqftg1cPptnCdvnshpJnLw4v8v/view)
