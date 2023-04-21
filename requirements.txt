@@ -17,6 +17,6 @@ pytz==2018.9
 query-string==2019.3.22
 
 six==1.14.0
-sqlparse==0.2.4
+sqlparse==0.4.4
 
 requests==2.22.0
